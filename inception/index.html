@@ -33,11 +33,16 @@
 	<br><br><br><br><br>
 	<figure id="img-accueil" class="img-accueil">
 		<a href="img/docker-compose.png"><img style="width:1280px" src="img/docker-compose.png"/></a>
-	</figure><br><br><br><br>
+	</figure>
+	<br>
+	<br>
+	<br>
+	<br>
 
 	<hr id="ligne-accueil"/><br>
 	<h1 id="objectifs" class="">Objectifs d’apprentissage</h1>
-	<br><br>
+	<br>
+	<br>
 		<ol class="block-color-gray">
 			<li>1. Comprendre <strong>Docker</strong> et <strong>Compose</strong>.</li>
 		</ol>
@@ -61,18 +66,23 @@
 		</ol>
 		<ol>
 			<li><mark class="highlight-gray">8. </mark><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Finaliser</mark></span><mark class="highlight-gray"> le projet</mark></li>
-		</ol><br><br>
+		</ol>
+		<br>
+		<br>
 
-	<h1>1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1><br><br><br>
-		
+	<h1>1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1>
+	<br>
+	<br>
+	<br>
 		<p>
 			📌 L’avantage de Docker est clair, il <mark class="highlight-teal"><strong>résout </strong></mark>l’un des plus <strong>gros problèmes des développeurs</strong>:
 		</p>
 
-		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex">
+		<figure class="block-color-gray_background callout" style="display:flex">
 			<div style="font-size:1.5em"><span class="icon">👉</span></div>
 			<div style="width:100%"><mark class="highlight-gray_background">Se retrouver à créer un super programme sur son ordinateur, et se rendre compte qu’il ne fonctionne que sur son propre ordinateur. Pour l’utiliser ailleurs il va falloir installer les dépendances requises 🤯</mark></div>
-		</figure><br>
+		</figure>
+		<br>
 
 		<p class="block-color-gray">
 			Souvenez vous ce <strong><mark class="highlight-teal">super programme</mark></strong> que vous aviez trouvé sur <strong>Github</strong>, vous l’installez comme prévu par le tutoriel du ReadMe 📄, mais l’installation <strong><mark class="highlight-red">crash</mark></strong> indiquant “<strong><em>You have missing dependencies</em></strong>”, ou encore “<em><strong>This version of this file is not compatible with your OS</strong></em>” 😣
@@ -86,7 +96,7 @@
 
 		<ul class="toggle">
 			<li>
-				<details open="">
+				<details close="">
 					<summary>⚙️ Les types de problèmes que corrige Docker</summary>
 					<ul>
 						<li style="list-style-type:disc">Une dépendance n’est pas compatible avec votre version de logiciel 😅</li>
@@ -105,7 +115,8 @@
 					</ul>
 				</details>
 			</li>
-		</ul><br>
+		</ul>
+		<br>
 
 		<blockquote>Passer 4 heures sur du <strong><mark class="highlight-red">
 			<a href="https://www.larousse.fr/dictionnaires/francais/d%C3%A9boguer/21835#:~:text=un%20programme%20informatique.-,d%C3%A9boguer%20v.t.,erreurs%20d&#x27;un%20programme%20informatique.">débug</a>
@@ -115,14 +126,14 @@
 		<p> C’est ce qu’il a du arriver à <a href="https://fr.wikipedia.org/wiki/Solomon_Hykes"><strong>Solomon Hykes</strong></a>,<strong> </strong>un <span style="border-bottom:0.05em solid">franco-américain</span> qui a finit par se demander s’il était possible de trouver une <mark class="highlight-teal"><strong>solution</strong></mark> à ce genre de problème.
 			<br>En réponse à cela, il sort <mark class="highlight-blue"><strong>Docker</strong></mark><strong> </strong>le <span style="border-bottom:0.05em solid"><strong>20 mars 2013</strong></span>.
 		</p>
-
-		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex">
+		<figure class="block-color-gray_background callout" style="display:flex">
 			<div style="font-size:1.5em"><span class="icon">🎯</span></div><div style="width:100%">Rappel du Wiki de Docker<strong>: Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé.  </strong></div>
-		</figure> <br><br>
+		</figure>
+		<br>
 
 		<ul class="toggle">
 			<li>
-				<details open="">
+				<details close="">
 					<summary>⚙️ L’Histoire de Docker</summary>
 					<ul>
 						<li style="list-style-type:disc">Docker a été développé pour un projet interne de <em><strong>dotCloud</strong></em>, une entreprise <span style="border-bottom:0.05em solid">française</span> 😏 proposant une 
@@ -148,49 +159,174 @@
 			</li>
 		</ul>
 
-		<br><br><hr/><br>
+		<br>
+		<hr/>
+		<br>
 
-		<p>Tout ça semble tout beau mais en fait, si ça existe déjà avec les <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">VM</a>,</p>
-		<h3>Pourquoi les développeurs utilisent Docker ? 🤔</h3><br><br>
+		<p>
+			Tout ça semble tout beau mais en fait, si ça existe déjà avec les <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">VM</a>,
+		</p>
+		<h3>Pourquoi les développeurs utilisent Docker ? 🤔</h3>
+		<br>
 
-		<p>Le grand avantage de <strong><mark class="highlight-blue">Docker</mark></strong> est la possibilité de modéliser chaque conteneur sous la forme d&#x27;une image que l&#x27;on peut stocker localement.</p><br>
-		<p>🔎 Un <span style="border-bottom:0.05em solid"><strong>conteneur</strong></span> est une machine virtuelle sans noyau.</p>
-		<p class="block-color-purple_background">📌 Ce que j’appelle <span style="border-bottom:0.05em solid"><strong>noyau</strong></span> est tout l’ensemble du système permettant à la machine virtuelle de fonctionner, l’OS, le coté graphique, réseau, etc…</p>
-		<p>🔎 En d’autres termes, un conteneur ne contient <span style="border-bottom:0.05em solid"><strong>que l’application</strong></span> <em>et</em> <strong><span style="border-bottom:0.05em solid">les dépendances de l’application</span></strong>.</p><br>
+		<p>
+			Le grand avantage de <strong><mark class="highlight-blue">Docker</mark></strong> est la possibilité de modéliser chaque conteneur sous la forme d&#x27;une image que l&#x27;on peut stocker localement.
+		</p>
+		<br>
+
+		<p>
+			🔎 Un <span style="border-bottom:0.05em solid"><strong>conteneur</strong></span> est une machine virtuelle sans noyau.</p>
+		<p>
+			<mark class="block-color-purple_background">📌 Ce que j’appelle <span style="border-bottom:0.05em solid"><strong>noyau</strong></span> est tout l’ensemble du système permettant à la machine virtuelle de fonctionner, l’OS, le coté graphique, réseau, etc…</mark>
+		</p>
+		<p>🔎 En d’autres termes, un conteneur ne contient <span style="border-bottom:0.05em solid"><strong>que l’application</strong></span> <em>et</em> <strong><span style="border-bottom:0.05em solid">les dépendances de l’application</span></strong>.
+		</p>
+		<br>
 		
-		<h3><span style="border-bottom:0.05em solid">Docker Hub:</span></h3>
+		<h3><span style="border-bottom:0.05em solid">Docker Hub:</span></h3><br>
 
-	<p class="block-color-yellow_background"><strong><mark class="highlight-blue">Docker</mark></strong> met a disposition une sorte d’App Store, contenant des images (conteneur) de milliers de personnes, simplifiant encore plus son usage 👍</p><p id="3a127352-54c6-4504-8bc5-54c893f09dca" class="">
-	<p>Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.</p><p id="9f28d804-116e-41dc-9333-a4ad0eefa694" class="block-color-gray">L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?</p><p id="ddac9814-c21f-4947-9d4a-a0a31f3a7ff7" class="">
-	<p>🤔 Nous aurions besoin du container Docker qui installe de lui même nginx. </p><p id="dda88a43-a815-429d-bab8-fe36e16f8877" class="">😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par</mark><mark class="highlight-gray_background"><a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a></mark><mark class="highlight-gray_background"><strong> 🥳</strong></mark><mark class="highlight-gray_background"> </mark></p><p id="abb0363f-9d5c-45d4-a6e9-29ec87aec13a" class="">
-	<p id="548a7e5f-9ca6-4349-ab7e-d4ceff8c293f" class="">Regardons un exemple de ce à quoi pourrais ressembler une image nginx:</p><p id="0e2a0bb2-fdf4-49a0-a497-b872f8ea183f" class="">
-	<pre id="cf11659b-71a9-4988-8366-7f0512b97ef2" class="code"><code>FROM		alpine:3.12
+		<p>
+			<mark class="block-color-yellow_background"><strong><mark class="highlight-blue">Docker</mark></strong> met a disposition une sorte d’App Store, contenant des images (conteneur) de milliers de personnes, simplifiant encore plus son usage 👍</mark>
+		</p>
+		<br>
 
-RUN			apk update &amp;&amp; apk upgrade &amp;&amp; apk add	\
+		<p class="block-color-gray">
+			Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.
+		</p>
+		<p class="block-color-gray">
+			L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?
+		</p>
+		<br>
+
+		<p>
+			🤔 <mark class="highlight-gray_background">Nous aurions besoin du container Docker qui installe de lui même nginx.</mark>
+		</p>
+		<p>
+			😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par<a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a> 🥳</mark>
+		</p>
+		<br>
+
+		<p>
+			Regardons un exemple de ce à quoi pourrais ressembler une image nginx:
+		</p>
+		<pre class="code">
+			<code>
+				FROM		alpine:3.12
+
+				RUN			apk update &amp;&amp; apk upgrade &amp;&amp; apk add	\
 											openssl			\
 											nginx			\
 											curl			\
 											vim				\
 											sudo
 
-RUN			rm -f /etc/nginx/nginx.conf
+				RUN			rm -f /etc/nginx/nginx.conf
 
-COPY		./config/nginx.conf /etc/nginx/nginx.conf
-COPY		scripts/setup_nginx.sh /setup_nginx.sh
+				COPY		./config/nginx.conf /etc/nginx/nginx.conf
+				COPY		scripts/setup_nginx.sh /setup_nginx.sh
 
-RUN			chmod -R +x /setup_nginx.sh
+				RUN			chmod -R +x /setup_nginx.sh
 
-EXPOSE		443
+				EXPOSE		443
 
-ENTRYPOINT	[&quot;sh&quot;, &quot;setup_nginx.sh&quot;]</code></pre><p id="bc3edcac-2d13-4e45-817e-0d862f9e2adc" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3a306a8f-d497-41b0-99a0-f4d122eb8026"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Ce fichier est un <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, c’est le nom du fichier principal de vos images <mark class="highlight-blue"><strong>Docker</strong></mark>.                          Qui dit <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, dit nouveau language de programmation, mais ne fuyez pas, il s’agit de connaitre ces quelques mots-clefs.</div></figure><p id="0cecca5c-fcb6-4390-ba27-9c94c47bdf86" class="">
-</p><h2 id="e512b763-8384-4d32-b65e-0412bad98d50" class="">Quelques mots-clefs <span style="border-bottom:0.05em solid">Dockerfile</span>:</h2><h1 id="adbe4165-4251-40ff-b098-48493014b01a" class=""><details open=""><summary><mark class="highlight-blue">FROM</mark></summary></details></h1><div class="indented"><p id="aa0ea21f-3a9e-4971-8965-34fc5590e9ce" class="">Permet d’indiquer à Docker sous quel OS doit tourner votre machine virtuelle.</p><p id="183f809a-81da-41cd-9105-d72fb1989f49" class="">C’est le <span style="border-bottom:0.05em solid">premier</span> mot clef de votre Dockerfile et celui ci est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</p><p id="95810f54-303e-44c5-b7aa-a9970bbea50e" class="">Les plus courants sont <em>debian:buster</em> pour <a href="https://www.debian.org/index.fr.html">Debian</a> ou <em>alpine:x:xx</em> pour <span style="border-bottom:0.05em solid">Linux</span>.</p></div><h1 id="bc13639a-e568-4aa2-bf92-348d311befe6" class=""><details open=""><summary><mark class="highlight-blue">RUN</mark></summary></details></h1><div class="indented"><p id="f3815584-3ae4-4fed-842e-2bde5453e1f0" class="">Permet de lancer une commande sur votre machine virtuelle</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a341941a-4024-4452-af60-483d94687710"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">L’équivalent de se connecter en ssh, puis de taper une commande bash, comme :                                                                  <code>echo “Hello World!”,</code> qui affichera…. </div></figure><p id="bb0dabde-0861-412b-97e8-f76d3feccd48" class="">En général, les premiers <strong><mark class="highlight-blue">RUN</mark></strong> fournit dans le Dockerfile consistent à mettre à jour les ressources de votre VM, comme apk, ou encore d’ajouter les utilitaires basiques comme <strong>vim</strong>, <strong>curl</strong> ou <strong>sudo</strong>. </p></div><h1 id="ea3ace52-2419-4e88-a844-b66f36b1275c" class=""><details open=""><summary><mark class="highlight-blue">COPY</mark></summary></details></h1><div class="indented"><p id="850131af-9a60-4bea-a74b-533645e3b868" class="">Vous l’avez ! Cela permet en effet de copier un fichier.</p><blockquote id="ee4efffd-a936-4e40-8fb6-277db7fae0c1" class="">Le copier ? À partir d’ou ?</blockquote><p id="e5b44d63-8361-4965-b8ab-516b6ae492f7" class="">Vous indiquez simplement ou se trouve votre fichier à copier à partir du répertoire ou se trouve votre Dockerfile, puis la ou vous souhaitez le copier dans votre machine virtuelle.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a98e7289-ef72-4760-86e6-ce411595d85a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une image docker c’est un dossier, il contient obligatoirement votre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> à la racine du dossier mais peut aussi contenir un tas d’autres fichiers pour ensuite pouvoir les copier directement dans votre VM.</div></figure></div><h1 id="fbbbb38f-0dc3-4e61-8e98-f72569503511" class=""><details open=""><summary><strong><mark class="highlight-blue">EXPOSE</mark></strong></summary></details></h1><div class="indented"><p id="3deb7ae6-8254-468a-84b8-492db562de91" class="">Ici, c’est une question de réseau 📡</p><p id="9467a462-6835-496c-b64e-0e5e6f64a560" class="">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> informe Docker que le conteneur écoute sur les ports réseaux spécifiés au moment de l&#x27;exécution. <mark class="highlight-blue"><strong>EXPOSE</strong></mark> ne rend pas les ports du conteneur accessibles à l&#x27;hôte.</p><p id="f3af0eeb-83cb-4677-b475-c3c77340430f" class="">Attendez ! Quoi ? Le conteneur écoute sur le port réseau et n&#x27;est pas accessible à l&#x27;hôte ? </p><p id="af1af630-f080-423e-99b6-f56b879e2aaa" class="">Qu&#x27;est-ce que cela signifie ? 😣</p><p id="5b7e56ba-1eee-4d7b-a268-d3815ad5bd6a" class="">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> expose le port spécifié et le rend disponible uniquement pour la communication entre conteneurs. Comprenons cela à l&#x27;aide d&#x27;un exemple.</p><p id="199a7543-ebd8-43e1-9664-97a532ff9487" class="">Disons que nous avons deux conteneurs, une application wordpress et un serveur mariadb. Notre application wordpress a besoin de communiquer avec le serveur mariadb pour plusieurs raisons.</p><p id="98d0264f-f671-46da-9630-7e918aa15fa0" class="">
-</p><p id="438e9a21-3454-4a3f-a08f-252f4dcfa0b7" class="">Pour que l&#x27;application WordPress puisse parler au serveur MariaDB, le conteneur WordPress doit exposer le port. Jetez un œil au Dockerfile de l&#x27;image officielle de wordpress et vous verrez une ligne disant <mark class="highlight-blue"><strong>EXPOSE</strong></mark> <mark class="highlight-blue"><strong>3306</strong></mark>. C&#x27;est ce qui aide les deux conteneurs à communiquer l&#x27;un avec l&#x27;autre.</p><p id="4dbaccab-0114-4b80-86c1-0a6706d443c4" class="">Ainsi, lorsque votre conteneur WordPress essaie de se connecter au port <mark class="highlight-blue"><strong>3306</strong></mark> du conteneur MariaDB, c&#x27;est l&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> qui rend cela possible.</p><p id="6a458cca-8330-4bca-b791-2c2ff3934900" class="">Note : Pour que le serveur WordPress puisse communiquer avec le conteneur MariaDB, il est important que les deux conteneurs soient exécutés dans le même réseau docker.</p></div><h1 id="6091ab9f-51a4-47c9-8da8-b3e0595d6da9" class=""><details open=""><summary><strong><mark class="highlight-blue">ENTRYPOINT</mark></strong></summary></details></h1><div class="indented"><p id="dc93ead4-8ee3-4dc3-85a1-12b18c8ef1d2" class="">Youpi ! Votre container semble prêt à démarrer. </p><p id="634077f6-cde3-43b9-9d7a-21ce9a0a4d01" class="">Cependant il serait surement plus judicieux de demander au container de lancer une certaine commande au lancement de celui-ci.</p><p id="e9433a82-655b-49b0-bbab-471808181efc" class="">C’est ce que permet de faire le mot-clef <mark class="highlight-blue"><strong>ENTRYPOINT</strong></mark> !</p><p id="6568e2be-23cd-4c4e-b902-2a57e64ca433" class="">Il suffit d’indiquer votre commande, argument par argument, dans le format suivant :</p><p id="c08e4199-43cd-4179-9347-f7edde72f2af" class="">
-</p><blockquote id="1a2e50f6-d9e0-4105-816f-245a5a44d6af" class=""><strong>ENTRYPOINT</strong> [ “bash” , ”-c”,  “&quot;$(curl <a href="https://grademe.fr/">https://grademe.fr</a>)&quot;” ]</blockquote><p id="c6cbcb2c-2529-424d-9d32-24a4a7ddb30c" class="">
-</p><p id="a41b7672-5192-4bff-9014-c03b52880aea" class="">
-</p><p id="2e3c6147-8aa4-4bc5-b88b-07ab7759b122" class="">
-</p><p id="b535320f-ab32-4c55-996f-86c557de5329" class="">
-</p></div><p id="9acddbc4-6e4e-406c-857f-8e73971cff2b" class="">
+				ENTRYPOINT	[&quot;sh&quot;, &quot;setup_nginx.sh&quot;]
+			</code>
+		</pre>
+		<br>
+				
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Ce fichier est un <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, c’est le nom du fichier principal de vos images <mark class="highlight-blue"><strong>Docker</strong></mark>.<br>Qui dit <span style="border-bottom:0.05em solid"><strong>Dockerfile</strong></span>, dit nouveau language de programmation, mais ne fuyez pas, il s’agit de connaitre ces quelques mots-clefs.
+			</div>
+		</figure>
+		<br>
+
+		<h2>Quelques mots-clefs <span style="border-bottom:0.05em solid">Dockerfile</span>:</h2>
+		<h1>
+			<details close="">
+				<summary><mark class="highlight-blue">FROM</mark></summary>
+				<ul class="toggle" style="font-size:0.55em;">
+					<div class="indented">
+						<p class="block-color-gray">Permet d’indiquer à Docker sous quel OS doit tourner votre machine virtuelle.</p>
+						<p class="block-color-gray">C’est le <span style="border-bottom:0.05em solid">premier</span> mot clef de votre Dockerfile et celui ci est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</p>
+						<p class="block-color-gray">Les plus courants sont <em>debian:buster</em> pour <a href="https://www.debian.org/index.fr.html">Debian</a> ou <em>alpine:x:xx</em> pour <span style="border-bottom:0.05em solid">Linux</span>.</p>
+					</div>
+				</ul>
+			</details>
+		</h1>
+
+		<h1>
+			<details close="">
+				<summary><mark class="highlight-blue">RUN</mark></summary>
+				<ul class="toggle" style="font-size:0.55em;">
+					<div class="indented">
+						<p class="block-color-gray">Permet de lancer une commande sur votre machine virtuelle</p>
+						<figure class="block-color-gray_background callout" style="display:flex">
+							<div style="font-size:1.5em"><span class="icon">💡</span></div>
+							<div class="block-color-gray">L’équivalent de se connecter en ssh, puis de taper une commande bash, comme : <code>echo “Hello World!”,</code> qui affichera….</div>
+						</figure>
+						<p class="block-color-gray">En général, les premiers <strong><mark class="highlight-blue">RUN</mark></strong> fournit dans le Dockerfile consistent à mettre à jour les ressources de votre VM, comme apk, ou encore d’ajouter les utilitaires basiques comme <strong>vim</strong>, <strong>curl</strong> ou <strong>sudo</strong>. </p>
+					</div>
+				</ul>
+			</details>
+		</h1>
+
+		<h1>
+			<details close="">
+				<summary><mark class="highlight-blue">COPY</mark></summary>
+				<ul class="toggle" style="font-size:0.55em;">
+					<div class="indented">
+						<p class="block-color-gray">Vous l’avez ! Cela permet en effet de copier un fichier.</p>
+						<blockquote class="block-color-gray">Le copier ? À partir d’ou ?</blockquote>
+						<p class="block-color-gray">Vous indiquez simplement ou se trouve votre fichier à copier à partir du répertoire ou se trouve votre Dockerfile, puis la ou vous souhaitez le copier dans votre machine virtuelle.</p>
+						<figure class="block-color-gray_background callout" style="display:flex">
+							<div style="font-size:1.5em"><span class="icon">💡</span></div>
+							<div class="block-color-gray" style="width:100%">Une image docker c’est un dossier, il contient obligatoirement votre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> à la racine du dossier mais peut aussi contenir un tas d’autres fichiers pour ensuite pouvoir les copier directement dans votre VM.</div>
+						</figure>
+					</div>
+				</ul>
+			</details>
+		</h1>
+
+		<h1>
+			<details close="">
+				<summary><mark class="highlight-blue">EXPOSE</mark></summary>
+				<ul class="toggle" style="font-size:0.55em;">
+					<div class="indented">
+						<p class="block-color-gray">Ici, c’est une question de réseau 📡</p>
+						<p class="block-color-gray">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> informe Docker que le conteneur écoute sur les ports réseaux spécifiés au moment de l&#x27;exécution. <mark class="highlight-blue"><strong>EXPOSE</strong></mark> ne rend pas les ports du conteneur accessibles à l&#x27;hôte.</p>
+						<p class="block-color-gray">Attendez ! Quoi ? Le conteneur écoute sur le port réseau et n&#x27;est pas accessible à l&#x27;hôte ? </p>
+						<p class="block-color-gray">Qu&#x27;est-ce que cela signifie ? 😣</p>
+						<p class="block-color-gray">L&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> expose le port spécifié et le rend disponible uniquement pour la communication entre conteneurs. Comprenons cela à l&#x27;aide d&#x27;un exemple.</p>
+						<p class="block-color-gray">Disons que nous avons deux conteneurs, une application wordpress et un serveur mariadb. Notre application wordpress a besoin de communiquer avec le serveur mariadb pour plusieurs raisons.</p>
+						<br>
+
+						<p class="block-color-gray">Pour que l&#x27;application WordPress puisse parler au serveur MariaDB, le conteneur WordPress doit exposer le port. Jetez un œil au Dockerfile de l&#x27;image officielle de wordpress et vous verrez une ligne disant <mark class="highlight-blue"><strong>EXPOSE</strong></mark><mark class="highlight-blue"><strong>3306</strong></mark>. C&#x27;est ce qui aide les deux conteneurs à communiquer l&#x27;un avec l&#x27;autre.</p>
+						<p class="block-color-gray">Ainsi, lorsque votre conteneur WordPress essaie de se connecter au port <mark class="highlight-blue"><strong>3306</strong></mark> du conteneur MariaDB, c&#x27;est l&#x27;instruction <mark class="highlight-blue"><strong>EXPOSE</strong></mark> qui rend cela possible.</p>
+						<p class="block-color-gray">Note : Pour que le serveur WordPress puisse communiquer avec le conteneur MariaDB, il est important que les deux conteneurs soient exécutés dans le même réseau docker.</p>
+					</div>
+				</ul>
+			</details>
+		</h1>
+
+		<h1>
+			<details close="">
+				<summary><mark class="highlight-blue">ENTRYPOINT</mark></summary>
+				<ul class="toggle" style="font-size: 0.55em;">
+					<div class="indented">
+						<p class="block-color-gray">Youpi ! Votre container semble prêt à démarrer. </p>
+						<p class="block-color-gray">Cependant il serait surement plus judicieux de demander au container de lancer une certaine commande au lancement de celui-ci.</p>
+						<p class="block-color-gray">C’est ce que permet de faire le mot-clef <mark class="highlight-blue"><strong>ENTRYPOINT</strong></mark> !</p>
+						<p class="block-color-gray">Il suffit d’indiquer votre commande, argument par argument, dans le format suivant :</p>
+						<blockquote><strong>ENTRYPOINT</strong> <mark class="block-color-gray">“bash” , ”-c”,  “&quot;$(curl </mark><a href="https://grademe.fr/">https://grademe.fr</a><mark class="block-color-gray"> )&quot;” ]</mark></blockquote>
+					</div>
+				</ul>
+			</details>
+		</h1>
+		<br>
+		<br>
+		<br>
+		
+		</div><p id="9acddbc4-6e4e-406c-857f-8e73971cff2b" class="">
 </p><p id="284c544e-9357-4b31-bc48-413a079bb2bd" class=""><a href="https://www.nicelydev.com/docker/mots-cles-supplementaires-dockerfile#:~:text=Le%20mot%2Dcl%C3%A9%20EXPOSE%20permet,utiliser%20l&#x27;option%20%2Dp%20."><strong>Ici</strong></a> un site détaillant les différents types de mots-clefs utilisables dans Docker.</p><blockquote id="0455508e-8b7f-4460-bf94-7bb1749ff8bd" class="">⚠️ Pour continuer vous devez avoir bien compris le principe de Docker.</blockquote><hr id="65c41241-39d3-4fb8-9afa-14b6ca4152fb"/><p id="14dc9fa5-1487-4d9d-b830-28b1228526a0" class="">
 </p><h1 id="8a9f207a-ec60-47d6-b239-3e88016d033c" class="">Docker-Compose :</h1><p id="dd40a74c-c671-4c3c-ad94-50edb0552719" class="block-color-yellow_background">Maintenant que vous avez compris la réelle utilité de Docker, il s’agit de comprendre une fonctionnalité de <strong><mark class="highlight-blue">Docker</mark></strong> appelée Compose.</p><p id="b3a65f0b-fd23-4e9d-b6e1-fd9b8aafaa4c" class="">
 </p><p id="98912bf6-9ae8-40bb-b3a7-d72238754e11" class="">📄 Voici ce qu’explique la doc de Docker sur Compose:</p><blockquote id="31c13f1d-50a0-40cf-936b-f2f95566a50e" class=""><strong><mark class="highlight-blue">Docker Compose</mark></strong> est un <strong>outil qui a été développé pour aider à définir et à partager des applications multi-conteneurs.</strong>
