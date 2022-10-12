@@ -884,48 +884,279 @@
 	<br>
 	<br>
 
-	<p id="2128c2d2-f875-40c4-82e8-482b5c1b01f0" class="">Commençons par notre container le moins flou, <strong>NGINX</strong>.</p><p id="43938e44-0103-450e-ad7d-9d8c58b24aff" class=""><strong>NGINX</strong> permet de mettre en place un <span style="border-bottom:0.05em solid">serveur Web</span>. </p><p id="e5923bb6-6e2c-4155-ae3d-1504a2b28686" class="">
-</p><p id="1993a158-738c-4850-b4fc-6b4086d90bc8" class="">Nous allons commencer par étape afin de comprendre au mieux comment utiliser et se balader avec <mark class="highlight-blue"><strong>Docker</strong></mark>.</p><p id="5a36f691-07d9-44da-a4e2-e3a3ab652903" class="">
-</p><p id="0bf376e5-3ba5-4de5-9e66-4acdd4fa0079" class="">Ouvrons d’abord le fichier essentiel de Docker, le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> <strong>NGINX. </strong></p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="83fe1b0f-766b-498f-8849-643827feff4d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Rappelez-vous qu’il existe une image nginx toute prête, mise à disposition par <strong>nginx</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>.                                                                                                                                          La plupart des développeurs serait directement passée par la, mais ici <em><strong>42</strong></em> nous l’interdit, afin de savoir la recréer nous même.</div></figure><p id="9f6c3ce7-d1fe-4559-b12a-6d14639df1db" class="">Si vous avez bien suivi, vous devriez savoir quelle ligne écrire en premier, du moins le premier mot clef du Dockerfile.</p><ul id="df8f64db-8f77-4e3f-a939-4c818c731586" class="toggle"><li><details open=""><summary><strong>SPOIL 🔎</strong></summary><p id="acd8e1f7-52ae-49e9-bec2-638991a72746" class="">C’est <mark class="highlight-blue"><strong>FROM</strong></mark> ! Comme indiqué au début du cours, <mark class="highlight-blue"><strong>FROM</strong></mark> permet d’indiquer à Docker sur quel OS nous souhaitons faire tourner notre machine. C’est un mot clef obligatoire et il doit <span style="border-bottom:0.05em solid"><strong>toujours être en premier</strong></span> d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="e2a92c44-2672-404d-b1f1-83e0b08c02ce" class="">
-</p></details></li></ul><p id="e402d8c6-b083-4d5b-ab73-8425eb14288e" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="51823c22-b13d-4339-93df-366986546d3c"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Pour des raisons de performance, les containers devront être build au choix : soit sous Alpine Linux avec l’avant-dernière version stable, soit sous Debian Buster.</mark></div></figure><p id="a8bdb694-bd2a-4711-b8d8-562ebf4bc637" class="">Pour l’OS, nous avons donc le choix entre <em><mark class="highlight-gray">debian:buster</mark></em> ou <mark class="highlight-gray"><em>alpine:X.XX </em></mark><em>(vérifiez l’avant-dernière version stable en date, </em><a href="https://www.alpinelinux.org"><em>ici</em></a><em>).</em></p><p id="5089bfd5-dfda-487b-9bd8-99e6a9c4de4e" class="">
-</p><h2 id="3cc84ecd-69dc-4cb9-aaf1-dc3e71d5685c" class="">Quelle différence entre <span style="border-bottom:0.05em solid">Alpine</span> et <span style="border-bottom:0.05em solid">Debian</span>?</h2><p id="e57305b8-6852-4178-8c06-b9bf9ce99e52" class=""><mark class="highlight-orange"><strong>Alpine Linux</strong></mark> est une distribution <strong>Linux</strong> légère, orientée sécurité, elle contient le moins de fichiers et outils possibles afin de laisser la possibilité au développeur de les installer par lui même si besoin.</p><p id="7d504782-0ea7-45e2-a9e7-85d72272090e" class=""><strong><mark class="highlight-orange">Debian</mark></strong> est le système d&#x27;exploitation universel. Les systèmes Debian utilisent actuellement le noyau Linux ou le noyau <a href="https://www.freebsd.org/fr/"><strong>FreeBSD</strong></a>. </p><p id="55b14ffe-030b-4816-a8e1-4b8503f64e5c" class="">
-</p><p id="4c66d9d5-43d6-44d8-a3d0-7c8cf8a60d30" class="">Pour ma part, étant plus à l’aise avec ce système, je vais utiliser <mark class="highlight-orange"><strong>Debian</strong></mark><mark class="highlight-gray">.</mark></p><p id="608830b6-10c3-4fbf-ac5f-d078e5c88317" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="7977b074-bf41-4223-a747-7ab7ed4c8c10"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La suite du tutoriel est représenté pour <mark class="highlight-orange"><strong>Debian</strong></mark>. Mais vous devriez facilement pouvoir adapter cela sur <strong><mark class="highlight-orange">Alpine</mark></strong>.</div></figure><p id="275dd871-20ab-4a35-8fe5-ed5b0ad084c2" class="">
-</p><p id="69d6d7fe-a64b-46cc-841f-28862364046f" class="">Nous pouvons donc commencer par écrire :</p><p id="85e3243b-2abc-48de-8661-f20580a92e2c" class=""><mark class="highlight-brown"><code>FROM debian:buster</code></mark></p><p id="fa5a331f-bd20-4157-81e7-3ac76719895a" class="">dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="f15bf145-0229-4266-92b8-d5bc21f5c59c" class="">
-</p><p id="4362d715-5713-436b-918b-e0d3e21d8756" class="">Maintenant j’ai envie de vous dire, si cette ligne est la seule ligne obligatoire, notre container pourrait-il démarrer ?</p><p id="987e9aac-74e1-47b0-a70a-7addda0c42b3" class="">Nous avons indiqué un OS à installer, nous devrions pouvoir le lancer.</p><p id="ecee50fe-740e-44ad-8cfd-e018ed6d4373" class="">Le plus sympa, c’est que <mark class="highlight-blue"><strong>Docker</strong></mark> peut nous permettre de lancer une <mark class="highlight-gray"><em>“machine virtuelle”</em></mark>, mais en lui précisant, on peut également accéder à son terminal ! Utile pour voir ce qu’il y’a dedans ou effectuer nos propres tests.</p><p id="cbb7e67b-ca45-4bc8-9386-8e342bc679a7" class="">
-</p><p id="f5bf76ff-7354-4ad5-ab13-f7c157476743" class="">Pour cela, il faut connaitre les commandes indispensables aux containers de Docker.</p><p id="8c596d33-2ef1-4905-be4e-b428dc05da25" class="">
-</p><hr id="cb14bfb1-93cf-4a93-9a02-61dbc0e01372"/><p id="0b6e1d35-d91f-4b4b-9f11-0ae6001ae369" class="">
-</p><h2 id="567cadc0-11cc-4e19-9dc1-07aa5cfce4bf" class="">Les commandes essentielles d’un container Docker :</h2><p id="222c6c72-b34a-4821-887f-22c542012952" class="">
-</p><p id="f6376a96-fb45-4334-bbe4-0b756ccd8611" class="">Un container <mark class="highlight-blue"><strong>Docker</strong></mark> doit être <strong>build</strong> avant d’être lancé.</p><p id="be7ad793-082b-459b-9130-529f1abcb46b" class="">C’est pendant le <strong>build</strong> que vous pourrez obtenir des infos sur des potentielles erreurs que vous auriez fait dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="91495a61-717c-4468-a98e-d29fa84eb0f2" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="629d581e-1dbc-4f1c-a13a-8a4bcf174be8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Chaque commande Docker commence par le mot clef <code>docker</code></div></figure><p id="48a5efcb-6a96-4693-837e-06192d289072" class="">
-</p><p id="e4a42090-e202-425e-bf0b-40c9ff52a3ba" class=""><span style="border-bottom:0.05em solid">Build un container Docker :</span></p><p id="7800ffef-cbee-4339-a90a-f83628646757" class=""><code>docker build</code></p><p id="94a42333-b90f-463a-af2d-4c5f7c6edb0e" class="">😵 J&#x27;espère que vous n’oseriez pas tenter cette commande sans l’avoir parfaitement comprise !</p><p id="cf5222f9-7351-4cfe-a4c1-c79b4a727a14" class="">🤪 De toute manière, la commande n’est pas fonctionnelle, docker demande obligatoirement un chemin ou se trouve le Dockerfile de l’image à build. </p><p id="81257e6d-8841-4e27-a042-f6d71f8d06dc" class="">Dans notre cas, ce serait <code>docker build srcs/requirements/nginx/</code></p><p id="712b723d-1ae1-422a-bce0-9904ca21497c" class="">Ou encore plus simple, <code>docker build .</code> en vous trouvant directement dans le dossier nginx.</p><p id="83154f65-b193-4936-99b0-9a0097323981" class="">Vous pouvez également préciser un nom à votre build, avec le flag <code>-t</code></p><p id="2bdc31d0-9e52-4f3d-9674-312512fba7bb" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="1aca7ed1-638a-412c-aebf-e2be898c1444"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Si vous obtenez une erreur de type <code>Cannot connect to the Docker daemon</code>, vérifiez que Docker est bien ouvert et <a href="https://docs.docker.com/desktop/windows/troubleshoot/">qu’il fonctionne</a>.</div></figure><p id="6bb40d30-e027-4e2d-9716-ef2553289b79" class="">
-</p><p id="fd8e0055-09b1-483b-b9c1-e00d24fae3c0" class="">
-</p><p id="c7149139-5f31-4466-9942-2af5e8ebfb75" class=""><span style="border-bottom:0.05em solid">Connaitre les images actuelles:</span> <em><mark class="highlight-gray">(après un build réussi)</mark></em></p><p id="b9283946-ee09-4bef-abed-2ff52bf8a394" class=""><code>docker image ls</code></p><p id="bdcfe00e-6223-4a4e-a59b-df16025a909d" class="">🥳 Vous devriez visualiser votre première image !</p><p id="c6955f7c-16f1-4890-8e2a-ed148f61538b" class="">😕 Cependant celle ci n’a pas de nom en dessous de <strong>REPOSITORY, </strong>il est indiqué <mark class="highlight-gray"><em>&lt;none&gt;</em></mark>, meme si on peut relier cette image à son ID présent dans la quatrième colonne, le sujet nous demande que le nom de l’image porte le nom du container associé, ici <strong>nginx</strong>.</p><p id="ef945cf0-d830-4960-885a-da172d3f0de1" class="">Et on peut faire cela ! Il suffit simplement de préciser quand on build l’image, son nom, grace au flag <code>-t</code></p><p id="d867ec2e-c636-4707-be35-100ab87bdf58" class="">Exemple : <code>docker build -t nginx .</code></p><p id="db6acf80-4c1c-4c18-b96d-27bd64a9da47" class="">
-</p><p id="8616f3d1-ee05-4217-9cd3-319ccfdb84f8" class=""><span style="border-bottom:0.05em solid">Démarrer une image </span><span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>(run)</em></mark></span><span style="border-bottom:0.05em solid">:</span></p><p id="ad7ead74-6457-4648-9682-c4e4d3955773" class=""><code>docker run &lt;image_name&gt;</code></p><p id="747eee61-688e-4651-8779-f43b786dbff6" class="">📌 Vous devrez indiquer le nom de votre image à run.</p><p id="e9037f23-7067-4f56-bf78-85818c72dfce" class="">👉 En précisant <code>-it</code> avant le nom de votre image, vous accéderez directement au terminal de votre container à son lancement.</p><p id="8adaf7fa-ead9-4140-93d4-201ddd9a43d4" class="">
-</p><p id="e98915dd-ffa5-45fe-b5b1-d2b6f30a17f9" class=""><span style="border-bottom:0.05em solid">Connaitre les containers actuellement lancés :</span></p><p id="7af8f523-4c99-4f97-bb93-9487df0136d7" class=""><code>docker ps</code></p><p id="876a02fa-d651-49b9-8acf-bc9c286c5009" class="">👉 Vous pouvez même obtenir les containers Docker stoppés en rajoutant le flag <code>-a</code></p><p id="26ffef43-c378-479a-8ea6-184535690268" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a52d8249-272e-4934-8a6f-64ccb92d3786"><div style="font-size:1.5em"><span class="icon">🧷</span></div><div style="width:100%">J’ai créé un <em><strong>mini script bash</strong></em> qui permet de build un container en faisant <code>docker build -t inception .</code> puis après avoir réussi, propose de le lancer avec <code>-it</code> , ce qui permet d’accéder directement à la console du container.                                                                           <p id="367ee1c2-8b4e-4667-9b92-8da6cbc5fe06" class="">Mettez simplement ce bout de texte dans un fichier <code>execute.sh</code> et exécutez le avec bash.</p><figure id="888a5614-50fd-4227-9178-bc42a01ce749"><div class="source"><a href="Inception/use.txt">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d7c6c85d-8a9e-46e3-8b31-2898d714aa14/use.txt</a></div></figure></div></figure><p id="177b53aa-a052-4974-a4c0-b9c35ced3270" class="">
-</p><hr id="31e6669c-7336-44f9-af57-1fb036cd1759"/><p id="19b39c48-1f29-4fe7-b547-9a03d1f190c1" class="">
-</p><p id="a9b0094a-57b6-48f2-8d04-34b97f24495a" class="">Nous sommes maintenant prêt pour tenter de lancer notre mini <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="863fb113-c8a1-4136-bc88-f8dbc231f520" class="">Commençons par <strong>build</strong> notre container.</p><p id="85bb846b-8d90-48fe-9437-9219c23a8eac" class="">Dans le dossier contenant le <mark class="highlight-blue"><strong>Dockerfile </strong></mark><strong>nginx</strong>:</p><p id="e13b6ecd-275a-49be-8ba1-8e213e90dab0" class=""><code>docker build -t nginx .</code></p><p id="2ea8eb1a-f8fe-445a-bc11-f1108f5041ed" class="">
-</p><p id="5c9f63dc-8ea9-44de-9eb0-3f6102d97bb6" class=""><span style="border-bottom:0.05em solid">Maintenant lançons notre </span><strong><span style="border-bottom:0.05em solid">container</span></strong><span style="border-bottom:0.05em solid"> que nous venons de </span><strong><span style="border-bottom:0.05em solid">build</span></strong><span style="border-bottom:0.05em solid">.</span></p><p id="6dbe1192-7c19-4e15-a50d-184b93aec81f" class="">Lancez: </p><p id="b566f837-1d36-4add-90d0-73a5fd5152cc" class=""><code>docker run -it nginx</code>     <strong> ❯  </strong><code>-it</code><strong> </strong>permet d’ouvrir le terminal du container à son lancement.</p><p id="c343e3a6-de41-44b1-85be-61a78b240772" class="">
-</p><p id="cac8f021-9b07-4d17-b9f1-7c861aacdbec" class="">
-</p><p id="cdb3d6e9-59af-47c2-91f1-29f02f85a122" class="">
-</p><p id="10c1c78b-516e-429d-83cf-db95e110cff6" class=""><strong>Bienvenue</strong> dans votre container !</p><p id="a51c36a1-fd05-4ef8-9098-b98b337e9610" class="">Pour <span style="border-bottom:0.05em solid">quitter</span> le terminal d’un<strong> container</strong>, c’est un classique, il faut taper ‘<code><strong>exit</strong></code>’</p><p id="60ae630b-e3c8-4140-bf4b-d654c17f977a" class="">
-</p><p id="fed757b9-d54f-47ef-b984-d0f3d48e777d" class="">Si vous faites un <code>ls</code> , vous verrez de suite :</p><pre id="c753be73-1f60-46d1-b5ee-8aaf4339b1ad" class="code"><code>bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
-boot  etc  lib	 media	opt  root  sbin  sys  usr</code></pre><p id="aa55b84e-1a3e-432b-9a7f-f9f9506ed56d" class="">C’est le fameux <span style="border-bottom:0.05em solid">noyau</span> de <strong>Debian!</strong></p><p id="b6a800ff-ec53-47c4-a790-006beea80f75" class="">En soit, les fichiers permettant au système d’exploitation de fonctionner correctement.</p><p id="839e5f70-8203-45d4-8dbc-155ae50f5a34" class="">
-</p><p id="01bd00be-ed6a-43ac-be95-f666d382665d" class="">
-</p><p id="6fccdf46-a982-4641-b9ec-b67068f1bf41" class="">Maintenant vous êtes dans votre container, vous pouvez installer ce que vous voulez. </p><p id="dc6b6a8e-0ae1-4349-8630-f38ff2c8e68e" class="">Commençons par mettre à jour <strong><em>apt </em></strong><em>dans le terminal du container</em></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b8835be8-b655-442a-8a7e-e3866ae4dc38"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>APT</strong> est un utilitaire de ligne de commande permettant d&#x27;installer, de mettre à jour, de supprimer et de gérer les paquets deb sur Ubuntu, Debian et les distributions Linux associées.</div></figure><p id="968b0cd2-1dc4-4406-b3f5-2d98d89be3e7" class=""><strong>APT</strong> est donc un gestionnaire de paquet pour Debian, pour être certain que la version d’<strong>APT</strong> installée sur ce container connait les dernières versions des paquets, nous allons lui demander de vérifier les mises à jour en utilisant : <code>apt update</code> , si tout va bien APT devra répondre : <span style="border-bottom:0.05em solid"><strong>All packages are up to date.</strong></span></p><p id="fc95aa6a-c518-4bec-b2c3-a53491511eea" class="">Nous pouvons rajouter <code>apt upgrade</code> pour installer des éventuelles mises à jour de paquets trouvés.</p><p id="44d6524d-660c-4ce2-ab25-299c4737dbb3" class="">
-</p><p id="4ce80b06-9b7b-4a25-b600-0fceb5cb776c" class="">
-</p><p id="218592c9-c3c6-4cec-8e24-96cd8d2d6918" class="">Maintenant que <strong>APT</strong> connait les dernières versions des paquets, nous allons lui demander de directement installer celui qui nous intéresse, <strong>Nginx</strong>. </p><p id="61fa018b-993d-4e2a-9f0d-1a7624229d05" class="">Suffit de taper : <code>apt install nginx</code></p><p id="2d7e3d68-e21e-429b-be87-c2c26b44e98b" class="">
-</p><p id="a0fd58c3-c0f5-46bf-91b8-6f3e79ec2023" class=""><span style="border-bottom:0.05em solid">Top !</span> Nous voici désormais avec un container qui possède <strong>Nginx</strong>. </p><p id="f5fd6cf7-1754-422b-a5e2-be37745c5233" class="">
-</p><p id="a50437d3-26c3-4f2b-907a-1b17b2380964" class="">Mais il se pose un problème, si nous fermons notre container, et que nous le rouvrons à nouveau, <strong>Nginx</strong> a disparu ! 😩</p><p id="077c399c-7a1e-41c6-a1b1-a204979bc1a2" class="">Cela voudrait dire qu’il va falloir entrer à chaque ouverture du container dans le terminal pour l’installer à nouveau ? 😮‍💨</p><p id="e42e51cb-03d5-4991-96a9-2dabe580a677" class="">Heureusement non, et c’est la qu’intervient notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> 🤩</p><p id="c69d9e2c-349e-4662-a196-66aa4a89f6fc" class="">Rappelez vous, il existe un mot clef <mark class="highlight-blue"><strong>RUN</strong></mark> qui permet d’indiquer à Docker une commande à réaliser à la création du container.</p><p id="6cb82ea7-8b77-4cd3-a3a5-24c9e8da6c7e" class="">Nous pourrions donc tout simplement rajouter dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> : </p><p id="ccfe1507-4c27-4c04-9c50-79fdb78cfdd2" class=""><code>RUN apt install nginx</code> <strong>❯ installer nginx</strong></p><p id="af44a049-c257-4ce9-8265-f347f6f2d847" class="">
-</p><p id="df1c772c-acdc-4e33-9b1c-ff0acc432ebe" class="">Si vous tentez à nouveau un <strong>build</strong> de votre container en rajoutant cela, spoil, <strong><mark class="highlight-blue">Docker</mark></strong> indique cette erreur : <code>E: Unable to locate package nginx</code></p><p id="917db144-bc76-4c5f-884d-53a343cd143d" class="">Oui ! Nous avons oublié de mettre à jour APT juste avant avec la commande <code>apt update</code> ! </p><p id="9b7e92a5-56ad-4dff-a226-918cf3cee4c4" class="">Rajoutons le juste avant, <code>RUN apt update</code></p><p id="c2113739-be6c-4e4b-a1f5-f2bd6cf53dcd" class="">
-</p><p id="3341684d-9d9e-48be-8d6f-905055aa0bc7" class="">Maintenant notre build va plus loin ! Mais il y’a encore une <strong><mark class="highlight-red">erreur</mark></strong>…</p><p id="8552ad7c-638e-480d-b65b-88d3a651a80a" class="">Vous pouvez remarquer que l’avant dernière ligne indique : <code>Do you want to continue? [Y/n] Abort.</code></p><p id="1ab11ed0-695c-4392-8837-a706b7e5c257" class="">Hein ? Mais oui je veux continuer ! Cependant quand <strong><mark class="highlight-blue">Docker</mark></strong> <strong>build</strong> un container, il n’y a aucun prompt permettant de répondre <mark class="highlight-teal"><strong>YES</strong></mark> à cette question…</p><p id="12007e0d-9e78-40dd-ab6b-133af2380724" class="">De toute façon l’idée d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> c’est de pouvoir créer votre projet sans vous demander votre avis en cours d’installation.</p><p id="c054da60-f380-465e-a9fb-44d94295ebba" class="">Comment faire ?</p><p id="9ee3dcc8-d6d8-41f0-a6d4-d4a2610ef0cf" class=""><strong>APT</strong> propose une option <code>-y</code> qui permet de répondre automatiquement <mark class="highlight-teal"><strong>YES</strong></mark> à ce genre de question lors de l’installation d’un package. </p><p id="803bd709-ffe6-468a-9107-7718d5e181d1" class="">Il serait donc une bonne idée de prendre l’habitude de le rajouter lors de l’ajout de ligne utilisant <strong>APT</strong>, sinon votre container ne pourra pas se créer.</p><p id="c0013f8e-8f3a-4f7c-84a2-0593b1596125" class="">Il suffit donc de rajouter un <strong>-y</strong> à la fin de la ligne qui concerne l’installation de <strong>nginx</strong> par <strong>APT</strong>.</p><p id="5b2a73c6-dc6d-4839-aed1-bd3e84a0b4f5" class="">Cela donne : <code>RUN apt install nginx -y</code></p><p id="32b6dce9-c34c-4a18-9c8b-d5a92f4d3125" class="">
-</p><p id="efb1a1b6-0b59-45ff-8030-c3ec4068d81f" class="">
-</p><p id="8dedab60-4546-4d40-94fe-87d90d1f0a8e" class="">Tentons de build à nouveau… Ça fonctionne ! </p><p id="88c9d62a-d7f9-431b-a951-4a4b9a9b0bf5" class="">Vous pouvez désormais rentrer dans votre container avec <code>docker run -it nginx</code> et vous retrouver à nouveau dans le container, mais cette fois l’installation de N<strong>ginx</strong> est déjà effectuée !</p><p id="7220c7b6-26bd-4603-88c9-02fe6bd754e5" class="">
-</p><p id="cd689d00-b8c2-4508-942f-79da7744cb20" class="">Histoire de pouvoir être à l’aise en accédant au terminal du container, je vais installer <strong>vim</strong> et <strong>curl</strong>. Libre à vous d’installer les packages qui vous semble utile : </p><p id="b90f817e-42d1-412a-892c-d7d620e72000" class=""><code>RUN apt install vim -y </code></p><p id="90b33496-7282-4cf9-a408-b91d565a8a2f" class=""><code>RUN apt install curl -y</code></p><p id="0b10d0a4-5a4c-4513-8a18-dae63712a6b2" class="">
-</p><p id="6f32cc7c-9695-4c6e-8066-c91e37993070" class="">Ok maintenant place au <strong>TSL</strong> !</p><p id="54e7c97f-1094-4c0d-9a26-906f08226442" class="">Nous allons créer un dossier, qui permettra de stocker le certificat et la clef pour une <mark class="highlight-teal"><strong>connexion sécurisée</strong></mark>.</p><p id="b2d6d6f4-93b2-4fbc-bee7-709bafdbde03" class="">Rajoutons : <code>RUN mkdir -p /etc/nginx/ssl</code> </p><p id="bb783bab-21a9-43f8-98db-aba2ca45580d" class="">
+		<p>Commençons par notre container le moins flou, <strong>NGINX</strong>.</p>
+		<p><strong>NGINX</strong> permet de mettre en place un <span style="border-bottom:0.05em solid">serveur Web</span>. </p>
+		<br>
+		
+		<p>Nous allons commencer par étape afin de comprendre au mieux comment utiliser et se balader avec <mark class="highlight-blue"><strong>Docker</strong></mark>.</p>
+		<br>
+
+		<p>Ouvrons d’abord le fichier essentiel de Docker, le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> <strong>NGINX. </strong></p>
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">
+				Rappelez-vous qu’il existe une image nginx toute prête, mise à disposition par <strong>nginx</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>. 
+				<br>La plupart des développeurs serait directement passée par la, mais ici <em><strong>42</strong></em> nous l’interdit, afin de savoir la recréer nous même.
+			</div>
+		</figure>
+		<p>Si vous avez bien suivi, vous devriez savoir quelle ligne écrire en premier, du moins le premier mot clef du Dockerfile.</p>
+		<br>
+
+		<ul class="toggle">
+			<li>
+				<details close="">
+					<summary><strong>SPOIL 🔎</strong></summary>
+					<p>
+						C’est <mark class="highlight-blue"><strong>FROM</strong></mark> ! Comme indiqué au début du cours, <mark class="highlight-blue"><strong>FROM</strong></mark> permet d’indiquer à Docker sur quel OS nous souhaitons faire tourner notre machine. C’est un mot clef obligatoire et il doit <span style="border-bottom:0.05em solid"><strong>toujours être en premier</strong></span> d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.
+					</p>
+				</details>
+			</li>
+		</ul>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%"><mark class="highlight-gray">Pour des raisons de performance, les containers devront être build au choix : soit sous Alpine Linux avec l’avant-dernière version stable, soit sous Debian Buster.</mark></div>
+		</figure>
+		<p>
+			Pour l’OS, nous avons donc le choix entre <em><mark class="highlight-gray">debian:buster</mark></em> ou <mark class="highlight-gray"><em>alpine:X.XX </em></mark><em>(vérifiez l’avant-dernière version stable en date, </em><a href="https://www.alpinelinux.org"><em>ici</em></a><em>).</em>
+		</p>
+		<br>
+
+		<h2>Quelle différence entre <span style="border-bottom:0.05em solid">Alpine</span> et <span style="border-bottom:0.05em solid">Debian</span>?</h2>
+		<br>
+
+		<p>
+			<mark class="highlight-orange"><strong>Alpine Linux</strong></mark> est une distribution <strong>Linux</strong> légère, orientée sécurité, elle contient le moins de fichiers et outils possibles afin de laisser la possibilité au développeur de les installer par lui même si besoin.
+		</p>
+		<p>
+			<strong><mark class="highlight-orange">Debian</mark></strong> est le système d&#x27;exploitation universel. Les systèmes Debian utilisent actuellement le noyau Linux ou le noyau <a href="https://www.freebsd.org/fr/"><strong>FreeBSD</strong></a>.
+		</p>
+		<br>
+		
+		<p>
+			Pour ma part, étant plus à l’aise avec ce système, je vais utiliser <mark class="highlight-orange"><strong>Debian</strong></mark><mark class="highlight-gray">.</mark>
+		</p>
+		<br>
+		
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">La suite du tutoriel est représenté pour <mark class="highlight-orange"><strong>Debian</strong></mark>. Mais vous devriez facilement pouvoir adapter cela sur <strong><mark class="highlight-orange">Alpine</mark></strong>.</div>
+		</figure>
+		<br>
+		
+		<p>
+			Nous pouvons donc commencer par écrire : <mark class="highlight-brown"><code>FROM debian:buster</code></mark> dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.
+		</p>
+		<br>
+
+		<p>Maintenant j’ai envie de vous dire, si cette ligne est la seule ligne obligatoire, notre container pourrait-il démarrer ?</p>
+		<p>Nous avons indiqué un OS à installer, nous devrions pouvoir le lancer.</p>
+		<p>
+			Le plus sympa, c’est que <mark class="highlight-blue"><strong>Docker</strong></mark> peut nous permettre de lancer une <mark class="highlight-gray"><em>“machine virtuelle”</em></mark>, mais en lui précisant, on peut également accéder à son terminal ! Utile pour voir ce qu’il y’a dedans ou effectuer nos propres tests.
+		</p>
+		<br>
+
+		<p>Pour cela, il faut connaitre les commandes indispensables aux containers de Docker.</p>
+		<br>
+
+		<hr/>
+		<br>
+
+		<h2>Les commandes essentielles d’un container Docker :</h2>
+		<br>
+		
+		<p>Un container <mark class="highlight-blue"><strong>Docker</strong></mark> doit être <strong>build</strong> avant d’être lancé.</p>
+		<p>
+			C’est pendant le <strong>build</strong> que vous pourrez obtenir des infos sur des potentielles erreurs que vous auriez fait dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.
+		</p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Chaque commande Docker commence par le mot clef <code>docker</code></div>
+		</figure>
+		<br>
+		
+		<p>
+			<span style="border-bottom:0.05em solid">Build un container Docker :</span> &nbsp &nbsp 
+			<code>docker build</code>
+		</p>
+		<br>
+
+		<p>😵 J&#x27;espère que vous n’oseriez pas tenter cette commande sans l’avoir parfaitement comprise !</p>
+		<p>🤪 De toute manière, la commande n’est pas fonctionnelle, docker demande obligatoirement un chemin ou se trouve le Dockerfile de l’image à build. </p>
+		<p>Dans notre cas, ce serait <code>docker build srcs/requirements/nginx/</code></p>
+		<p>Ou encore plus simple, <code>docker build .</code> en vous trouvant directement dans le dossier nginx.</p>
+		<p>Vous pouvez également préciser un nom à votre build, avec le flag <code>-t</code></p>
+		<p><em>Exemple : </em><code>docker build -t nginx .</code></p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Si vous obtenez une erreur de type <code>Cannot connect to the Docker daemon</code>, vérifiez que Docker est bien ouvert et <a href="https://docs.docker.com/desktop/windows/troubleshoot/">qu’il fonctionne</a>.</div>
+		</figure>
+		<br>
+
+		<p>
+			<span style="border-bottom:0.05em solid">Connaitre les images actuelles <em><mark class="highlight-gray">(après un build réussi) :</mark></em></span>&nbsp &nbsp
+			<code>docker image ls</code>
+		</p>
+		<br>
+
+		<p>🥳 Vous devriez visualiser votre première image !</p>
+		<p>
+			😕 Cependant celle ci n’a pas de nom en dessous de <strong>REPOSITORY, </strong>il est indiqué <mark class="highlight-gray"><em>&lt;none&gt;</em></mark>, meme si on peut relier cette image à son ID présent dans la quatrième colonne, le sujet nous demande que le nom de l’image porte le nom du container associé, ici <strong>nginx</strong>.
+		</p>
+		<p>Et on peut faire cela ! Il suffit simplement de préciser quand on build l’image, son nom, grace au flag <code>-t</code></p>
+		<br>
+
+		<p>
+			<span style="border-bottom:0.05em solid">Démarrer une image </span><span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>(run)&nbsp</em></mark></span><span style="border-bottom:0.05em solid">:</span> &nbsp &nbsp
+			<code>docker run &lt;image_name&gt;</code>
+		</p>
+		<br>
+
+		<p>📌 Vous devrez indiquer le nom de votre image à run.</p>
+		<p>👉 En précisant <code>-it</code> avant le nom de votre image, vous accéderez directement au terminal de votre container à son lancement.</p>
+		<br>
+
+		<p>
+			<span style="border-bottom:0.05em solid">Connaitre les containers actuellement lancés :</span> &nbsp &nbsp
+			<code>docker ps</code>
+		</p>
+		<br>
+
+		<p>👉 Vous pouvez même obtenir les containers Docker stoppés en rajoutant le flag <code>-a</code></p>
+		<br>
+		
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">🧷</span></div>
+			<div style="width:100%">J’ai créé un <em><strong>mini script bash</strong></em> qui permet de build un container en faisant <code>docker build -t inception .</code> . 
+				<p>Après avoir réussi, il propose de le lancer avec <code>-it</code> , ce qui permet d’accéder directement à la console du container.</p>
+				<p>Mettez simplement ce bout de texte dans un fichier <code>execute.sh</code> et exécutez le avec bash.</p>
+				<figure class="source">
+					<a href="Inception/use.txt">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d7c6c85d-8a9e-46e3-8b31-2898d714aa14/use.txt</a>
+				</figure>
+			</div>
+		</figure>
+		<br>
+
+		<hr/>
+		<br>
+
+		<p>Nous sommes maintenant prêt pour tenter de lancer notre mini <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p>
+		<p>Commençons par <strong>build</strong> notre container.</p>
+		<p>
+			Dans le dossier contenant le <mark class="highlight-blue"><strong>Dockerfile </strong></mark><strong>nginx</strong> : &nbsp &nbsp
+			<code>docker build -t nginx .</code>
+		</p>
+		<br>
+
+		<p>
+			<span style="border-bottom:0.05em solid">Maintenant lançons le </span><strong><span style="border-bottom:0.05em solid">container</span></strong><span style="border-bottom:0.05em solid"> que nous venons de </span><strong><span style="border-bottom:0.05em solid">build</span></strong><span style="border-bottom:0.05em solid"> : </span> &nbsp &nbsp
+			<code>docker run -it nginx</code>
+		</p>
+		<br>
+ 
+		<p>
+			<strong>❯ &nbsp &nbsp</strong><code>-it</code>&nbsp permet d’ouvrir le terminal du container à son lancement.
+		</p>
+		<br>
+		<br>
+		<br>
+
+		<p><strong>Bienvenue</strong> dans votre container !</p>
+		<p>
+			Pour <span style="border-bottom:0.05em solid">quitter</span> le terminal d’un<strong> container</strong>, c’est un classique, il faut taper &nbsp ‘<code><strong>exit</strong></code>’
+		</p>
+		<br>
+
+		<p>Si vous faites un &nbsp<code>ls</code> , vous verrez de suite :</p>
+		<pre class="code"><code>
+				bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+				boot  etc  lib	 media	opt  root  sbin  sys  usr</code>
+		</pre>
+		<p>C’est le fameux <span style="border-bottom:0.05em solid">noyau</span> de <strong>Debian!</strong></p>
+		<p>En soit, les fichiers permettant au système d’exploitation de fonctionner correctement.</p>
+		<br>
+		<br>
+
+		<p>Maintenant vous êtes dans votre container, vous pouvez installer ce que vous voulez. </p>
+		<p>Commençons par mettre à jour <strong><em>apt </em></strong><em>dans le terminal du container</em></p>
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%"><strong>APT</strong> est un utilitaire de ligne de commande permettant d&#x27;installer, de mettre à jour, de supprimer et de gérer les paquets deb sur Ubuntu, Debian et les distributions Linux associées.</div>
+		</figure>
+		<p>
+			<strong>APT</strong> est donc un gestionnaire de paquet pour Debian, pour être certain que la version d’<strong>APT</strong> installée sur ce container connait les dernières versions des paquets, nous allons lui demander de vérifier les mises à jour en utilisant : &nbsp &nbsp <code>apt update</code> &nbsp &nbsp, si tout va bien APT devra répondre : <span style="border-bottom:0.05em solid"><strong>All packages are up to date.</strong></span>
+		</p>
+		<p>Nous pouvons rajouter &nbsp &nbsp<code>apt upgrade</code> &nbsp &nbsp pour installer des éventuelles mises à jour de paquets trouvés.</p>
+		<br>
+		<br>
+
+		<p>
+			Maintenant que <strong>APT</strong> connait les dernières versions des paquets, nous allons lui demander de directement installer celui qui nous intéresse, <strong>Nginx</strong>. 
+		</p>
+		<p>Il suffit de taper : &nbsp &nbsp<code>apt install nginx</code></p>
+		<br>
+		
+		<p><span style="border-bottom:0.05em solid">Top !</span> Nous voici désormais avec un container qui possède <strong>Nginx</strong>. </p>
+		<br>
+
+		<p>Mais petit problème: si nous fermons notre container, et que nous l'ouvrons à nouveau, <strong>Nginx</strong> a disparu ! 😩</p>
+		<p>Cela voudrait dire qu’il va falloir entrer à chaque ouverture du container dans le terminal pour l’installer à nouveau ? 😮‍💨</p>
+		<p>Heureusement non, et c’est la qu’intervient notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> 🤩</p>
+		<p>Rappelez vous, il existe un mot clef <mark class="highlight-blue"><strong>RUN</strong></mark> qui permet d’indiquer à Docker une commande à réaliser à la création du container.</p>
+		<br>
+
+		<p>
+			Nous pourrions donc tout simplement rajouter dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> : 
+			&nbsp &nbsp<code>RUN apt install nginx</code><strong>&nbsp &nbsp ❯ installer nginx</strong>
+		</p>
+
+		<ul class="toggle">
+			<li>
+				<details close="">
+					<summary><strong>SPOIL 🔎</strong></summary>
+					<p>
+						Si vous tentez à nouveau un <strong>build</strong> de votre container en rajoutant cela, <strong><mark class="highlight-blue">Docker</mark></strong> indique cette erreur : &nbsp &nbsp <code>E: Unable to locate package nginx</code>
+					</p>
+					<p>Oui ! Nous avons oublié de mettre à jour APT juste avant avec la commande &nbsp <code>apt update</code> !</p>
+					<p>Rajoutons le juste avant, &nbsp &nbsp<code>RUN apt update</code></p>
+				</details>
+			</li>
+		</ul>
+		<br>
+
+		<p>Maintenant notre build va plus loin ! Mais il y’a encore une <strong><mark class="highlight-red">erreur</mark></strong>…</p>
+		<p>Vous pouvez remarquer que l’avant dernière ligne indique : &nbsp &nbsp<code>Do you want to continue? [Y/n] Abort.</code></p>
+		<p>Hein ? Mais oui je veux continuer ! Cependant quand <strong><mark class="highlight-blue">Docker</mark></strong> <strong>build</strong> un container, il n’y a aucun prompt permettant de répondre <mark class="highlight-teal"><strong>YES</strong></mark> à cette question…</p>
+		<p>De toute façon l’idée d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> c’est de pouvoir créer votre projet sans vous demander votre avis en cours d’installation.</p>
+		<p>Comment faire ?</p>
+		<br>
+
+		<p>
+			<strong>APT</strong> propose une option &nbsp<code>-y</code> &nbsp qui permet de répondre automatiquement <mark class="highlight-teal"><strong>YES</strong></mark> à ce genre de question lors de l’installation d’un package. 
+		</p>
+		<p>Il serait donc une bonne idée de prendre l’habitude de le rajouter lors de l’ajout de ligne utilisant <strong>APT</strong>, sinon votre container ne pourra pas se créer.</p>
+		<p>Il suffit donc de rajouter un <strong>-y</strong> à la fin de la ligne qui concerne l’installation de <strong>nginx</strong> par <strong>APT</strong>.</p>
+		<p>Cela donne : &nbsp &nbsp<code>RUN apt install nginx -y</code></p>
+		<br>
+		<br>
+		
+		<p>Tentons de build à nouveau… Ça fonctionne ! </p>
+		<p>Vous pouvez désormais rentrer dans votre container avec &nbsp &nbsp <code>docker run -it nginx</code> &nbsp &nbsp et vous retrouver à nouveau dans le container, mais cette fois l’installation de N<strong>ginx</strong> est déjà effectuée !</p>
+		<br>
+		
+		<p>
+			Histoire de pouvoir être à l’aise en accédant au terminal du container, je vais installer <strong>vim</strong> et <strong>curl</strong>. Libre à vous d’installer les packages qui vous semblent utiles : 
+		</p>
+		<p>&nbsp &nbsp<code>RUN apt install vim -y </code>&nbsp &nbsp</p>
+		<p>&nbsp &nbsp<code>RUN apt install curl -y</code>&nbsp &nbsp</p>
+		<br>
+		
+		<p id="6f32cc7c-9695-4c6e-8066-c91e37993070" class="">Ok maintenant place au <strong>TSL</strong> !</p><p id="54e7c97f-1094-4c0d-9a26-906f08226442" class="">Nous allons créer un dossier, qui permettra de stocker le certificat et la clef pour une <mark class="highlight-teal"><strong>connexion sécurisée</strong></mark>.</p><p id="b2d6d6f4-93b2-4fbc-bee7-709bafdbde03" class="">Rajoutons : <code>RUN mkdir -p /etc/nginx/ssl</code> </p><p id="bb783bab-21a9-43f8-98db-aba2ca45580d" class="">
 </p><p id="05e16eb4-5319-45a5-97fe-de9085003c7b" class="">Il serait également important de télécharger l’outil principal pour la gestion/création de certificat SSL, <span style="border-bottom:0.05em solid"><strong>OpenSSL</strong></span></p><p id="98f47a34-c72d-44fd-a084-31a30eac7d03" class="">Pour cela, comme les autres packages, nous l’installons avec <strong>apt</strong>.</p><p id="8429cd1b-84c0-4fc7-b922-69da9151e6f3" class=""><code>RUN apt install OpenSSL -y</code></p><p id="459b805b-0269-4d52-8ce1-13e05d1434b8" class="">
 </p><p id="b7af140d-2291-4068-a99c-c8ee148f3870" class="">Ensuite, il va falloir générer un certificat <strong>SSL</strong> et oui nous utilisons les outils <strong>SSL</strong> afin de créer un certificat <em><strong>TSL/SSL</strong></em>.  </p><p id="bcd569e3-7052-49a8-9607-91f775b22677" class="">
 </p><p id="74c02371-5dcb-4a7c-bb59-0729e75886cc" class="">La commande est un peu longue, commençons par le mot clef <strong>openssl</strong> puis <strong>req</strong>.</p><p id="185f4062-2637-43db-a69f-8b8565f8192f" class="">
