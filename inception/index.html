@@ -1854,81 +1854,174 @@
 		<hr/>
 		<br>
 		<br>
-		
+	
+	<!----------------------------------------------------------------- 6. RELIER LES CONTAINERS AVEC COMPOSE ------------------------------------------------------------------>
 	<h1>6. Relier les containers avec Compose:</h1>
-		<h2 id="51a0e7a0-e19e-4ff7-b40a-41f4cadf0fc3" class="">Place au fameux <span style="border-bottom:0.05em solid">docker-compose.yml</span> !</h2><p id="426d092d-b7d8-4819-a215-5e70026b2513" class="">
-</p><p id="ea0d5339-3bf3-4e83-9216-1cea7e548975" class="">Bon, d’abord renseignez vous sur comment s’écrit un fichier <strong>docker-compose</strong>.</p><p id="109eff6c-05d2-48d8-8ea1-2309552de849" class="">Celui-ci commence toujours par la version de <mark class="highlight-blue"><strong>docker-compose</strong></mark>, la dernière, la 3.</p><p id="7db682ec-774e-4c80-8127-f8220015e10b" class="">
-</p><p id="6d6cef25-be20-449e-ac7b-58f9b63286e2" class="">La première ligne sera donc : <code>version: ‘3’</code></p><p id="cd74e6f2-5c19-4e3e-9917-7dc1f5ca1e26" class="">
-</p><figure class="block-color-gray_background callout" style="display:flex" id="dfb5361f-61ea-44a5-9e5d-561dc05387d3"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%">Attention à l’indentation du <strong>docker-compose.yml</strong> ! Comme pour Python, c’est l’indentation qui compte.</div></figure><p id="a2c61d3e-b52d-4d1f-9ad1-e72bbc47177d" class="">
-</p><p id="2ced7fbc-0e07-40a5-990a-d5a2fa652510" class="">Ensuite on indique la ligne <code>services:</code></p><p id="70e52c21-e058-47a8-9872-39a7603df9d2" class="">Et là, avec une indentation de 1 <strong>tab</strong>, on peut énumérer nos différents services.</p><p id="5367f9d4-d179-4dad-9a6b-fb6320b215c7" class="">Je commence par <strong>MariaDB :</strong></p><p id="e1247c46-9896-473e-a13a-a7609f621145" class="">
-</p><pre id="50e2eeeb-c165-421b-9ed3-3e76dc82db02" class="code"><code>mariadb:
-    container_name: mariadb   # Le nom du container, oui vraiment.
-    networks:
-      - inception             # à quel network il appartient
-    build: 
-      context: requirements/mariadb # ou se trouve son Dockerfile
-      dockerfile: Dockerfile        # le nom du Dockerfile ?!
-    env_file: .env                  # le fichier d&#x27;environnement pour transmettre les variables
-    volumes:                        # Voir plus bas
-      - mariadb:/var/lib/mysql
-    restart: unless-stopped          # redémarre tant qu&#x27;il n&#x27;est pas stoppé 
-    expose:                          # le port à exposer
-      - &quot;3306&quot;</code></pre>
-	  <p id="01817814-674a-442a-8d4d-f44ccc79b5cd" class="">Place au service <strong>NGINX</strong>, ici c’est le même principe, sauf deux choses qui changent et les <strong><em>noms/paths</em></strong> évidemment.</p><p id="79c69731-a94e-491f-b563-d7efc6b32789" class="">
-	</p><pre id="f2876a0c-3fc3-4fff-bcf2-f4050f54be60" class="code"><code>nginx:
-		container_name: nginx
-		volumes:
-		  - wordpress:/var/www/wordpress
-		networks:
-		  - inception
-		depends_on:         # Nouvelle ligne, indiquant de ne pas démarrer NGINX tant que WordPress n&#x27;a pas démarré.
-		  - wordpress
-		build: 
-		  context: requirements/nginx
-		  dockerfile: Dockerfile
-		env_file: .env
-		ports:
-		  - &quot;443:443&quot; # on indique le port qui sera exposé a la machine locale
-		restart: on-failure # Ici nous changeons, le container redémarrera uniquement en cas de crash.</code></pre><p id="f9666c6f-65b6-49a0-9f19-a2d6e541c673" class="">C’est bon, vous l’avez ? Faisons de même pour <strong>WordPress</strong>.</p><p id="d65ff5e0-67c9-43cf-9ac5-76adcbd35acb" class="">
-	</p><pre id="bd551c4a-bfc6-4a9a-9da8-71fb2e8214e1" class="code"><code>wordpress:
-		container_name: wordpress
-		env_file: .env
-		volumes:
-		- wordpress:/var/www/wordpress
-		networks:
-		  - inception
-		build: 
-		  context: requirements/wordpress
-		  dockerfile: Dockerfile
-		depends_on:    # WordPress démarrera uniquement après MariaDB (sinon il ne pourra pas configurer la base de données...)
-		  - mariadb
-		restart: on-failure
-		expose: 
-		  - &quot;9000&quot;</code></pre>
-	  <p id="volumes" class=""><strong>❯ Et voilà ! (J’aurais aimé qu’on fasse le taff de lire la doc à ma place moi)</strong></p><p id="417d4d74-12b1-434a-9e1e-cc6dd43f328d" class=""><br><br><br>
-</p><h1 id="1cc3e8e7-3014-409a-98a3-f459ca626f88" class="">7. Les volumes à configurer:</h1><h3 id="2f3aba2b-f359-4a44-8751-927cc73ebabd" class="">Parlons rapidement de la ligne <span style="border-bottom:0.05em solid">Volumes</span>:</h3><p id="fc053ded-51ab-4687-8842-87ab9ede0455" class="">
-</p><p id="3c6abda8-1123-4262-8c29-711f8ac9d3cb" class="">Nous assignons un <span style="border-bottom:0.05em solid">volume</span> à <strong>MariaDB</strong>, comme nous allons le faire avec <strong>WordPress</strong>.</p><p id="261506ae-8d8d-41c4-a800-649c640aa5fb" class="">C’est un <em>prérequis</em> du sujet. Nous devons permettre la <span style="border-bottom:0.05em solid">persistance des données</span>, pour cela nous allons stocker certains dossiers directement sur notre ordinateur en local.</p><blockquote id="a61ae461-9f5d-4202-9b84-95e4bfa066f2" class="">Et oui, imaginez que votre container <strong>WordPress</strong> <strong><mark class="highlight-red">crash ou s’éteint</mark></strong>, et que par pur hasard, celui-ci a perdu tous vos fichiers, ce serait bien embêtant, c’est pour cela que nous préférerons les stocker directement en local, et <mark class="highlight-blue"><strong>docker-compose</strong></mark> nous le permet.</blockquote><p id="ffb59fa5-66ab-45ef-8cdb-81c87312e4aa" class="">
-</p><p id="269c87f4-fc43-4229-834b-34f5f1ba3d71" class=""><mark class="highlight-yellow_background">Dans le cas d’Inception, nous allons stocker les dossiers de </mark><strong><mark class="highlight-yellow_background">MySQL </mark></strong><mark class="highlight-yellow_background">se trouvant dans </mark><code><mark class="highlight-yellow_background">/var/lib/mysql</mark></code><mark class="highlight-yellow_background">et WordPress dans </mark><code><mark class="highlight-yellow_background">var/www/wordpress</mark></code><mark class="highlight-yellow_background">. Ceux sont les </mark><strong><mark class="highlight-yellow_background">paths</mark></strong><mark class="highlight-yellow_background"> que j’indique après la ligne </mark><em><mark class="highlight-yellow_background">volume</mark></em><mark class="highlight-yellow_background">. Encore une fois c’est le sujet qui nous le demande.</mark></p><p id="7d122de1-e3b7-47f2-8db1-118b6da56f3f" class="">
-</p><p id="6b6d2552-1feb-4937-9f58-b360e3a00751" class="">Ici à la ligne volume nous indiquons <strong>MariaDB</strong> <em><mark class="highlight-gray">(c’est le nom du volume, nous aurions pu l’appeler vol_maria ou autre, évidemment il fera intervenir une ligne concernant les volumes dans le </mark></em><em><strong><mark class="highlight-gray">docker-compose.yml</mark></strong></em><em><mark class="highlight-gray"> qui permettra d’indiquer où le stocker en local) </mark></em></p><p id="fdd98454-6b37-49cd-b10b-845db2177bdd" class="">suivi de <code>:</code> avec l’endroit que nous souhaitons copier du container.</p>
-<p id="d7be0a7d-35e6-4c8d-a919-a04e6b8b4fb0" class="">Il ne manque plus qu’à préciser les volumes que nous avons indiqués :</p><pre id="150e6453-ead2-4f7e-a295-01b98c6324d0" class="code"><code>volumes:
-  wordpress:
-    driver: local # ici nous stockons le volume en local
-    driver_opts:
-      type: &#x27;none&#x27; # aucun type spécifique
-      o: &#x27;bind
-      device: &#x27;/Users/jcluzet/data/wordpress&#x27; #Ou stocker le dossier sur votre ordinateur en local
-  mariadb:
-    driver: local
-    driver_opts:
-      type: &#x27;none&#x27; 
-      o: &#x27;bind&#x27;                             # Les Bind Mounts sont des volumes qui se montent sur un chemin d&#x27;accès à l&#x27;hôte, et ils peuvent être modifiés par d&#x27;autres processus en dehors de docker.
-      device: &#x27;/Users/jcluzet/data/mariadb&#x27; #Ou stocker le dossier sur votre ordinateur en local</code></pre><p id="159fbb1a-0e70-4c36-a4df-27c9ad14f3d4" class=""><strong>❯ </strong><a href="https://docs.docker.com/compose/compose-file/compose-file-v3/"><strong>Cette doc</strong></a><strong> de docker explique bien comment gérer les volumes dans un docker-compose.</strong></p><p id="db1f0cad-51d1-43ca-8a48-179711d4dafb" class="">
-</p><figure class="block-color-blue_background callout" style="display:flex" id="222850bf-983e-44a4-95f4-9ba95d26fe91"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Vos volumes seront disponibles dans le dossier /home/login/data de la machine hôte utilisant Docker.</div></figure><p id="9940b5dc-0ce3-4995-b474-78e3a64a7040" class=""><strong>❯ Pensez donc à modifier le path de la ligne device: en conséquence.</strong></p><p id="93486a86-0aec-4ad1-adf5-82a01c77b49f" class="">
-</p><p id="308f42dd-c10e-4558-a924-9125f71a3eda" class="">Reste plus qu’à créer la partie network, attention, c’est très simple.</p><pre id="7aea0220-53f2-4563-8872-e21d017b52b9" class="code"><code>networks:
-    inception:
-      driver: bridge</code></pre><p id="6f4a0766-d0c2-4e34-b78c-e47730a0dc41" class=""><strong>❯ Oui c’est tout.</strong></p><p id="27cc4f93-588e-4946-84a8-b365be37c754" class="">
-</p><figure class="block-color-gray_background callout" style="display:flex" id="29a2ba2e-b28d-409f-bbe1-c5d9671d4465"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ici <code>bridge</code> indique a Docker d’installer automatiquement des règles qui permettront aux 3 containers de communiquer en bridge.</div></figure><p id="389d58b5-0191-465f-84e9-a323b3201585" class="">
-</p><p id="7f5daf03-75c8-4a4f-88d2-f29beef8412f" class="">Votre fichier <strong>docker-compose.yml</strong> est prêt ! J’espère que vous n’avez pas été jusqu’à recopier les <strong>paths</strong> sans les modifier, ce serait dommage 🤪</p><p id="466dd91d-d37c-46c6-a9e3-13b59796f16f" class="">
+	<br>
+	<br>
+
+		<h2>Place au fameux <span style="border-bottom:0.05em solid">docker-compose.yml</span> !</h2>
+		<br>
+		
+		<p>Bon, d’abord renseignez vous sur comment s’écrit un fichier <strong>docker-compose</strong>.</p>
+		<p>Celui-ci commence toujours par la version de <mark class="highlight-blue"><strong>docker-compose</strong></mark>, la dernière, la 3.</p>
+		<br>
+		
+		<p>La première ligne sera donc : &nbsp &nbsp<code>version: ‘3’</code></p>
+		<br>
+		
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">⛔</span></div>
+			<div style="width:100%">Attention à l’indentation du <strong>docker-compose.yml</strong> ! Comme pour Python, c’est l’indentation qui compte.</div>
+		</figure>
+		<br>
+
+		<p>Ensuite on indique la ligne &nbsp &nbsp<code>services:</code></p>
+		<p>Et là, avec une indentation de <strong> 1 tab</strong>, on peut énumérer nos différents services.</p>
+		<p>Je commence par <strong>MariaDB :</strong></p>
+		<pre class="code">
+			<code>
+				mariadb:
+				container_name: mariadb			# Le nom du container, oui vraiment.
+				networks:
+				- inception            			# à quel network il appartient
+				build: 
+				context: requirements/mariadb 	# ou se trouve son Dockerfile
+				dockerfile: Dockerfile			# le nom du Dockerfile ?!
+				env_file: .env                  # le fichier d&#x27;environnement pour transmettre les variables
+				volumes:                        # Voir plus bas
+				- mariadb:/var/lib/mysql
+				restart: unless-stopped         # redémarre tant qu&#x27;il n&#x27;est pas stoppé 
+				expose:                         # le port à exposer
+				- &quot;3306&quot;
+			</code>
+		</pre>
+		<br>
+		
+		<p>Place au service <strong>NGINX</strong>. Ici c’est le même principe, sauf deux choses qui changent et les <strong><em>noms/paths</em></strong> évidemment.</p>
+		<pre class="code">
+			<code>
+				nginx:
+					container_name: nginx
+					volumes:
+					- wordpress:/var/www/wordpress
+					networks:
+					- inception
+					depends_on:        			 # Nouvelle ligne, indiquant de ne pas démarrer NGINX tant que WordPress n&#x27;a pas démarré.
+					- wordpress
+					build: 
+					context: requirements/nginx
+					dockerfile: Dockerfile
+					env_file: .env
+					ports:
+					- &quot;443:443&quot; 		# on indique le port qui sera exposé a la machine locale
+					restart: on-failure 		# Ici nous changeons, le container redémarrera uniquement en cas de crash.
+			</code>
+		</pre>
+		<br>
+
+		<p>C’est bon, vous l’avez ? Faisons de même pour <strong>WordPress</strong>.</p>
+		<pre class="code">
+			<code>
+				wordpress:
+					container_name: wordpress
+					env_file: .env
+					volumes:
+					- wordpress:/var/www/wordpress
+					networks:
+					- inception
+					build: 
+					context: requirements/wordpress
+					dockerfile: Dockerfile
+					depends_on:    					# WordPress démarrera uniquement après MariaDB (sinon il ne pourra pas configurer la base de données...)
+					- mariadb
+					restart: on-failure
+					expose: 
+					- &quot;9000&quot;
+			</code>
+		</pre>
+		<p id="volumes"><strong>❯ Et voilà ! (J’aurais aimé qu’on fasse le taff de lire la doc à ma place moi)</strong></p>
+		<br>
+	
+		<hr/>
+		<br>
+		<br>
+
+	<!----------------------------------------------------------------- 7. LES VOLUMES A CONFIGURER ------------------------------------------------------------------>
+
+	<h1>7. Les volumes à configurer:</h1>
+	<br>
+	<br>
+
+		<h3>Parlons rapidement de la ligne <span style="border-bottom:0.05em solid">Volumes</span>:</h3>
+		<br>
+		
+		<p>Nous assignons un <span style="border-bottom:0.05em solid">volume</span> à <strong>MariaDB</strong>, comme nous allons le faire avec <strong>WordPress</strong>.</p>
+		<p>
+			C’est un <em>prérequis</em> du sujet. Nous devons permettre la <span style="border-bottom:0.05em solid">persistance des données</span>, pour cela nous allons stocker certains dossiers directement sur notre ordinateur en local.
+		</p>
+		<br>
+
+		<blockquote>
+			Et oui, imaginez que votre container <strong>WordPress</strong> <strong><mark class="highlight-red">crash ou s’éteint</mark></strong>, et que par pur hasard, celui-ci a perdu tous vos fichiers, ce serait bien embêtant, c’est pour cela que nous préférerons les stocker directement en local, et <mark class="highlight-blue"><strong>docker-compose</strong></mark> nous le permet.
+		</blockquote>
+		<br>
+		
+		<p>
+			<mark class="highlight-yellow_background">Dans le cas d’Inception, nous allons stocker les dossiers de </mark><strong><mark class="highlight-yellow_background">MySQL </mark></strong><mark class="highlight-yellow_background">se trouvant dans </mark>&nbsp<code>/var/lib/mysql</code>&nbsp<mark class="highlight-yellow_background"> et WordPress dans </mark>&nbsp<code>var/www/wordpress</code>&nbsp<mark class="highlight-yellow_background">. Ceux sont les </mark><strong><mark class="highlight-yellow_background">paths</mark></strong><mark class="highlight-yellow_background"> que j’indique après la ligne </mark><em><mark class="highlight-yellow_background">volume</mark></em><mark class="highlight-yellow_background">. Encore une fois c’est le sujet qui nous le demande.</mark>
+		</p>
+		<br>
+
+		<p>
+			Ici à la ligne volume nous indiquons <strong>MariaDB</strong> <em><mark class="highlight-gray">(c’est le nom du volume, nous aurions pu l’appeler vol_maria ou autre, évidemment il fera intervenir une ligne concernant les volumes dans le </mark></em><em><strong><mark class="highlight-gray">docker-compose.yml</mark></strong></em><em><mark class="highlight-gray"> qui permettra d’indiquer où le stocker en local) </mark></em>suivi de &nbsp<code>:</code>&nbsp avec l’endroit que nous souhaitons copier du container.
+		</p>
+		<br>
+
+		<p>Il ne manque plus qu’à préciser les volumes que nous avons indiqués :</p>
+		<pre class="code">
+			<code>
+				volumes:
+					wordpress:
+						driver: local # ici nous stockons le volume en local
+						driver_opts:
+						type: &#x27;none&#x27; 									# aucun type spécifique
+						o: &#x27;bind
+						device: &#x27;/Users/jcluzet/data/wordpress&#x27; 		#Ou stocker le dossier sur votre ordinateur en local
+					mariadb:
+						driver: local
+						driver_opts:
+						type: &#x27;none&#x27; 
+						o: &#x27;bind&#x27;										 # Les Bind Mounts sont des volumes qui se montent sur un chemin d&#x27;accès à l&#x27;hôte, et ils peuvent être modifiés par d&#x27;autres processus en dehors de docker.
+						device: &#x27;/Users/jcluzet/data/mariadb&#x27;			#Ou stocker le dossier sur votre ordinateur en local
+			</code>
+		</pre>
+		<p><strong>❯ <em><a href="https://docs.docker.com/compose/compose-file/compose-file-v3/">Cette doc</a></em> de docker explique bien comment gérer les volumes dans un docker-compose.</strong></p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Vos volumes seront disponibles dans le dossier /home/login/data de la machine hôte utilisant Docker.</div>
+		</figure>
+		<p><strong>❯ Pensez donc à modifier le path de la ligne device: en conséquence.</strong></p>
+		<br>
+		
+		<p>Il ne nous reste plus qu’à créer la partie network, attention, c’est très simple.</p>
+		<pre class="code">
+			<code>networks:
+					inception:
+					driver: bridge
+			</code>
+		</pre>
+		<p><strong>❯ Oui, c’est tout.</strong></p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Ici &nbsp<code>bridge</code>&nbsp indique a Docker d’installer automatiquement des règles qui permettront aux 3 containers de communiquer en bridge.</div>
+		</figure>
+		<br>
+		
+		<p>Votre fichier <strong>docker-compose.yml</strong> est prêt ! J’espère que vous n’avez pas été jusqu’à recopier les <strong>paths</strong> sans les modifier, ce serait dommage 🤪</p><p id="466dd91d-d37c-46c6-a9e3-13b59796f16f" class="">
 </p><p id="2ec29656-d4b2-4ba8-a375-0cbeeded9d49" class="">Ah j’ai failli oublier ! Vous pouvez <strong>build</strong> votre fichier <mark class="highlight-yellow"><strong>.yaml</strong></mark> avec la commande </p><p id="1bb0ca05-eb11-4d3d-ba77-963d4defd4cf" class=""><code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> -d —build</code></p><p id="b261a003-c466-4adc-abf6-c43d5d4e1153" class="">
 </p><p id="24dfbb6b-1eb5-4dfc-8804-2bbc8953189f" class="">Pour l’<strong>arrêter</strong> : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> stop</code></p><p id="cb32153d-0413-4748-a5b2-f243ab7b6414" class="">Pour <strong>supprimer</strong> le build : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> down -v</code></p><p id="8b9ca413-98b6-4a1a-8052-78df52dd55a6" class="">
 </p><p id="4faf8b92-28eb-46b4-82fc-9137974c2493" class="">Si vous rencontrez des problèmes avec docker vous pouvez utiliser la commande :</p><p id="5b8a5f35-c882-4c6c-a622-6a3b13b0cf83" class=""><code>docker system prune -af </code> <mark class="highlight-yellow_background">Attention, ça supprime tous les container, images, etc.</mark></p><p id="db2527db-5e9a-46ba-9652-a723392997a4" class="">
