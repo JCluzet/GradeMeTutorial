@@ -30,7 +30,11 @@
 
 <article id="accueil" class="page sans">
 
-	<br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<figure id="img-accueil" class="img-accueil">
 		<a href="img/docker-compose.png"><img style="width:1280px" src="img/docker-compose.png"/></a>
 	</figure>
@@ -40,6 +44,9 @@
 	<br>
 
 	<hr id="ligne-accueil"/><br>
+
+	<!-- OBJECTIFS D'APPRENTISSAGE -->
+
 	<h1 id="objectifs" class="">Objectifs d’apprentissage</h1>
 	<br>
 	<br>
@@ -69,6 +76,8 @@
 		</ol>
 		<br>
 		<br>
+
+	<!----------------------------------------------------------------- 1. COMPRENDRE DOCKER ------------------------------------------------------------------>
 
 	<h1>1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1>
 	<br>
@@ -450,6 +459,7 @@
 		</p>
 		<br>
 
+	<!----------------------------------------------------------------- 2. COMPRENDRE LE SUJET ------------------------------------------------------------------>
 
 	<h1>2. Comprendre le sujet:</h1>
 	<br>
@@ -790,18 +800,91 @@
 		</pre>
 		<br>
 
-		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="327d8adf-24e7-4f84-afe6-a555d69020a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Évitons de négliger ce genre d’information fournie avec le sujet, elle peut déjà nous aider à <span style="border-bottom:0.05em solid">démarrer</span> le projet.</div></figure><p id="5a9d6456-cb08-4739-804c-23b0ace0e04e" class="">
-</p><p id="6dfcee38-7c5a-4bd4-abbd-4f8faf4d6018" class="">Cette structure nous montre clairement qu’il doit y avoir un dossier principal <code>srcs</code> contenant notre fameux <strong><mark class="highlight-orange">docker-compose.yml </mark></strong>que nous avons vu juste au dessus, notre fichier <strong><mark class="highlight-teal">.env</mark></strong>, ainsi qu’un dossier <code>requirements</code> qui contiendra nos différents containers.</p><p id="ee0d482d-364a-4c5c-8507-ef5cb3ddca46" class="">
-</p><p id="980e26d4-a744-4383-a4be-e8be2e3e1139" class="">Rappel des <span style="border-bottom:0.05em solid"><strong>3 containers </strong></span>à mettre en place : </p><ul id="6ecfbb73-26c2-486f-b5da-5e182a33647e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>NGINX</strong> <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span></li></ul><ul id="ecd91165-cd12-4c60-800a-754d9a8f3b15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>WordPress</strong> <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span></li></ul><ul id="c96e2680-7919-4f53-862f-7f3a931bcdaf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans nginx)</em></mark></span></li></ul><p id="1469e921-f1cb-4e6a-8dff-c0c1fb79a3ec" class="">
-</p><p id="23ac64a2-fa42-4294-8731-39a68ea7ebf4" class="">Comme je l’expliquais au début, chaque container est représenté par un <code>dossier</code> portant son nom.</p><p id="77dd0569-ec54-4b3b-bf7c-35737ae24d2e" class="">Dans chaque dossier de container doit obligatoirement se trouver son <strong><mark class="highlight-blue">Dockerfile</mark></strong>, sans quoi <mark class="highlight-blue"><strong>Docker</strong></mark> serait perdu.</p><p id="1b50ae16-9f8e-417f-8f32-e0996347ab5c" class="">Rappelez vous, en + du <strong><mark class="highlight-blue">Dockerfile</mark></strong> nous pouvons rajouter différents fichiers/dossiers de config qu&#x27;il serait ensuite intéressant de copier dans notre container grâce au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> et son mot-clef <strong><mark class="highlight-blue">COPY</mark></strong>.</p><p id="c0b86384-8ba0-4ffa-a802-1d3aba4bc303" class="">
-</p><p id="76340aab-8485-4e1a-be44-bbcc532a2042" class="">Le schéma fournit avec le sujet nous indique directement quels fichiers il serait intéressant de fournir avec nos containers, les voici:</p><ul id="9006c3e7-c2d8-41b3-abe1-b90676f7d170" class="bulleted-list"><li style="list-style-type:disc">Un fichier <em><strong>conf</strong></em> qui pourrait contenir le fichier de configuration du container <mark class="highlight-gray"><em>(la config de nginx pour son container associé par exemple)</em></mark></li></ul><ul id="86fe2336-2217-446c-a699-da19e247355b" class="bulleted-list"><li style="list-style-type:disc">Un fichier <em><strong>.dockerignore.</strong></em> Tout comme le fichier <em><strong>.gitignore</strong></em>, il précise à <mark class="highlight-blue"><strong>Docker</strong></mark> des fichiers à ne pas regarder, car ils n&#x27;auront surement aucune utilité pour <mark class="highlight-blue"><strong>Docker</strong></mark>.</li></ul><ul id="957eedb5-b4be-4f23-8b46-96bb285e592c" class="bulleted-list"><li style="list-style-type:disc">Un dossier <code>tools</code> permettant surement de stocker les autres outils dont nous pourrions avoir besoin.</li></ul><p id="37068c5c-34f4-4974-b519-d9e1117490e7" class="">
-</p><p id="8f02ffce-3d00-4d7a-853a-52c1166d8a20" class="">Nous pouvons déjà reproduire la structure de fichiers demandée histoire d’y voir plus clair 🤓</p><p id="1ee19e6d-52b2-489b-bb2b-3fbac296e41a" class="">
-</p><p id="55e06a75-98c2-48b7-aa48-138b9d93cd2b" class="">Maintenant que nous comprenons ce que le sujet attend de nous, il serait interessant de se demander :</p><p id="f539259d-b0cc-4186-a854-c56786929e95" class="">
-</p><hr id="0a8fa518-aa95-4029-a762-dc3ece0547ab"/><h3 id="f55c800f-80e4-4104-be0e-9ccc52ee79ed" class="">Par où commencer ?</h3><p id="30213364-85b5-483b-a752-78cec6b9f7bd" class="">
-</p><p id="cf1cc64e-4870-4a0e-ad44-d0c117e942f6" class="">Une fois que nous avons nos <code>dossiers</code> et nos fichiers requis, nous devrions commencer par créer un des trois containers requis.</p><p id="b56d7473-d53e-4b34-958a-75e7e251cc8e" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="nginx"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Inutile de s’attaquer à la partie <mark class="highlight-blue"><strong>Compose</strong></mark> pour l’instant, comment voudriez-vous relier 3 containers entre eux si vous n&#x27;en possédez aucun?</div></figure><p id="88e350cb-8790-4434-b2e0-19e0eb5b0296" class="">
-</p><h2 id="67a0c7ed-d727-477a-a4b8-105a3fa053ca" class="">3. Container NGINX :</h2><p id="5d346046-40f2-4884-816a-8582197fbff0" class="">
-</p><p id="2128c2d2-f875-40c4-82e8-482b5c1b01f0" class="">Commençons par notre container le moins flou, <strong>NGINX</strong>.</p><p id="43938e44-0103-450e-ad7d-9d8c58b24aff" class=""><strong>NGINX</strong> permet de mettre en place un <span style="border-bottom:0.05em solid">serveur Web</span>. </p><p id="e5923bb6-6e2c-4155-ae3d-1504a2b28686" class="">
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Évitons de négliger ce genre d’information fournie avec le sujet, elle peut déjà nous aider à <span style="border-bottom:0.05em solid">démarrer</span> le projet.</div>
+		</figure>
+		<br>
+		
+		<p>
+			Cette structure nous montre clairement qu’il doit y avoir un dossier principal <code>srcs</code> contenant notre fameux <strong><mark class="highlight-orange">docker-compose.yml </mark></strong>que nous avons vu juste au dessus, notre fichier <strong><mark class="highlight-teal">.env</mark></strong>, ainsi qu’un dossier <code>requirements</code> qui contiendra nos différents containers.
+		</p>
+		<br>
+
+		<p>Rappel des <span style="border-bottom:0.05em solid"><strong>3 containers </strong></span>à mettre en place : </p>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked"><strong>NGINX</strong> <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span>
+			</li>
+		</ul>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked"><strong>WordPress</strong> <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span>
+			</li>
+		</ul>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans nginx)</em></mark></span>
+			</li>
+		</ul>
+		<br>
+
+		<p>Comme je l’expliquais au début, chaque container est représenté par un <code>dossier</code> portant son nom.</p>
+		<p>
+			Dans chaque dossier de container doit obligatoirement se trouver son <strong><mark class="highlight-blue">Dockerfile</mark></strong>, sans quoi <mark class="highlight-blue"><strong>Docker</strong></mark> serait perdu.
+		</p>
+		<p>
+			Rappelez vous, en + du <strong><mark class="highlight-blue">Dockerfile</mark></strong> nous pouvons rajouter différents fichiers/dossiers de config qu&#x27;il serait ensuite intéressant de copier dans notre container grâce au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> et son mot-clef <strong><mark class="highlight-blue">COPY</mark></strong>.
+		</p>
+		<br>
+
+		<p>Le schéma fournit avec le sujet nous indique directement quels fichiers il serait intéressant de fournir avec nos containers, les voici:</p>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">
+				Un fichier <em><strong>conf</strong></em> qui pourrait contenir le fichier de configuration du container <mark class="highlight-gray"><em>(la config de nginx pour son container associé par exemple)</em></mark>
+			</li>
+		</ul>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">
+				Un fichier <em><strong>.dockerignore.</strong></em> Tout comme le fichier <em><strong>.gitignore</strong></em>, il précise à <mark class="highlight-blue"><strong>Docker</strong></mark> des fichiers à ne pas regarder, car ils n&#x27;auront surement aucune utilité pour <mark class="highlight-blue"><strong>Docker</strong></mark>.
+			</li>
+		</ul>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">
+				Un dossier <code>tools</code> permettant surement de stocker les autres outils dont nous pourrions avoir besoin.
+			</li>
+		</ul>
+		<br>
+		
+		<p>Nous pouvons déjà reproduire la structure de fichiers demandée histoire d’y voir plus clair 🤓</p>
+		<br>
+		
+		<p>Maintenant que nous comprenons ce que le sujet attend de nous, il serait interessant de se demander :</p>
+
+		<hr/>
+		<h3>Par où commencer ?</h3>
+		<br>
+		
+		<p>Une fois que nous avons nos <code>dossiers</code> et nos fichiers requis, nous devrions commencer par créer un des trois containers requis.</p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex" id="nginx">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Inutile de s’attaquer à la partie <mark class="highlight-blue"><strong>Compose</strong></mark> pour l’instant, comment voudriez-vous relier 3 containers entre eux si vous n&#x27;en possédez aucun?</div>
+		</figure>
+		<br>
+		<br>
+
+	<!----------------------------------------------------------------- 3. CONTAINER NGINX ------------------------------------------------------------------>
+
+	<h1>3. Container NGINX :</h1>
+	<br>
+	<br>
+
+	<p id="2128c2d2-f875-40c4-82e8-482b5c1b01f0" class="">Commençons par notre container le moins flou, <strong>NGINX</strong>.</p><p id="43938e44-0103-450e-ad7d-9d8c58b24aff" class=""><strong>NGINX</strong> permet de mettre en place un <span style="border-bottom:0.05em solid">serveur Web</span>. </p><p id="e5923bb6-6e2c-4155-ae3d-1504a2b28686" class="">
 </p><p id="1993a158-738c-4850-b4fc-6b4086d90bc8" class="">Nous allons commencer par étape afin de comprendre au mieux comment utiliser et se balader avec <mark class="highlight-blue"><strong>Docker</strong></mark>.</p><p id="5a36f691-07d9-44da-a4e2-e3a3ab652903" class="">
 </p><p id="0bf376e5-3ba5-4de5-9e66-4acdd4fa0079" class="">Ouvrons d’abord le fichier essentiel de Docker, le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> <strong>NGINX. </strong></p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="83fe1b0f-766b-498f-8849-643827feff4d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Rappelez-vous qu’il existe une image nginx toute prête, mise à disposition par <strong>nginx</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>.                                                                                                                                          La plupart des développeurs serait directement passée par la, mais ici <em><strong>42</strong></em> nous l’interdit, afin de savoir la recréer nous même.</div></figure><p id="9f6c3ce7-d1fe-4559-b12a-6d14639df1db" class="">Si vous avez bien suivi, vous devriez savoir quelle ligne écrire en premier, du moins le premier mot clef du Dockerfile.</p><ul id="df8f64db-8f77-4e3f-a939-4c818c731586" class="toggle"><li><details open=""><summary><strong>SPOIL 🔎</strong></summary><p id="acd8e1f7-52ae-49e9-bec2-638991a72746" class="">C’est <mark class="highlight-blue"><strong>FROM</strong></mark> ! Comme indiqué au début du cours, <mark class="highlight-blue"><strong>FROM</strong></mark> permet d’indiquer à Docker sur quel OS nous souhaitons faire tourner notre machine. C’est un mot clef obligatoire et il doit <span style="border-bottom:0.05em solid"><strong>toujours être en premier</strong></span> d’un <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p><p id="e2a92c44-2672-404d-b1f1-83e0b08c02ce" class="">
 </p></details></li></ul><p id="e402d8c6-b083-4d5b-ab73-8425eb14288e" class="">
