@@ -714,3 +714,8 @@ footer{
 	margin-left: 31%;
 	opacity: 60%;
 }
+
+.schema-sujet{
+	display: flex;
+	justify-content: center;
+}

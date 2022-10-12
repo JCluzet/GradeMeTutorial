@@ -325,137 +325,472 @@
 		<br>
 		<br>
 		<br>
+
+		<p>
+			<a href="https://www.nicelydev.com/docker/mots-cles-supplementaires-dockerfile#:~:text=Le%20mot%2Dcl%C3%A9%20EXPOSE%20permet,utiliser%20l&#x27;option%20%2Dp%20."><strong>Ici</strong></a> un site détaillant les différents types de mots-clefs utilisables dans Docker.
+		</p>
+		<blockquote>⚠️ Pour continuer vous devez avoir bien compris le principe de Docker.</blockquote>
+
+		<hr/>
+		<br>
+
+		<h1>Docker-Compose :</h1>
+		<p>
+			<mark class="block-color-yellow_background">Maintenant que vous avez compris la réelle utilité de Docker, il s’agit de comprendre une fonctionnalité de <strong><mark class="highlight-blue">Docker</mark></strong> appelée Compose.</mark>
+		</p>
+		<br>
+
+		<p>📄 Voici ce qu’explique la doc de Docker sur Compose:</p>
+		<blockquote>
+			<strong><mark class="highlight-blue">Docker Compose</mark></strong> est un <strong>outil qui a été développé pour aider à définir et à partager des applications multi-conteneurs.</strong>
+			<p>Avec <mark class="highlight-blue"><strong>Compose</strong></mark>, nous pouvons créer un fichier <mark class="highlight-orange"><strong>YAML</strong></mark> pour définir les services et, à l&#x27;aide d&#x27;une seule commande, tout mettre en <mark class="highlight-teal">route</mark> ou tout <mark class="highlight-red">démonter</mark>.</p>
+		</blockquote>
+		<br>
+	
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%"><mark class="highlight-blue"><strong>Compose</strong></mark> permettrait donc de gérer des applications qui utilisent plusieurs containers et de communiquer entre eux.</div>
+		</figure>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%"><em><mark class="highlight-gray">Vous devez également rendre un Makefile qui doit se trouver à la racine de votre répertoire. Il doit permettre de mettre en place toute votre application (c’est-à-dire build les images Docker via docker-compose.yml)</mark></em>
+			</div>
+		</figure>
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Un texte sur fond bleu comme celui ci est toujours tiré du sujet <strong>d’Inception</strong> de 42.</div>
+		</figure>
+		<br>
+
+		<p>
+			Ici le <mark class="highlight-gray"><em>sujet</em></mark> demande de build les différentes images via un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, cela tombe bien ce genre de fichier est appelé<mark class="highlight-orange"><strong> YAML</strong></mark>, c’est le fameux format indiqué plus haut par la Doc de Docker pour utiliser <strong><mark class="highlight-blue">Docker-Compose</mark></strong>.
+		</p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%"><mark class="highlight-gray">Ce projet consistera à vous faire mettre en place une mini-infrastructure de différents services en suivant des règles spécifiques.</mark></div>
+		</figure>
+		<br>
 		
-		</div><p id="9acddbc4-6e4e-406c-857f-8e73971cff2b" class="">
-</p><p id="284c544e-9357-4b31-bc48-413a079bb2bd" class=""><a href="https://www.nicelydev.com/docker/mots-cles-supplementaires-dockerfile#:~:text=Le%20mot%2Dcl%C3%A9%20EXPOSE%20permet,utiliser%20l&#x27;option%20%2Dp%20."><strong>Ici</strong></a> un site détaillant les différents types de mots-clefs utilisables dans Docker.</p><blockquote id="0455508e-8b7f-4460-bf94-7bb1749ff8bd" class="">⚠️ Pour continuer vous devez avoir bien compris le principe de Docker.</blockquote><hr id="65c41241-39d3-4fb8-9afa-14b6ca4152fb"/><p id="14dc9fa5-1487-4d9d-b830-28b1228526a0" class="">
-</p><h1 id="8a9f207a-ec60-47d6-b239-3e88016d033c" class="">Docker-Compose :</h1><p id="dd40a74c-c671-4c3c-ad94-50edb0552719" class="block-color-yellow_background">Maintenant que vous avez compris la réelle utilité de Docker, il s’agit de comprendre une fonctionnalité de <strong><mark class="highlight-blue">Docker</mark></strong> appelée Compose.</p><p id="b3a65f0b-fd23-4e9d-b6e1-fd9b8aafaa4c" class="">
-</p><p id="98912bf6-9ae8-40bb-b3a7-d72238754e11" class="">📄 Voici ce qu’explique la doc de Docker sur Compose:</p><blockquote id="31c13f1d-50a0-40cf-936b-f2f95566a50e" class=""><strong><mark class="highlight-blue">Docker Compose</mark></strong> est un <strong>outil qui a été développé pour aider à définir et à partager des applications multi-conteneurs.</strong>
-Avec <mark class="highlight-blue"><strong>Compose</strong></mark>, nous pouvons créer un fichier <mark class="highlight-orange"><strong>YAML</strong></mark> pour définir les services et, à l&#x27;aide d&#x27;une seule commande, tout mettre en <mark class="highlight-teal">route</mark> ou tout <mark class="highlight-red">démonter</mark>.</blockquote><p id="9caa6d1d-d144-4f4a-9330-0e58a1119ac1" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8036df20-c4ab-4381-9722-3c49f543a8f9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><mark class="highlight-blue"><strong>Compose</strong></mark> permettrait donc de gérer des applications qui utilisent plusieurs containers et de communiquer entre eux.</div></figure><p id="ec805da2-588e-426a-af88-eacc848dd274" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="c22fa84f-688c-46a6-b287-e0e32da2cd7d"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><em><mark class="highlight-gray">Vous devez également rendre un Makefile qui doit se trouver à la racine de votre
-répertoire. Il doit permettre de mettre en place toute votre application (c’est-à-dire
-build les images Docker via docker-compose.yml)</mark></em></div></figure><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="edfa891d-18a8-47af-838a-5cce5c8ec835"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Un texte sur fond bleu comme celui ci est toujours tiré du sujet <strong>d’Inception</strong> de 42.</div></figure><p id="841d3035-39f7-428b-8e69-6a89d5dd8794" class="">
-</p><p id="9b732f3c-22ff-49cc-bd2c-aecfcbecc5dc" class="">Ici le <mark class="highlight-gray"><em>sujet</em></mark> demande de build les différentes images via un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, cela tombe bien ce genre de fichier est appelé<mark class="highlight-orange"><strong> YAML</strong></mark>, c’est le fameux format indiqué plus haut par la Doc de Docker pour utiliser <strong><mark class="highlight-blue">Docker-Compose</mark></strong>.</p><p id="442bfbe4-d65c-4bc6-a37e-cb083a0285e0" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="53588bb4-be3f-4679-b517-75ee277fd153"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Ce projet consistera à vous faire mettre en place une mini-infrastructure de différents
-services en suivant des règles spécifiques.</mark></div></figure><p id="3a1c548a-5835-40d6-8252-7995877939cf" class="">
-</p><p id="d6a47e62-8bd5-402e-a30f-3d5603f4d33f" class="">Maintenant c’est certain, le projet consiste à relier plusieurs image <mark class="highlight-blue"><strong>Docker</strong></mark>, et pouvoir les lancer ensemble, sans pour autant, qu’elles perdent leur indépendance.</p><p id="7f9d87ef-1728-4a5f-b92e-de859e41dc9e" class="">Tout ca grace à <strong><mark class="highlight-blue">Docker-Compose</mark></strong> qui est prévu pour ce genre d’utilisation.</p><p id="c5c0c8c2-8bd4-4a3a-ba92-c7fe0bf39067" class="">
-</p><h2 id="cb61e8a8-fbdd-4b95-bbb6-45f8f331004b" class="">Mais ca dans la vie de tous les jours, c’est utile ?</h2><p id="798277d7-e07b-4752-b9a7-893b36114ece" class="">En fait, l’utilisation de <mark class="highlight-blue"><strong>Docker-Compose</strong></mark> prend tout son sens dans une infrastructure informatique.</p><p id="f28231a3-a0ac-4359-844f-544cf98d2b41" class="">
-</p><p id="4836e0d7-8d3b-4ff9-9b94-f211ced8ce6c" class="">Imaginez, vous lancez votre startup, <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark>. </p><p id="ef10100b-b6d7-4316-9aeb-287aeb3bffc0" class="">Vous auriez besoin de mettre en place un site internet, vous créez votre image nginx <em><mark class="highlight-gray">(ou vous récupérez celle de nginx sur le </mark></em><mark class="highlight-blue"><em><strong>DockerHub</strong></em></mark><em><mark class="highlight-gray">).</mark></em></p><p id="12a3caa5-6b31-423d-ab23-302da1c6e1ec" class="">Vous avez désormais un site internet fonctionnel pour votre entreprise.</p><blockquote id="a9452e0f-f9e7-4e43-8f28-738a8679d978" class="block-color-gray_background"><mark class="highlight-gray">Évidemment cela risque de prendre plus de temps que 2 phrases à mettre en place 🤣</mark></blockquote><p id="9cca17fb-ec33-4334-b1e1-2b884ba69401" class="">Maintenant que <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark> compte une dizaine d’employés, il serait sympa de mettre en place une badgeuse 🪪 à l’entrée pour éviter trop de travail à Manu 👮🏻‍♂️ de la sécurité.</p><p id="be601436-3024-4172-b0af-4e923dc78934" class="">
-</p><p id="23bcf94a-754a-4fdf-b499-cae8d9a1207c" class="">Vous créez donc une nouvelle image <strong><mark class="highlight-blue">Docker</mark></strong>, spécialement conçue pour enregistrer vos salariés dans une <em><strong><mark class="highlight-orange">base de données </mark></strong></em>et étant reliée directement à votre <span style="border-bottom:0.05em solid"><em>badgeuse</em></span>.</p><p id="a313d297-bee8-4e05-8d2a-cebe6df473bf" class="">Vous déployez également rapidement une autre image gérant un site internet <a href="http://intra.Bananeo.fr">intra.Bananeo.fr</a> permettant à vos salariés de gérer leurs heures de travail.</p><p id="8dbe4487-55c1-4afa-8401-12e104354474" class="">
-</p><p id="377ab653-0f55-41d2-98ba-8c1d0dbe29e8" class="">Et Yop ! Tout fonctionne. Mais votre badgeuse ne communique jamais avec le site de l’intra, et il serait sympa de pouvoir préciser à vos employés leurs retards, surtout pour Éric qui trouve toujours la bonne excuse depuis 2 semaines.</p><p id="fad242ff-f3fd-4514-ad7a-90bca8127032" class="">
-</p><h3 id="e590edee-9ddf-43d7-82ae-089d05f9b761" class="">C’est la qu’intervient <span style="border-bottom:0.05em solid">Compose</span>! </h3><p id="9df66766-d4ab-49cd-b052-d13bd1f2b546" class="">
-</p><p id="bcc43f80-3f68-4f5b-b3cd-f611e1a4ea47" class="">Vous allez mettre en place un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, rappelez vous que c’est le format <mark class="highlight-orange"><strong>YAML</strong></mark> qui permet de donner les instructions à <mark class="highlight-blue"><strong>Compose</strong></mark> sur comment gérer ces différentes images.</p><p id="c8ca62e8-bbe6-4961-8c28-12634528b2bf" class="">
-</p><p id="b834e0be-4b46-4002-85ef-3e3d9a8af885" class="">Regardons de plus près comment pourrait s’écrire le fichier <mark class="highlight-orange"><strong>.yml</strong></mark> de <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo </strong></mark><strong>:</strong></p><p id="ec64da44-8aae-42b4-a49f-92ce697a8443" class="">
-</p><pre id="944da228-3313-45fa-8c7b-86aa86cd04d4" class="code"><code>version: &quot;3&quot;
+		<p>Maintenant c’est certain, le projet consiste à relier plusieurs image <mark class="highlight-blue"><strong>Docker</strong></mark>, et pouvoir les lancer ensemble, sans pour autant, qu’elles perdent leur indépendance.</p>
+		<p>Tout ca grace à <strong><mark class="highlight-blue">Docker-Compose</mark></strong> qui est prévu pour ce genre d’utilisation.</p>
+		<br>
 
-services:       # précise les différents services (images) à utiliser 
-  nginx:
-    build: requirements/website/ 
-    env_file: .env          # indique le fichier optionnel contenant l&#x27;environnement
-    container_name: website # Le nom du container ( doit porter le meme nom que le service d&#x27;apres le sujet )
-    ports:
-      - &quot;80:80&quot;             # le port, détaillé juste en dessous
-    restart: always         # Permet de redémarrer automatiquement le container en cas de crash
-  nginx:
-    build: requirements/intra/
-    env_file: .env
-    container_name: intra
-    ports:
-      - &quot;80:80&quot;
-    restart: always 
-  mariadb:
-    container_name: badgeuse
-    build: mariadb
-    env_file: .env
-    restart: always</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bc268ca8-fafe-4378-9e0b-e661f2e09cfc"><div style="font-size:1.5em"><span class="icon">😆</span></div><div style="width:100%"><mark class="highlight-gray">Non, ce docker-compose.yml ne fonctionne pas sur Inception.</mark></div></figure><p id="04bbce7c-a084-484e-860b-86dfda1fd207" class="">
-</p><p id="sujet" class="sujet">Ce fichier<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">.yml </mark></strong>permet de donner les instructions à <strong><mark class="highlight-blue">Compose</mark></strong> pour gérer 3 images mariadb, nginx et un autre nginx.</p><p id="13b7410b-ccb4-4d64-af80-fa06320d62b3" class="">Tel un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> qui doit obligatoirement commencer par <mark class="highlight-blue"><strong>FROM</strong></mark> suivi de la version, votre fichier <strong><mark class="highlight-orange">YAML</mark></strong> doit commencer par la version de <mark class="highlight-blue"><strong>Compose</strong></mark>, référerez vous aux <a href="https://docs.docker.com/compose/compose-file/compose-file-v3/">versions actuelles</a>.</p><p id="680ebd55-9d8b-4737-99ba-50bd4f31971a" class="">
-</p><h1 id="f9f6cf7a-096e-454a-acea-a5f7577b391b" class="">2. Comprendre le sujet:</h1><p id="c73554f2-c03b-4630-b053-20d609eb7d15" class="">
-</p><ul id="69cc0922-dea6-447c-835c-37c1fe5caf7b" class="toggle"><li><details open=""><summary><mark class="highlight-yellow_background">SUJET À TÉLÉCHARGER</mark></summary><figure id="d3f0a324-3fe9-4ea6-ac94-2be4e0af2e7e"><div class="source"><a href="Inception/subject.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/728c9e20-e3a5-4029-b834-c39900551e63/subject.pdf</a></div></figure></details></li></ul><p id="0742d883-c149-49ac-85d5-ec5b8c798bc2" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="51908b02-791a-418d-b979-f7d43ea10df8"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><mark class="highlight-gray">Chaque service devra tourner dans un container dédié.</mark></div></figure><hr id="257b76a5-55a9-4ff1-ac01-f9b030458909"/><p id="9498cacd-1ffb-4673-af93-45195c4bdd1e" class="">
-</p><p id="97bb30d9-1770-4c2d-805b-60fff7f8c2a8" class=""><mark class="highlight-yellow_background">Voici les différents containers à mettre en place d’après le sujet :</mark></p><ul id="1633c8a7-1c91-4646-adaa-97c28ce648f0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">NGINX <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span></li></ul><ul id="5f870fe4-a7dd-4265-ad34-1b7e7644c3cb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">WordPress <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span></li></ul><ul id="2601ff0e-0ab8-429e-9d5d-c8a9175f89c3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">MARIADB <mark class="highlight-gray"><em>(sans nginx)</em></mark></span></li></ul><p id="94c77dc5-fe2a-4f1a-94b8-acf7542a5c51" class="">
-</p><p id="f2f95fff-c8da-4b71-9789-ca62f82f809b" class=""><mark class="highlight-yellow_background">Voici les deux volumes à mettre en place d’après le sujet :</mark></p><ul id="98b86c8d-b8ff-435f-8dee-1d7fa1b04164" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Volume contenant votre <strong>base de données WordPress</strong></span></li></ul><ul id="54553d68-73b5-4a14-822a-8bbc1802de91" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Volume contenant les <strong>fichiers</strong> de votre <strong>site WordPress</strong></span></li></ul><p id="35cba2a0-defe-4c21-81f5-c163b1b40428" class="">
-</p><blockquote id="8cd72e51-cdf7-402f-9192-f6eb70568cd0" class="">Ces volumes doivent être disponibles à partir du dossier <code><em><strong>/home/</strong></em></code><code><mark class="highlight-gray"><em><strong>&lt;login&gt;</strong></em></mark></code><code><em><strong>/data</strong></em></code> de la machine hôte utilisant <strong><mark class="highlight-blue">Docker</mark></strong>.</blockquote><p id="47bc2f0c-7070-4ad1-b8a0-dd2d5c217021" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f8bf2ff1-a460-41e3-9a04-5d91eeba11ef"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les volumes <mark class="highlight-blue"><strong>Compose</strong></mark> présentent plusieurs avantages comme pouvoir être gérés à l&#x27;aide des commandes de la CLI de Docker ou de son API ou encore pouvoir être partagés de manière plus sûre entre plusieurs conteneurs. <a href="https://docs.docker.com/storage/volumes/">+ d’info sur la doc de Docker</a></div></figure><p id="884ca9d8-57d3-4b2d-a2b5-62ff812b82a1" class="">
-</p><p id="9f50d020-4a2a-4ab8-89a8-8cf7b751e7fe" class=""><mark class="highlight-yellow_background">Nous devrons également mettre en place :</mark></p><ul id="bf55a163-68b1-41e0-b19a-866f10039d3a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un <a href="https://docs.docker.com/engine/reference/commandline/network/"><span style="border-bottom:0.05em solid"><em><strong>docker-network</strong></em></span></a> qui fera le lien entre vos containers.</span></li></ul><p id="7251929d-d36d-454d-a0c6-cc63dc2105e6" class="">
-</p><p id="009b8de6-276c-4fe4-9983-91becd1b4b04" class=""><mark class="highlight-yellow_background">Les utilisateurs à créer dans notre base de données WordPress:</mark></p><ul id="1ed5d318-a221-4317-b32a-20dbc36ca9e1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un utilisateur <strong>Admin</strong> <mark class="highlight-gray">(ne doit pas s’appeler admin)</mark></span></li></ul><ul id="8ab46da6-5e3a-4b81-9943-a41e3d41f8ed" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un utilisateur standard</span></li></ul><p id="e49e2937-387a-4931-b00d-225c2ac2ae9d" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="bd723d49-daed-4be1-9d07-6148f9486bd7"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer notre nom de domaine afin qu’il pointe vers <strong>notre adresse IP locale</strong>. Ce nom de domaine sera <span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>&lt;login&gt;</em></mark></span><span style="border-bottom:0.05em solid">.42.fr</span></div></figure><p id="e189621a-d5ec-474e-b916-488de1a64730" class="">
-</p><hr id="a91091f2-7221-4d91-8367-0a41b343bf4b"/><p id="43d5e14a-a418-43d0-8220-dd39282a5025" class="">
-</p><h3 id="4ba630ee-5f89-45c3-8468-fbb80af2d761" class="">Afin de réaliser ces différentes tâches, le sujet apporte plusieurs autres précisions :</h3><p id="2a6e392a-edba-4235-b063-14ccedc760b3" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="2999c57a-0759-4efb-83af-fe0a09991390"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Le tag latest est <span style="border-bottom:0.05em solid"><strong>interdit</strong></span>.</div></figure><p id="5a67ea28-ef48-4c4f-8518-da81bcb1d45c" class="">Lorsque vous précisez une dépendance à installer, vous devez préciser sa version à installer, l’avantage du tag <strong><mark class="highlight-gray"><em>latest</em></mark></strong> est clair, installer la <strong>dernière version</strong> d’une dépendance. </p><p id="52df9f15-ceed-4c57-8212-418ab822e855" class="">Cependant <mark class="highlight-gray"><em><strong>latest</strong></em></mark> a également un <span style="border-bottom:0.05em solid">gros désavantage</span>, il peut apporter des <strong>problèmes de compatibilité</strong> sur le temps. </p><p id="f5046f3a-4ac8-4cd9-89d6-4c864ea16a3b" class=""><strong><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Exemple:</mark></span></strong><mark class="highlight-gray"> Aujourd&#x27;hui vous pourriez tout configurer de manière a ce que les dernières versions fonctionnent correctement entre elles, mais imaginez que 2 ans après quelqu&#x27;un souhaite tester votre logiciel, il se pourrait que certaines dépendances aient évoluées et fonctionnent autrement entre elles, c’est pour cela qu’il est préférable d’indiquer la version à utiliser.</mark></p><p id="8611060a-ff44-4e47-ac06-69942d510e24" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="23f3458d-331c-42dc-b6c0-6c7a5551ffe3"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Aucun mot de passe ne doit être présent dans vos <mark class="highlight-blue"><strong>Dockerfiles</strong></mark>.</div></figure><p id="404e5c39-3d88-46f9-a7f8-4d49086fa173" class="">Faut-il vraiment expliquer ce point la ? 😅</p><p id="76993af8-3a47-44fe-8144-3f950bc1b9b8" class="">Il faut dire que c&#x27;est une des plus grosses erreurs des devs utilisant Github.</p><p id="ce5749ff-33a3-4ea1-b605-12ce5c844135" class="">Oui, il arrive que des développeurs push dans leur repo certaines informations sensibles, telles que des clefs d’API ou encore des mots de passe en clair 🫢</p><p id="02ba11aa-d43d-418a-acd0-9221883bbe8a" class="">Évidemment ça reste <span style="border-bottom:0.05em solid"><strong>l’erreur number 1</strong></span> à ne pas faire. </p><p id="f108bf42-a78a-4671-8f3e-342739755ef7" class="">Si cela vous arrive, ne faites pas la deuxième erreur de re-push par dessus en supprimant votre clef ou votre mot de passe, les commits de Github finiront par vous trahir ❌</p><p id="7348d724-0423-49bd-9db8-cb8030e3ef99" class="">Pensez plutôt à rapidement <a href="https://makina-corpus.com/devops/git-annuler-proprement-un-commit-apres-un-push">supprimer votre commit</a>.</p><p id="37cfb80e-9c13-4f47-8516-a80f8e243fd2" class="">
-</p><p id="1f7a884b-c420-4ff5-bb52-ad5338b7bb63" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4d5d3714-959d-4028-b31b-6c46f1e78b45"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">L’utilisation des variables d’environnement est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</div></figure><p id="a007273e-332c-4b58-bc80-9f90f236a69b" class="">Cette consigne va avec la précédente, vous devez donc utiliser l’environnement de votre machine.</p><p id="09ce0b74-3e88-42c0-b574-f742d7912cad" class="">Cela pourrait sembler utile pour stocker les mots de passe ou autres</p><p id="52dcc711-e122-45ae-b95b-d2ddac032329" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="10eed9cb-1ad3-477e-ad96-2b62f670c87d"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">La mise en place d’un fichier <span style="border-bottom:0.05em solid"><strong>.</strong></span><em><span style="border-bottom:0.05em solid"><strong>env</strong></span></em> afin de stocker vos variables d’environnement est <span style="border-bottom:0.05em solid"><strong>fortement conseillée</strong></span>.</div></figure><p id="fc78d56a-61b3-4cdf-88e4-2373e1537e94" class="">Nous savons désormais comment stocker notre environnement.</p><p id="82d43a11-66c7-4007-a40c-21a9cb180b9a" class="">
-</p><p id="0b3a6cec-1bcd-4c5f-89c4-c3ee84ba8147" class="">Dans le sujet, nous trouvons également un exemple d’a quoi pourrait ressembler ce fichier .env grace à un <code><em>cat srcs/.env</em></code> :</p><pre id="8d95a9ec-8e5f-4130-b0e3-650c217d0437" class="code"><code>DOMAIN_NAME=wil.42.fr
-# certificates
-CERTS_=./XXXXXXXXX
-# MYSQL SETUP
-MYSQL_ROOT_PASSWORD=XXXXXXXXXX
-MYSQL_USER=XXXXXXXXXX
-MYSQL_PASSWORD=XXXXXXXXXX
-[...]</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="33744fd8-50ef-4057-ae28-b6701ed45f64"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Grace à ce <code>cat</code> nous pouvons imaginer les infos dont nous aurons besoin pour mettre en place notre projet.</div></figure><p id="5e10b0fe-8123-4caa-97fb-ee6f86d4ab97" class="">
-</p><p id="2288bc5f-8f27-4295-bdb9-07ce59c457b7" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="78a5fb63-afc4-49b3-85a8-bbc4381a7275"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Votre container <strong>NGINX</strong> doit être le seul point d’entrée de votre infrastructure par le port <strong>443</strong> uniquement en utilisant le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div></figure><p id="bdc71cd2-cc00-46e2-8809-e0604c44b61b" class="">Le seul point d’entrée de notre Compose doit être par le container de NGINX, passant par le port <strong>443</strong>.</p><p id="d92e141c-ecd5-49e6-9ba4-f392aa2ea133" class="">C’est à dire que le seul porte qu’ouvrira Docker-Compose sur votre machine sera le <strong>443</strong> <mark class="highlight-gray"><em>(tips: c’est le port qui permet l’accès par https:// , et le 80 par http://)</em></mark></p><p id="23c3588e-6456-4c5a-8c7a-ad3795ebbfcf" class="">Ce <em><strong>schéma</strong></em> fournit dans le sujet devrait <span style="border-bottom:0.05em solid">éclaircir</span> les choses:</p><p id="6802fc4b-58d3-4015-afb2-4d85bc525b86" class="">  </p><figure id="fbc91472-3de7-42d6-b422-3938f126347b" class="image"><a href="img/Capture_dcran_2022-07-19__16.24.51.png"><img style="width:1012px" src="img/Capture_dcran_2022-07-19__16.24.51.png"/></a></figure><p id="3dd64379-1cbb-4a86-8ce3-5b698a91b004" class="">Ici, on retrouve les ports qui permettront à <strong>WordPress</strong> de communiquer en interne avec la base de données <mark class="highlight-gray">(pour pouvoir stocker des nouvelles pages ou autres)</mark> et <strong>Nginx</strong> qui communique avec <strong>WordPress</strong> <mark class="highlight-gray">(qui lui dira quoi afficher sur le serveur web).</mark></p><p id="5f93c5a3-cfc7-40de-ac70-0a4be435f5af" class="">Le container <strong>MariaDB</strong> stocke ses informations <mark class="highlight-gray"><em>(base de donnée)</em></mark> dans le volume correspondant et <strong>WordPress</strong> <em><mark class="highlight-gray">(site wordpress)</mark></em> dans le sien.  </p><p id="77b807c2-b22f-4af6-960e-4bb85602aef8" class="">
-</p><p id="e42c28ef-5a83-42f2-baba-4c9ef246f6fb" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="810f2a4c-8830-43e1-9784-d65bd04c12f3"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Il est indiqué que nous devons utiliser le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div></figure><p id="e03159a7-07ca-4f23-97de-c35af7bc44e7" class="">
-</p><h3 id="9bc53b72-589d-418d-babe-e881be924940" class="">Mais qu’est ce que <span style="border-bottom:0.05em solid"><em><strong>TLS</strong></em></span> ?</h3><p id="1e97a0c5-7633-403a-ba1d-297d3d5d8a02" class="">
-</p><p id="77434eac-1c36-42ed-9ceb-2b25cc633b5a" class="block-color-yellow_background"><span style="border-bottom:0.05em solid"><strong>Wikipédia</strong></span> nous indique : </p><p id="8115a064-5a3b-42b4-9c9f-0acbc1b01cfc" class="">La <em><strong>Transport Layer Security </strong></em><em>(</em><em><strong>TLS</strong></em><em>) </em>ou « Sécurité de la couche de transport » est un protocole<a href="https://fr.wikipedia.org/wiki/Transport_Layer_Security#cite_note-1"> </a>de sécurisation des échanges par <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_informatique">réseau informatique</a>, notamment par <a href="https://fr.wikipedia.org/wiki/Internet">Internet</a>.</p><p id="f94e107b-b1be-4dc8-abae-753bb719f2cb" class="">
-</p><p id="3c57e43c-7f24-4849-90c1-0a2661457490" class="">TLS permet :</p><ul id="69795e6b-e150-4117-bd6d-ee48650e258a" class="bulleted-list"><li style="list-style-type:disc">l&#x27;authentification du serveur</li></ul><ul id="7a707245-906c-440c-9560-b74c9e69469b" class="bulleted-list"><li style="list-style-type:disc">la confidentialité des données échangées<mark class="highlight-gray"><em> (ou session chiffrée)</em></mark></li></ul><ul id="8e0f6edb-0e98-4d67-844e-62886a0b34d7" class="bulleted-list"><li style="list-style-type:disc">l&#x27;intégrité des données échangées</li></ul><ul id="566870b7-4a2c-4baa-b478-ddb42db23113" class="bulleted-list"><li style="list-style-type:disc">de manière optionnelle, l&#x27;authentification du client <em><mark class="highlight-gray">(mais dans la réalité celle-ci est souvent assurée par la couche applicative)</mark></em></li></ul><p id="34d16a91-b830-4ffd-86c6-2e27a04a99d6" class="">
-</p><p id="dfffd74f-e5bb-4f9a-91b6-56df0c33a21b" class="">Je ne sais pas vous mais <strong>TLS</strong> me semble ressembler de très près a du <strong>SSL</strong>, ce fameux protocole qui rajoute un <strong><mark class="highlight-teal">cadenas vert</mark></strong> quand vous accédez à un site <mark class="highlight-teal"><strong>sécurisé</strong></mark>, comme la plupart des sites aujourd&#x27;hui. </p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4c903739-661d-46aa-a6e1-b511c326b1c5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">C’est ce protocole qui change vos <strong>URL</strong> de <em>http</em> en <em>https</em>.</div></figure><p id="847f0065-50e4-430b-bb8a-101e2e407cd3" class=""> </p><p id="1de91ea1-1a02-422a-b13b-032d6d2b4584" class="">Ma question est donc rapidement,</p><h3 id="86931490-2d47-442e-9013-46dce2de255f" class="">Quel est la différence entre <mark class="highlight-teal">TLS</mark> et <mark class="highlight-teal">SSL</mark> ?</h3><p id="d22c2937-0eb2-49c6-9e30-be4f2fb13ef4" class="">
-</p><p id="9ec9ebac-d23f-4f53-87ce-49ccca00a636" class=""><strong>SSL</strong> et <strong>TLS</strong> sont deux protocoles qui permettent l’authentification, et le chiffrement des données qui transitent entre des serveurs. </p><p id="d8d3d406-77ae-4f49-9626-eef554cb2aee" class="">
-</p><p id="28958bc5-aa19-4e19-b6a0-ee76d402d340" class="">En fait le <strong>SSL</strong> est le prédécesseur du <strong>TLS</strong>. Au fil du temps, de nouvelles versions de ces protocoles ont vu le jour pour faire face aux vulnérabilités et prendre en charge des suites et des algorithmes de chiffrement toujours plus forts, toujours <span style="border-bottom:0.05em solid">plus sécurisés</span> 🔐</p><p id="c49466a2-05c8-47ce-ac85-697cc3e05dd6" class="">
-</p><h3 id="d78c479f-4d97-4de4-93ce-7958fd53efd3" class="">L’histoire du SSL/TSL :</h3><p id="e335a706-1df7-4e5f-a53f-778915fffca2" class="">
-</p><p id="86a7b5bd-dad9-484c-85b7-eecab014a851" class="">Initialement développé par <strong>Netscape</strong>, le SSL sort en <strong>1995</strong> dans sa version SSL 2.0 <em><mark class="highlight-gray">(le SSL 1.0 n’étant jamais sorti)</mark></em>. </p><p id="aa29547b-c2cb-438a-95e5-6e5ea30be603" class="">Mais après la découverte de plusieurs vulnérabilités 🔓 en <strong>1996</strong>, la version 2.0 est vite remplacée par le SSL 3.0. </p><p id="b0b62aad-aa93-4cfd-a3a8-a910b6eefd91" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ead2d590-a3da-474d-8890-6af0daa517e4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><em><mark class="highlight-gray">Les versions 2.0 et 3.0 sont parfois libellées ainsi : SSLv2 et SSLv3.</mark></em></div></figure><p id="ffe54d0d-517a-4691-ab7e-3686d2d244c4" class="">
-</p><p id="aaeae321-5c5a-4909-8270-43ca647fd9ad" class="">Basé sur le SSL 3.0, <a href="https://tools.ietf.org/html/rfc2246">le TLS est introduit</a> en <strong>1999</strong> comme <strong><em><span style="border-bottom:0.05em solid">la nouvelle version du SSL.</span></em></strong></p><p id="251ffca1-a6c9-4cf0-8571-6014aa6c6147" class="">Le protocole <strong>TSL</strong> est donc simplement le <span style="border-bottom:0.05em solid"><strong>remplaçant du SSL</strong></span>. Il corrige certaines <strong><mark class="highlight-red"><em><span style="border-bottom:0.05em solid">vulnérabilités de sécurité</span></em></mark></strong> dans les anciens protocoles <strong>SSL</strong>.</p><p id="ef2063a6-bf2e-4c90-970d-91c7ac39a0b3" class="">
-</p><p id="8d3c6881-ce99-4294-9ad9-746c22aabbe0" class="">Nous devrons donc rendre notre système sécurisé, par un protocole semblable au SSL, le <mark class="highlight-teal"><strong>TSL</strong></mark>. </p><p id="29bfd145-25d0-4b30-81cc-d6701f05bf0b" class="">
-</p><hr id="9dee229b-ccea-4ac1-8c60-a7fab6c2c5cc"/><p id="ca94e177-6c10-4259-ad85-a5ec658d0641" class="">
-</p><p id="8e315329-2838-401b-ba26-dc6bf70b6548" class="">Avant de commencer notre projet, regardons le dernier document fourni avec le sujet, la <span style="border-bottom:0.05em solid"><strong>structure attendue de notre projet</strong></span> : </p><p id="5f671fca-1635-4af4-b7c3-7c9323b7b485" class="">
-</p><pre id="f6124e95-ce28-494a-94ec-7f459fe14d22" class="code"><code>$&gt; ls -alR
+		<h2>Mais ca dans la vie de tous les jours, c’est utile ?</h2>
+		<p>En fait, l’utilisation de <mark class="highlight-blue"><strong>Docker-Compose</strong></mark> prend tout son sens dans une infrastructure informatique.</p>
+		<br>
 
-total XX
-drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
-drwxrwxrwt 17 wil wil 4096 avril 42 20:42 ..
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Makefile
-drwxrwxr-x 3 wil wil 4096 avril 42 20:42 srcs
+		<p>Imaginez, vous lancez votre startup, <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark>.</p>
+		<p>Vous auriez besoin de mettre en place un site internet, vous créez votre image nginx <em><mark class="highlight-gray">(ou vous récupérez celle de nginx sur le </mark></em><mark class="highlight-blue"><em><strong>DockerHub</strong></em></mark><em><mark class="highlight-gray">).</mark></em></p>
+		<p>Vous avez désormais un site internet fonctionnel pour votre entreprise.</p>
+		
+		<blockquote class="block-color-gray_background">
+				<mark class="highlight-gray">Évidemment cela risque de prendre plus de temps que 2 phrases à mettre en place 🤣</mark> 
+		</blockquote>
 
-./srcs:
-total XX
-drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
-drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 docker-compose.yml
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .env
-drwxrwxr-x 5 wil wil 4096 avril 42 20:42 requirements
+		<p>Maintenant que <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark> compte une dizaine d’employés, il serait sympa de mettre en place une badgeuse 🪪 à l’entrée pour éviter trop de travail à Manu 👮🏻‍♂️ de la sécurité.</p>
+		<br>
 
-./srcs/requirements:
-total XX
-drwxrwxr-x 5 wil wil 4096 avril 42 20:42 .
-drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 bonus
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 mariadb
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 nginx
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 tools
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 wordpress
+		<p>Vous créez donc une nouvelle image <strong><mark class="highlight-blue">Docker</mark></strong>, spécialement conçue pour enregistrer vos salariés dans une <em><strong><mark class="highlight-orange">base de données </mark></strong></em>et étant reliée directement à votre <span style="border-bottom:0.05em solid"><em>badgeuse</em></span>.</p>
+		<p>Vous déployez également rapidement une autre image gérant un site internet <a href="http://intra.Bananeo.fr">intra.Bananeo.fr</a> permettant à vos salariés de gérer leurs heures de travail.</p>
+		<br>
 
-./srcs/requirements/mariadb:
-total XX
-drwxrwxr-x 4 wil wil 4096 avril 42 20:45 .
-drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
-drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
-drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools
-[...]
+		<p>Et Yop ! Tout fonctionne. Mais votre badgeuse ne communique jamais avec le site de l’intra, et il serait sympa de pouvoir préciser à vos employés leurs retards, surtout pour Éric qui trouve toujours la bonne excuse depuis 2 semaines.</p>
+		<br>
+		<br>
 
-./srcs/requirements/nginx:
-total XX
-drwxrwxr-x 4 wil wil 4096 avril 42 20:42 .
-drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
-drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
--rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
-drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools</code></pre><p id="c18f56ca-6c06-48c4-b2fd-ae9796c6cdcf" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="327d8adf-24e7-4f84-afe6-a555d69020a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Évitons de négliger ce genre d’information fournie avec le sujet, elle peut déjà nous aider à <span style="border-bottom:0.05em solid">démarrer</span> le projet.</div></figure><p id="5a9d6456-cb08-4739-804c-23b0ace0e04e" class="">
+		<h3>C’est la qu’intervient <span style="border-bottom:0.05em solid">Compose</span>! </h3>
+		<br>
+
+		<p>Vous allez mettre en place un fichier <mark class="highlight-orange"><strong>.yml</strong></mark>, rappelez vous que c’est le format <mark class="highlight-orange"><strong>YAML</strong></mark> qui permet de donner les instructions à <mark class="highlight-blue"><strong>Compose</strong></mark> sur comment gérer ces différentes images.</p>
+		<br>
+
+		<p>Regardons de plus près comment pourrait s’écrire le fichier <mark class="highlight-orange"><strong>.yml</strong></mark> de <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo </strong></mark><strong>:</strong></p>
+
+		<pre class="code">
+			<code>
+				version: &quot;3&quot;
+
+					services:       # précise les différents services (images) à utiliser 
+					nginx:
+						build: requirements/website/ 
+						env_file: .env          # indique le fichier optionnel contenant l&#x27;environnement
+						container_name: website # Le nom du container ( doit porter le meme nom que le service d&#x27;apres le sujet )
+						ports:
+						- &quot;80:80&quot;             # le port, détaillé juste en dessous
+						restart: always         # Permet de redémarrer automatiquement le container en cas de crash
+					nginx:
+						build: requirements/intra/
+						env_file: .env
+						container_name: intra
+						ports:
+						- &quot;80:80&quot;
+						restart: always 
+					mariadb:
+						container_name: badgeuse
+						build: mariadb
+						env_file: .env
+						restart: always
+			</code>
+		</pre>
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">😆</span></div>
+			<div style="width:100%"><mark class="highlight-gray">Non, ce docker-compose.yml ne fonctionne pas sur Inception.</mark>
+			</div>
+		</figure>
+		<br id="sujet" class="sujet">
+		
+		<p>Ce fichier<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">.yml </mark></strong>permet de donner les instructions à <strong><mark class="highlight-blue">Compose</mark></strong> pour gérer 3 images mariadb, nginx et un autre nginx.</p>
+		<p>
+			Tel un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> qui doit obligatoirement commencer par <mark class="highlight-blue"><strong>FROM</strong></mark> suivi de la version, votre fichier <strong><mark class="highlight-orange">YAML</mark></strong> doit commencer par la version de <mark class="highlight-blue"><strong>Compose</strong></mark>, référerez vous aux 
+			<a href="https://docs.docker.com/compose/compose-file/compose-file-v3/">versions actuelles</a>.
+		</p>
+		<br>
+
+
+	<h1>2. Comprendre le sujet:</h1>
+	<br>
+	<br>
+
+		<ul class="toggle">
+			<li>
+				<details close="">
+					<summary><mark class="highlight-yellow_background">SUJET À TÉLÉCHARGER</mark></summary>
+					<figure>
+						<div class="source"><a href="Inception/subject.pdf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/728c9e20-e3a5-4029-b834-c39900551e63/subject.pdf</a></div>
+					</figure>
+				</details>
+			</li>
+		</ul>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%"><mark class="highlight-gray">Chaque service devra tourner dans un container dédié.</mark></div>
+		</figure>
+
+		<hr/>
+		<br>
+
+		<p>
+			<mark class="highlight-yellow_background">Voici les différents containers à mettre en place d’après le sujet :</mark>
+		</p>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">NGINX <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span>
+			</li>
+		</ul>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">WordPress <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span>
+			</li>
+		</ul>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">MARIADB <mark class="highlight-gray"><em>(sans nginx)</em></mark></span>
+			</li>
+		</ul>
+		<br>
+
+		<p>
+			<mark class="highlight-yellow_background">Voici les deux volumes à mettre en place d’après le sujet :</mark>
+		</p>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">Volume contenant votre <strong>base de données WordPress</strong></span>
+			</li>
+		</ul>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">Volume contenant les <strong>fichiers</strong> de votre <strong>site WordPress</strong></span>
+			</li>
+		</ul>
+		<br>
+		
+		<blockquote>
+			Ces volumes doivent être disponibles à partir du dossier <code><em><strong>/home/</strong></em></code><code><mark class="highlight-gray"><em><strong>&lt;login&gt;</strong></em></mark></code><code><em><strong>/data</strong></em></code> de la machine hôte utilisant <strong><mark class="highlight-blue">Docker</mark></strong>.
+		</blockquote>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Les volumes <mark class="highlight-blue"><strong>Compose</strong></mark> présentent plusieurs avantages comme pouvoir être gérés à l&#x27;aide des commandes de la CLI de Docker ou de son API ou encore pouvoir être partagés de manière plus sûre entre plusieurs conteneurs. 
+				<br>
+				<br>
+				<em><a href="https://docs.docker.com/storage/volumes/">+ d’info sur la doc de Docker ici</a></em></div>
+		</figure>
+		<br>
+
+		<p>
+			<mark class="highlight-yellow_background">Nous devrons également mettre en place :</mark>
+		</p>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">Un <a href="https://docs.docker.com/engine/reference/commandline/network/"><span style="border-bottom:0.05em solid"><em><strong>docker-network</strong></em></span></a> qui fera le lien entre vos containers.</span>
+			</li>
+		</ul>
+		<br>
+
+		<p>
+			<mark class="highlight-yellow_background">Les utilisateurs à créer dans notre base de données WordPress:</mark>
+		</p>
+		<ul class="to-do-list">
+			<li>
+				<div class="checkbox checkbox-off"></div>
+				<span class="to-do-children-unchecked">Un utilisateur <strong>Admin</strong> <mark class="highlight-gray">(ne doit pas s’appeler admin)</mark></span>
+			</li>
+		</ul>
+		<ul class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Un utilisateur standard</span></li></ul>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Pour des questions de lisibilité, il faudra configurer notre nom de domaine afin qu’il pointe vers <strong>notre adresse IP locale</strong>. Ce nom de domaine sera <span style="border-bottom:0.05em solid"><mark class="highlight-gray"><em>&lt;login&gt;</em></mark></span><span style="border-bottom:0.05em solid">.42.fr</span></div>
+		</figure>
+		<br>
+
+		<hr/>
+		<br>
+		
+		<h3>Afin de réaliser ces différentes tâches, le sujet apporte plusieurs autres précisions :</h3>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Le tag latest est <span style="border-bottom:0.05em solid"><strong>interdit</strong></span>.</div>
+		</figure>
+
+		<p>
+			Lorsque vous précisez une dépendance à installer, vous devez préciser sa version à installer, l’avantage du tag <strong><mark class="highlight-gray"><em>latest</em></mark></strong> est clair, installer la <strong>dernière version</strong> d’une dépendance.
+		</p>
+		<p>
+			Cependant <mark class="highlight-gray"><em><strong>latest</strong></em></mark> a également un <span style="border-bottom:0.05em solid">gros désavantage</span>, il peut apporter des <strong>problèmes de compatibilité</strong> sur le temps.
+		</p>
+		<p>
+			<strong><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Exemple:</mark></span></strong><mark class="highlight-gray"> Aujourd&#x27;hui vous pourriez tout configurer de manière a ce que les dernières versions fonctionnent correctement entre elles, mais imaginez que 2 ans après quelqu&#x27;un souhaite tester votre logiciel, il se pourrait que certaines dépendances aient évoluées et fonctionnent autrement entre elles, c’est pour cela qu’il est préférable d’indiquer la version à utiliser.</mark>
+		</p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Aucun mot de passe ne doit être présent dans vos <mark class="highlight-blue"><strong>Dockerfiles</strong></mark>.</div>
+		</figure>
+
+		<p>Faut-il vraiment expliquer ce point la ? 😅</p>
+		<p>Il faut dire que c&#x27;est une des plus grosses erreurs des devs utilisant Github.</p>
+		<p>Oui, il arrive que des développeurs push dans leur repo certaines informations sensibles, telles que des clefs d’API ou encore des mots de passe en clair 🫢</p>
+		<p>Évidemment ça reste <span style="border-bottom:0.05em solid"><strong>l’erreur number 1</strong></span> à ne pas faire. </p>
+		<p>Si cela vous arrive, ne faites pas la deuxième erreur de re-push par dessus en supprimant votre clef ou votre mot de passe, les commits de Github finiront par vous trahir ❌</p>
+		<p>Pensez plutôt à rapidement <a href="https://makina-corpus.com/devops/git-annuler-proprement-un-commit-apres-un-push">supprimer votre commit</a>.</p>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">L’utilisation des variables d’environnement est <span style="border-bottom:0.05em solid"><strong>obligatoire</strong></span>.</div>
+		</figure>
+		<p>Cette consigne va avec la précédente, vous devez donc utiliser l’environnement de votre machine.</p>
+		<p>Cela pourrait sembler utile pour stocker les mots de passe ou autres</p>
+		<br>
+		
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">La mise en place d’un fichier <span style="border-bottom:0.05em solid"><strong>.</strong></span><em><span style="border-bottom:0.05em solid"><strong>env</strong></span></em> afin de stocker vos variables d’environnement est <span style="border-bottom:0.05em solid"><strong>fortement conseillée</strong></span>.</div>
+		</figure>
+		<p>Nous savons désormais comment stocker notre environnement.</p>
+		<br>
+		<br>
+
+		<p>Dans le sujet, nous trouvons également un exemple d’a quoi pourrait ressembler ce fichier .env grace à un <code><em>cat srcs/.env</em></code> :</p>
+		<pre class="code">
+			<code>
+				DOMAIN_NAME=wil.42.fr
+				# certificates
+				CERTS_=./XXXXXXXXX
+				# MYSQL SETUP
+				MYSQL_ROOT_PASSWORD=XXXXXXXXXX
+				MYSQL_USER=XXXXXXXXXX
+				MYSQL_PASSWORD=XXXXXXXXXX
+				[...]
+			</code>
+		</pre>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Grace à ce <code>cat</code> nous pouvons imaginer les infos dont nous aurons besoin pour mettre en place notre projet.</div>
+		</figure>
+		<br>
+		<br>
+
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">📖</span></div>
+			<div style="width:100%">Votre container <strong>NGINX</strong> doit être le seul point d’entrée de votre infrastructure par le port <strong>443</strong> uniquement en utilisant le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div>
+		</figure>
+		<p>Le seul point d’entrée de notre Compose doit être par le container de NGINX, passant par le port <strong>443</strong>.</p>
+		<p>C’est à dire que le seul porte qu’ouvrira Docker-Compose sur votre machine sera le <strong>443</strong> <mark class="highlight-gray"><em>(tips: c’est le port qui permet l’accès par https:// , et le 80 par http://)</em></mark></p>
+		<p>Ce <em><strong>schéma</strong></em> fournit dans le sujet devrait <span style="border-bottom:0.05em solid">éclaircir</span> les choses:</p>
+
+		<div class="schema-sujet">
+			<figure class="image">
+				<a href="img/Capture_dcran_2022-07-19__16.24.51.png"><img style="width:1012px" src="img/Capture_dcran_2022-07-19__16.24.51.png"/></a>
+			</figure>
+		</div>
+
+		<p>
+			Ici, on retrouve les ports qui permettront à <strong>WordPress</strong> de communiquer en interne avec la base de données <mark class="highlight-gray">(pour pouvoir stocker des nouvelles pages ou autres)</mark> et <strong>Nginx</strong> qui communique avec <strong>WordPress</strong> <mark class="highlight-gray">(qui lui dira quoi afficher sur le serveur web).</mark>
+		</p>
+		<p>
+			Le container <strong>MariaDB</strong> stocke ses informations <mark class="highlight-gray"><em>(base de donnée)</em></mark> dans le volume correspondant et <strong>WordPress</strong> <em><mark class="highlight-gray">(site wordpress)</mark></em> dans le sien.
+		</p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Il est indiqué que nous devons utiliser le protocole <strong>TLSv1.2</strong> ou <strong>TLSv1.3</strong></div>
+		</figure>
+		<br>
+
+		<h3>Mais qu’est ce que <span style="border-bottom:0.05em solid"><em><strong>TLS</strong></em></span> ?</h3>
+		<br>
+		<p>
+			<mark class="block-color-yellow_background"><span style="border-bottom:0.05em solid"><strong>Wikipédia</strong></span> nous indique : </mark>
+		</p>
+		<p>
+			La <em><strong>Transport Layer Security </strong></em><em>(</em><em><strong>TLS</strong></em><em>) </em>ou « Sécurité de la couche de transport » est un protocole
+			<a href="https://fr.wikipedia.org/wiki/Transport_Layer_Security#cite_note-1"></a>de sécurisation des échanges par 
+			<a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_informatique">réseau informatique</a>, notamment par 
+			<a href="https://fr.wikipedia.org/wiki/Internet">Internet</a>.
+		</p>
+		<br>
+		
+		<p>TLS permet :</p>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">l&#x27;authentification du serveur</li>
+		</ul>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">la confidentialité des données échangées<mark class="highlight-gray"><em> (ou session chiffrée)</em></mark></li>
+		</ul>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">l&#x27;intégrité des données échangées</li>
+		</ul>
+		<ul class="bulleted-list">
+			<li style="list-style-type:disc">de manière optionnelle, l&#x27;authentification du client <em><mark class="highlight-gray">(mais dans la réalité celle-ci est souvent assurée par la couche applicative)</mark></em></li>
+		</ul>
+		<br>
+
+		<p>
+			Je ne sais pas vous mais <strong>TLS</strong> me semble ressembler de très près a du <strong>SSL</strong>, ce fameux protocole qui rajoute un <strong><mark class="highlight-teal">cadenas vert</mark></strong> quand vous accédez à un site <mark class="highlight-teal"><strong>sécurisé</strong></mark>, comme la plupart des sites aujourd&#x27;hui.
+		</p>
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">C’est ce protocole qui change vos <strong>URL</strong> de <em>http</em> en <em>https</em>.</div>
+		</figure>
+		<br>
+
+		<p>Ma question est donc rapidement,</p>
+		<h3>Quelle est la différence entre <mark class="highlight-teal">TLS</mark> et <mark class="highlight-teal">SSL</mark> ?</h3>
+		<br>
+
+		<p>
+			<strong>SSL</strong> et <strong>TLS</strong> sont deux protocoles qui permettent l’authentification, et le chiffrement des données qui transitent entre des serveurs.
+		</p>
+		<br>
+
+		<p>
+			En fait le <strong>SSL</strong> est le prédécesseur du <strong>TLS</strong>. Au fil du temps, de nouvelles versions de ces protocoles ont vu le jour pour faire face aux vulnérabilités et prendre en charge des suites et des algorithmes de chiffrement toujours plus forts, toujours <span style="border-bottom:0.05em solid">plus sécurisés</span> 🔐
+		</p>
+		<br>
+
+		<h3>L’histoire du SSL/TSL :</h3>
+		<br>
+		
+		<p>Initialement développé par <strong>Netscape</strong>, le SSL sort en <strong>1995</strong> dans sa version SSL 2.0 <em><mark class="highlight-gray">(le SSL 1.0 n’étant jamais sorti)</mark></em>.</p>
+		<p>Mais après la découverte de plusieurs vulnérabilités 🔓 en <strong>1996</strong>, la version 2.0 est vite remplacée par le SSL 3.0. </p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%"><em><mark class="highlight-gray">Les versions 2.0 et 3.0 sont parfois libellées ainsi : SSLv2 et SSLv3.</mark></em></div>
+		</figure>
+		<br>
+
+		<p>
+			Basé sur le SSL 3.0, <a href="https://tools.ietf.org/html/rfc2246">le TLS est introduit</a> en <strong>1999</strong> comme <strong><em><span style="border-bottom:0.05em solid">la nouvelle version du SSL.</span></em></strong>
+		</p>
+		<p>
+			Le protocole <strong>TSL</strong> est donc simplement le <span style="border-bottom:0.05em solid"><strong>remplaçant du SSL</strong></span>. Il corrige certaines <strong><mark class="highlight-red"><em><span style="border-bottom:0.05em solid">vulnérabilités de sécurité</span></em></mark></strong> dans les anciens protocoles <strong>SSL</strong>.
+		</p>
+		<br>
+
+		<p>Nous devrons donc rendre notre système sécurisé, par un protocole semblable au SSL, le <mark class="highlight-teal"><strong>TSL</strong></mark>. </p>
+		<br>
+
+		<hr/>
+		<br>
+		
+		<p>
+			Avant de commencer notre projet, regardons le dernier document fourni avec le sujet, la <span style="border-bottom:0.05em solid"><strong>structure attendue de notre projet</strong></span> : 
+		</p>
+		
+		<pre class="code">
+			<code>
+				$&gt; ls -alR
+
+				total XX
+				drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
+				drwxrwxrwt 17 wil wil 4096 avril 42 20:42 ..
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Makefile
+				drwxrwxr-x 3 wil wil 4096 avril 42 20:42 srcs
+
+				./srcs:
+				total XX
+				drwxrwxr-x 3 wil wil 4096 avril 42 20:42 .
+				drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 docker-compose.yml
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .env
+				drwxrwxr-x 5 wil wil 4096 avril 42 20:42 requirements
+
+				./srcs/requirements:
+				total XX
+				drwxrwxr-x 5 wil wil 4096 avril 42 20:42 .
+				drwxrwxr-x 3 wil wil 4096 avril 42 20:42 ..
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 bonus
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 mariadb
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 nginx
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 tools
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 wordpress
+
+				./srcs/requirements/mariadb:
+				total XX
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:45 .
+				drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
+				drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
+				drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools
+				[...]
+
+				./srcs/requirements/nginx:
+				total XX
+				drwxrwxr-x 4 wil wil 4096 avril 42 20:42 .
+				drwxrwxr-x 5 wil wil 4096 avril 42 20:42 ..
+				drwxrwxr-x 2 wil wil 4096 avril 42 20:42 conf
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 Dockerfile
+				-rw-rw-r-- 1 wil wil XXXX avril 42 20:42 .dockerignore
+				drwxrwxr-x 2 wil wil 4096 avril 42 20:42 tools
+			</code>
+		</pre>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="327d8adf-24e7-4f84-afe6-a555d69020a4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Évitons de négliger ce genre d’information fournie avec le sujet, elle peut déjà nous aider à <span style="border-bottom:0.05em solid">démarrer</span> le projet.</div></figure><p id="5a9d6456-cb08-4739-804c-23b0ace0e04e" class="">
 </p><p id="6dfcee38-7c5a-4bd4-abbd-4f8faf4d6018" class="">Cette structure nous montre clairement qu’il doit y avoir un dossier principal <code>srcs</code> contenant notre fameux <strong><mark class="highlight-orange">docker-compose.yml </mark></strong>que nous avons vu juste au dessus, notre fichier <strong><mark class="highlight-teal">.env</mark></strong>, ainsi qu’un dossier <code>requirements</code> qui contiendra nos différents containers.</p><p id="ee0d482d-364a-4c5c-8507-ef5cb3ddca46" class="">
 </p><p id="980e26d4-a744-4383-a4be-e8be2e3e1139" class="">Rappel des <span style="border-bottom:0.05em solid"><strong>3 containers </strong></span>à mettre en place : </p><ul id="6ecfbb73-26c2-486f-b5da-5e182a33647e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>NGINX</strong> <mark class="highlight-gray"><em>(avec TLS v1.2)</em></mark></span></li></ul><ul id="ecd91165-cd12-4c60-800a-754d9a8f3b15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>WordPress</strong> <em><mark class="highlight-gray">(avec php-fpm configuré)</mark></em></span></li></ul><ul id="c96e2680-7919-4f53-862f-7f3a931bcdaf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans nginx)</em></mark></span></li></ul><p id="1469e921-f1cb-4e6a-8dff-c0c1fb79a3ec" class="">
 </p><p id="23ac64a2-fa42-4294-8731-39a68ea7ebf4" class="">Comme je l’expliquais au début, chaque container est représenté par un <code>dossier</code> portant son nom.</p><p id="77dd0569-ec54-4b3b-bf7c-35737ae24d2e" class="">Dans chaque dossier de container doit obligatoirement se trouver son <strong><mark class="highlight-blue">Dockerfile</mark></strong>, sans quoi <mark class="highlight-blue"><strong>Docker</strong></mark> serait perdu.</p><p id="1b50ae16-9f8e-417f-8f32-e0996347ab5c" class="">Rappelez vous, en + du <strong><mark class="highlight-blue">Dockerfile</mark></strong> nous pouvons rajouter différents fichiers/dossiers de config qu&#x27;il serait ensuite intéressant de copier dans notre container grâce au <mark class="highlight-blue"><strong>Dockerfile</strong></mark> et son mot-clef <strong><mark class="highlight-blue">COPY</mark></strong>.</p><p id="c0b86384-8ba0-4ffa-a802-1d3aba4bc303" class="">
