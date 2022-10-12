@@ -97,7 +97,7 @@
 			Souvenez vous ce <strong><mark class="highlight-teal">super programme</mark></strong> que vous aviez trouvé sur <strong>Github</strong>, vous l’installez comme prévu par le tutoriel du ReadMe 📄, mais l’installation <strong><mark class="highlight-red">crash</mark></strong> indiquant “<strong><em>You have missing dependencies</em></strong>”, ou encore “<em><strong>This version of this file is not compatible with your OS</strong></em>” 😣
 		</p>
 
-		<figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex">
+		<figure class="block-color-gray callout" style="display:flex">
 			<div style="font-size:1.5em"><span class="icon">👉</span></div>
 			<div style="width:100%">Alors oui, vous pouvez rester un <mark class="highlight-teal"><strong>bon développeur</strong></mark> et proposer un super <strong>script qui installera ces dépendances</strong>, mais vous ne pouvez pas prévoir que l’utilisateur soit sur Mac, Linux ou encore qu’il ait une version d’OS si vieille que celle ci ne connait même pas vos dépendances !
 			</div>
@@ -1048,7 +1048,7 @@
 		<p>Nous sommes maintenant prêt pour tenter de lancer notre mini <mark class="highlight-blue"><strong>Dockerfile</strong></mark>.</p>
 		<p>Commençons par <strong>build</strong> notre container.</p>
 		<p>
-			Dans le dossier contenant le <mark class="highlight-blue"><strong>Dockerfile </strong></mark><strong>nginx</strong> : &nbsp &nbsp
+			Dans le dossier contenant le <mark class="highlight-blue"><strong>Dockerfile </strong></mark><strong>NGINX</strong> : &nbsp &nbsp
 			<code>docker build -t nginx .</code>
 		</p>
 		<br>
@@ -1228,108 +1228,290 @@
 		<p>
 			Désormais il faudrait modifier le fichier de <em>configuration</em> de <strong>NGINX</strong> comme on le souhaite. Pour cela, nous pourrions faire des <strong>redirections</strong> de certaines phrases dans le fichier de <em><strong>config</strong></em>, mais nous allons plutôt utiliser le mot clef <mark class="highlight-blue"><strong>COPY</strong></mark> du <mark class="highlight-blue"><strong>Dockerfile</strong></mark>, qui a l’air fait pour ça.
 		</p>
-		<p id="63b34a84-1b66-43b2-ae7f-2f1c9a292832" class="">
-</p><p id="4c7a7c55-b637-49a8-b4e8-e24826048e4a" class="">Nous allons donc prendre le fichier de <em><strong>config</strong></em> de <strong>NGINX</strong> de base et nous le modifierons après. Il se trouve dans <code>/etc/nginx/nginx.conf</code> </p><figure id="a2751508-fce8-4c50-8a94-d2fab042bcc0"><div class="source"><a href="Inception/nginx.conf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97aeef6-ffc4-4d2e-835d-36986aacdff5/nginx.conf</a></div></figure><p id="a708826f-3b69-499f-a209-e423bc946b57" class="">
-</p><p id="b597bcfa-9617-4ab8-a627-ca65ac487b42" class="">Nous allons le mettre dans un dossier <code>conf</code> , lui même dans le dossier <code>nginx</code> <mark class="highlight-gray"><em>(pour respecter la structure indiqué dans le sujet)</em></mark>.</p><p id="fed77f91-4a74-4bae-9265-ca588d917c65" class="">
-</p><p id="7d1ff4e0-ec97-4da1-9397-0052765977d8" class="">et en rajoutant la ligne :</p><p id="08f06109-2002-4643-8322-1e6a679365d4" class=""><strong><code>COPY</code></strong><code> conf/nginx.conf /etc/nginx/nginx.conf</code></p><p id="752710c9-2694-4021-a9f5-3e4ddf77ced3" class="">Le fichier de configuration de <strong>NGINX</strong> devrait être remplacé par le notre au démarrage du container, faisons un test en rajoutant la phrase <mark class="highlight-gray"><em>“yes we can”</em></mark> en commentaire au début de notre fichier <em>nginx.conf</em> dans le dossier <code>conf</code></p><p id="0da4ae60-0583-4f8f-87b8-6487c7bab716" class="">
-</p><p id="0dbd54c7-af5a-4883-9941-648f4ecbdd01" class="">Si tout va bien, en <em><strong>buildant</strong></em> le container, et en le <strong>lancant</strong>, vous devriez voir votre fichier <em>conf</em> de <strong>NGINX</strong> <span style="border-bottom:0.05em solid">modifié </span>en y accédant avec vim par exemple.</p><p id="7c05853f-683c-4101-bb70-7a46e92e1ce8" class="">
-</p><p id="62004b0c-657f-4054-b2b0-981c9d224eac" class="">Ensuite nous pouvons rajouter le mot clef <strong><mark class="highlight-blue">EXPOSE</mark></strong>, qui, comme précisé au début du tutoriel, permet d’exposer un <strong>port</strong>, nous exposerons le <span style="border-bottom:0.05em solid"><strong>443</strong></span>, tout simplement parce que c’est le seul autorisé par le <strong>sujet/schéma </strong>fourni. </p><p id="a462752e-d5fa-4c22-8c27-44732a989f81" class="">
-</p><p id="4929208d-df57-4f5b-b1f6-d54e02db6de4" class="">Nous rajoutons tout simplement :<strong><code>EXPOSE</code></strong><code> 443</code> dans notre <strong><mark class="highlight-blue">Dockerfile</mark></strong></p><p id="451c4064-8e1f-4eda-821a-81ff3241d1e1" class="">
-</p><p id="cc970c13-4ffc-47ba-ba16-88b5218d8570" class="">
-</p><p id="03743db7-b5e9-4ae4-b731-db990f032d80" class="">Avant de lancer <strong>NGINX</strong>, il faudrait indiquer à <strong>NGINX</strong> la configuration qu’on souhaite utiliser dans le cadre <span style="border-bottom:0.05em solid">d’Inception</span>.</p><p id="93e7aa36-0c25-4f25-8cf5-0449c8776658" class="">
-</p><h2 id="9b68dd34-b257-4034-aeab-6f3bf968391c" class="">Le fichier de configuration de NGINX:</h2><p id="25eb6c81-f391-4a6b-ac27-9b590113fe5c" class="">
-</p><p id="9dc16699-5362-4bac-a35d-76592ed88eca" class=""><a href="https://ubiq.co/tech-blog/nginx-ssl-configuration-step-step-details/">Cette page</a> nous aide à paramétrer <strong>NGINX</strong> pour le <strong>ssl</strong></p><p id="b69d5626-9fe1-4510-8978-98f6b881b267" class="">Voici la configuration de base que l’on peut trouver :</p><p id="4594f880-46ca-4ab8-b031-6b12b24f950f" class="">
-</p><pre id="91bb8989-5f15-4127-a6e8-061b4c23a5bd" class="code code-wrap"><code>server {
-    listen 443;       ❯ Depuis la version 1.12 de NGINX, il faut préciser ssl.
-    ssl on;           ❯ Inutile depuis la version 1.12
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;  ❯ Gardons TLSv1.2 &amp; TLSv1.3
-    ssl_certificate /etc/nginx/ssl/bundle.crt;  ❯ Indiquons notre certificat
-    ssl_certificate_key /etc/nginx/ssl/private.key;  ❯ et notre clef
-    ...
-}</code></pre><p id="ae307bca-9333-4ef7-9e39-392027c41105" class="">
-</p><p id="d49d04af-f584-4dd9-9493-84f2bc0b0c3f" class="">Le fichier de <strong>config</strong> devient donc :</p><p id="724000e8-257e-4a7f-936e-aa54967ca449" class="">
-</p><pre id="1e25501e-d9bd-4a7b-a9d5-90a863a28006" class="code code-wrap"><code>server {
-    listen 443 ssl;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_certificate /etc/nginx/ssl/inception.crt;
-    ssl_certificate_key /etc/nginx/ssl/inception.key;
-    ...
-}</code></pre><p id="b18582a6-beb2-4162-a5b8-2b7868c5fddd" class="">
-</p><p id="1443c2f7-3fdd-4fba-af67-51300c45eb42" class="">Nous avons maintenant la partie <span style="border-bottom:0.05em solid"><strong>SSL/TSL</strong></span> qui fonctionne avec <strong>NGINX</strong>.</p><p id="cbad8b92-a4e0-435d-b02b-d6a0d97b8092" class="">Je vais préciser le dossier d’accueil en ajoutant <code>root /var/www/html;</code> </p><p id="bb4db8d0-158e-434d-9905-89922b8b2146" class="">C’est le dossier où se trouvera WordPress et donc sa première page à afficher. </p><p id="3ab3dba4-dc73-44d2-93aa-ebc917a1ec54" class="">Je vais également préciser <span style="border-bottom:0.05em solid">quelle </span>page afficher en premier, dans le cadre de <strong>WordPress</strong> il faut indiquer <strong>index.php</strong>, mais je vais également en ajouter d’autres qui me semblent importantes.</p><p id="3db7e49e-3418-4dc1-a59a-a581c2b69f73" class=""><code>index index.php index.html index.htm;</code></p><p id="7bbd919d-5832-43cf-bf98-496eb042e759" class="">
-</p><p id="dcf872c7-9633-4adf-b581-c2e1bf540d50" class="">
-</p><p id="29ac8ddd-21b0-4f87-8ced-e336cd82f704" class="">Vu que la connexion se fera depuis localhost, je l’indique en <strong>server_name :</strong></p><p id="d4d9a6cf-ff1c-420e-8f62-3a1b1f9c556a" class=""><code>server_name localhost;</code> </p><p id="4b320348-5366-4a80-ab6c-a6ded59a61f2" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4f71328c-185d-4b87-9cfd-8712c731fb86"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Il faudra changer <code><a href="http://localhost">localhost</a></code> par l’IP <code>login.42.fr</code></div></figure><p id="07b00f86-cce4-4849-86a0-bc4f5422de48" class="">
-</p><p id="31f10dff-73c5-4801-b39d-a904000e4670" class="">Le fichier de config ressemble maintenant à cela:</p><p id="9f8026ca-3ae0-41b8-a1db-aa2920740deb" class="">
-</p><pre id="97793751-aa9b-428d-901a-5f5b2422187d" class="code"><code>server {
-		#SSL/TLS Configuration
-    listen 443 ssl;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_certificate /etc/nginx/ssl/inception.crt;
-    ssl_certificate_key /etc/nginx/ssl/inception.key;
+		<br>
 
-		#root and index and server_name
-		root /var/www/html;
-		server_name localhost;
-		index index.php index.html index.htm;
-}</code></pre><p id="26330da0-99fb-4609-adca-49833aa787db" class="">
-</p><p id="43a84177-2da0-4bdd-be72-0df4b49e58b0" class="">Maintenant il faut rajouter des règles sur les locations pour <strong>WordPress</strong>.</p><p id="bf0dfa5c-8d4a-44f4-a48d-fcb0be0d9320" class="">Déjà il faut demander à NGINX de renvoyer n’importe quelle requête que nous ne connaissons pas sur un <strong>404</strong> <strong>error</strong>.</p><p id="76e05d90-ea00-4051-9e89-98c84a62eb57" class="">Un <a href="https://stackoverflow.com/questions/57561236/how-nginx-process-404-fallback-in-try-files">topic sur stackoverflow</a> explique bien cela, nous ajoutons la règle:</p><p id="74dd3f00-c747-4c9e-b3d1-b7543d423772" class="">
-</p><pre id="56b06301-5bfd-4ed6-ad55-05af3a1e3490" class="code"><code>location / {
-				try_files $uri $uri/ =404;
-}</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f15ec597-27d9-40fd-bb83-2daf56d055af"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour tous les fichiers, nous essayons d’ouvrir le fichier renseigné, si c’est un échec nous renverrons <strong>404</strong>.</div></figure><p id="2f60a1fc-71a1-4e95-a06c-7a60307604cd" class="">
-</p><p id="59221414-7738-4c09-9552-44172467afa9" class="">Il nous reste à installer <strong>PHP</strong> pour pouvoir gérer les requêtes <strong>PHP</strong> de <strong>WordPress</strong>.</p><p id="7769be07-0da4-4b38-8dfa-b8df3647e138" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ce5cc9cb-666b-496e-8cab-4e5b95e00311"><div style="font-size:1.5em"><span class="icon">🚫</span></div><div style="width:100%">Le sujet indique que le PHP doit être installé sur le container de <strong>WordPress</strong> et non de NGINX. </div></figure><p id="fa78f80d-acba-4ec5-8e89-f9e084db548c" class="">
-</p><p id="c82a0ea0-dd50-4e80-9f14-c37d69bc3f98" class=""><span style="border-bottom:0.05em solid">Pas de soucis !</span> Nous allons donc simplement préciser comment gérer le <strong>PHP</strong> à <strong>NGINX</strong> et lui indiquer où il faut qu’il renvoie notre code <strong>php</strong>.</p><p id="3bd3cda2-1938-42d1-8dd4-751764f0ae32" class="">
-</p><pre id="b4fcad91-0de0-40ac-b14a-86711bc7871a" class="code"><code>location ~ \.php$ {                             # Pour toutes les requetes php
+		<p>
+			Nous allons donc prendre le fichier de <em><strong>config</strong></em> de <strong>NGINX</strong> de base et nous le modifierons après. Il se trouve dans &nbsp &nbsp<code>/etc/nginx/nginx.conf</code>
+		</p>
+		<figure>
+			<div class="source"><a href="Inception/nginx.conf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97aeef6-ffc4-4d2e-835d-36986aacdff5/nginx.conf</a></div>
+		</figure>
+		<br>
+
+		<p>
+			Nous allons le mettre dans un dossier <code>conf</code> , lui même dans le dossier <code>nginx</code> <mark class="highlight-gray"><em>(pour respecter la structure indiqué dans le sujet)</em></mark>.
+		</p>
+		<br>
+
+		<p>En rajoutant la ligne :</p>
+		<p><strong>&nbsp &nbsp<code>COPY</code></strong><code> conf/nginx.conf /etc/nginx/nginx.conf</code></p>
+		<p>
+			Le fichier de configuration de <strong>NGINX</strong> devrait être remplacé par le notre au démarrage du container, faisons un test en rajoutant la phrase <mark class="highlight-gray"><em>“yes we can”</em></mark> en commentaire au début de notre fichier <em>nginx.conf</em> dans le dossier <code>conf</code>.
+		</p>
+		<br>
+
+		<p>
+			Si tout va bien, en <em><strong>buildant</strong></em> le container, et en le <strong>lancant</strong>, vous devriez voir votre fichier <em>conf</em> de <strong>NGINX</strong> <span style="border-bottom:0.05em solid">modifié </span>en y accédant avec vim par exemple.
+		</p>
+		<br>
+
+		<p>
+			Avant de lancer <strong>NGINX</strong>, il faudrait indiquer à <strong>NGINX</strong> la configuration qu’on souhaite utiliser dans le cadre <span style="border-bottom:0.05em solid">d’Inception</span>.
+		</p>
+		<br>
+		
+		<hr/>
+		<h2>Le fichier de configuration de NGINX:</h2>
+		<br>
+		
+		<p><a href="https://ubiq.co/tech-blog/nginx-ssl-configuration-step-step-details/">Cette page</a> nous aide à paramétrer <strong>NGINX</strong> pour le <strong>ssl</strong>.</p>
+		<p>Voici la configuration de base que l’on peut trouver :</p>
+		<pre class="code code-wrap">
+			<code>
+				server {
+					listen 443;											❯ Depuis la version 1.12 de NGINX, il faut préciser ssl.
+					ssl on;												❯ Inutile depuis la version 1.12
+					ssl_protocols TLSv1 TLSv1.1 TLSv1.2;				❯ Gardons TLSv1.2 &amp; TLSv1.3
+					ssl_certificate /etc/nginx/ssl/bundle.crt;			❯ Indiquons notre certificat
+					ssl_certificate_key /etc/nginx/ssl/private.key;		❯ et notre clef
+					...
+				}
+			</code>
+		</pre>
+		<br>
+		<p>Le fichier de <strong>config</strong> devient donc :</p>
+		<pre class="code code-wrap">
+			<code>
+				server {
+					listen 443 ssl;
+					ssl_protocols TLSv1.2 TLSv1.3;
+					ssl_certificate /etc/nginx/ssl/inception.crt;
+					ssl_certificate_key /etc/nginx/ssl/inception.key;
+					...
+				}
+			</code>
+		</pre>
+		<br>
+		
+		<p>Nous avons maintenant la partie <span style="border-bottom:0.05em solid"><strong>SSL/TSL</strong></span> qui fonctionne avec <strong>NGINX</strong>.</p>
+		<p>Je vais préciser le dossier d’accueil en ajoutant &nbsp &nbsp<code>root /var/www/wordpress;</code> </p>
+		<p>C’est le dossier où se trouvera WordPress et donc sa première page à afficher. </p>
+		<p>Je vais également préciser <span style="border-bottom:0.05em solid">quelle </span>page afficher en premier, dans le cadre de <strong>WordPress</strong> il faut indiquer <strong>index.php</strong>, mais je vais également en ajouter d’autres qui me semblent importantes.</p>
+		<p>&nbsp &nbsp<code>index index.php index.html index.htm;</code></p>
+		<br>
+		
+		<p>Étant donné que la connexion se fera depuis localhost, je l’indique en <strong>server_name :</strong> &nbsp &nbsp<code>server_name localhost;</code> </p>
+		<br>
+		
+		<figure class="block-color-blue_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">⚠️</span></div>
+			<div style="width:100%">Il faudra changer <code><a href="http://localhost">localhost</a></code> par l’IP &nbsp<code>login.42.fr</code></div>
+		</figure>
+		<br>
+		
+		<p>Le fichier de config ressemble maintenant à cela:</p>
+		<pre class="code">
+			<code>
+				server {
+					#SSL/TLS Configuration
+					listen 443 ssl;
+					ssl_protocols TLSv1.2 TLSv1.3;
+					ssl_certificate /etc/nginx/ssl/inception.crt;
+					ssl_certificate_key /etc/nginx/ssl/inception.key;
+
+					#root and index and server_name
+					root /var/www/html;
+					server_name localhost;
+					index index.php index.html index.htm;
+				}
+			</code>
+		</pre>
+		<br>
+
+		<p>Il faut ensuite ajouter des règles sur les locations pour <strong>WordPress</strong>.</p>
+		<p>Nous devons d'abord demander à NGINX de renvoyer n’importe quelle requête que nous ne connaissons pas sur un <strong>404</strong> <strong>error</strong>.</p>
+		<p>Ce <em><a href="https://stackoverflow.com/questions/57561236/how-nginx-process-404-fallback-in-try-files">topic sur stackoverflow</a></em> explique bien cela. Nous donc ajoutons la règle :</p>
+		<pre class="code">
+			<code>
+				location / {
+					try_files $uri $uri/ =404;
+				}
+			</code>
+		</pre>
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Pour tous les fichiers, nous essayons d’ouvrir le fichier renseigné, si c’est un échec nous renverrons <strong>404</strong>.</div>
+		</figure>
+		<br>
+
+		<p>Il nous reste à installer <strong>PHP</strong> pour pouvoir gérer les requêtes <strong>PHP</strong> de <strong>WordPress</strong>.</p>
+		<br>
+		
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">🚫</span></div>
+			<div style="width:100%">Le sujet indique que le PHP doit être installé sur le container de <strong>WordPress</strong> et non de NGINX. </div>
+		</figure>
+		<br>
+		
+		<p>
+			<span style="border-bottom:0.05em solid">Pas de soucis !</span> Nous allons donc simplement préciser comment gérer le <strong>PHP</strong> à <strong>NGINX</strong> et lui indiquer où il faut qu’il renvoie notre code <strong>php</strong>.
+		</p>
+		<pre class="code">
+			<code>
+				location ~ \.php$ {								# Pour toutes les requetes php
 					include snippets/fastcgi-php.conf;
-					fastcgi_pass wordpress:9000;          #Comment renvoyer les requetes php sur le port 9000
-}</code></pre><p id="d6528404-cf97-4aff-a3a4-9a7a1a241b89" class="">
-</p><p id="b3668714-9ccc-472b-89d7-a0ee9be023b7" class="">Maintenant je vais simplement rajouter dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> une commande <code>chmod</code> afin de s’assurer que nous aurons les droits sur ce dont nous avons besoin.</p><p id="322b52a6-aa5b-49d3-ae2e-b7554d6bb670" class="">
-</p><p id="e5b8d754-da0a-4193-b624-a9c6677b88b9" class=""><code>RUN chmod 755 /var/www/html</code> <mark class="highlight-gray">(notre root principal)</mark></p><p id="faf491d9-bd22-4c7c-bef8-1625e9941a7f" class=""><code>RUN chown -R www-data:www-data /var/www/html</code> <mark class="highlight-gray">(l’utilisateur principal)</mark></p><p id="e9694aa8-2dd1-4984-a5e2-6516b90b3686" class="">
-</p><p id="467a91b4-e482-432f-a8f8-5dbdd606999c" class="">Maintenant il ne reste plus qu’à lancer NGINX, nous utiliserons le mot clef <code><strong>CMD</strong></code>  : <code>CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code> </p><p id="7272e57f-4f88-4d00-bb5e-8e4828405480" class="">Cela lancera <strong>NGINX</strong> en premier plan pour que le container ne se stop pas.</p><p id="86274cd7-571a-4d65-888b-01398f8770cd" class="">
-</p><p id="7217696c-55a4-4eeb-8a1c-3783527bf191" class="">Vous pourriez voir en allant sur <a href="http://localhost">localhost</a>, en utilisant <strong>https</strong> <mark class="highlight-gray">(car vous n’avez pas ouvert le </mark><mark class="highlight-gray"><strong>http</strong></mark><mark class="highlight-gray">),</mark> voir la page d’accueil de NGINX, mais il faudrait aussi changer le <strong>root</strong> du fichier de configuration et enlever le <code>wordpress:9000</code> pour le php, car vous n’avez pas encore le container du PHP <mark class="highlight-gray">(WordPress)</mark></p><p id="fcda5ca5-cd27-4d04-9957-36a9f91b4f21" class="">
-</p><p id="66fd718a-363b-4873-b1a8-958050551a58" class="">
-</p><p id="9b80c49a-fcc7-4d2c-8cc3-690d53da7516" class=""><span style="border-bottom:0.05em solid"><strong>Un container de terminé ! </strong></span></p><p id="56a21988-8907-445d-b593-2a8908baf81a" class="">
-</p><p id="e80a850b-a2f5-4bc6-9cf8-22e3593056fe" class="">Par quel container poursuivre ? </p><p id="16a677cf-fa1a-400b-bc0d-4c805a91784f" class="">Nous aurons besoin de <strong>MariaDB</strong> pour installer <strong>WordPress</strong>.</p><p id="mariadb" class="">Lors de l’installation de <strong>WordPress</strong>, celui ci requiert un serveur web <mark class="highlight-gray">(NGINX)</mark>, et une base de données, ici <strong>MariaDB</strong>.</p><p id="2b806562-198a-46b1-8f36-2d4b868e62de" class="">Il serait donc plus judicieux de tout comprendre sur les bases de données et commencer par créer ce container. </p><p id="008f7856-0131-46ec-bd75-7d0dcf56f40e" class=""><br>
-</p><h2 id="0bc41f4e-5d46-43f1-87fe-1e17d591c19d" class="">4. Container MARIADB :</h2><p id="56846519-549c-4142-9303-38f6c4e75c05" class="">
-</p><p id="456a1d4c-6a94-4278-9763-fe900e2ca920" class=""><strong>MariaDB</strong> est un système de gestion de base de données édité sous licence GPL. Il s&#x27;agit d&#x27;un embranchement communautaire de <strong>MySQL</strong> : la gouvernance du projet est assurée par la fondation <strong>MariaDB.</strong></p><p id="3c7b37ce-76c9-4bb3-a5c7-c28190d6a321" class="">
-</p><p id="1f029ab6-e9cf-4d38-b84d-daf8acccc5f5" class="">En gros, <strong>MariaDB</strong> est quasiment une copie de <strong>MySQL</strong>, mais pourquoi ?</p><p id="88378188-9624-4478-9eaa-c6b37258d318" class=""><strong>MySQL</strong> était au début totalement <span style="border-bottom:0.05em solid">open-source</span>, puis il a été racheté par <strong>Oracle</strong>.</p><p id="7de9a52f-1c8e-49fe-a2ce-c65ff1abf0e7" class="">Depuis, plusieurs organismes s’inquiètent de la possibilité qu’a <strong>Oracle</strong> de rendre <strong><mark class="highlight-red">payant</mark></strong> son logiciel.</p><p id="e8e83320-0f37-49d7-8842-c15026916754" class="">Pour empêcher cela, la fondation <strong>MariaDB</strong> crée une version quasi-identique à MySQL, mais totalement <mark class="highlight-teal"><strong>open-source</strong></mark>. </p><p id="18e17a8c-4c01-4c22-a8d5-e233dcdce336" class="">
-</p><p id="619475e8-1828-44ea-9403-bb2eb0e2b180" class=""><mark class="highlight-yellow_background">Le fonctionnement d’une base de données comme MySQL : </mark></p><p id="91240fa5-f5b7-43b7-83c2-f83070f34e5e" class="">La gestion des données est basée sur un modèle de <span style="border-bottom:0.05em solid">tableaux;</span> toutes les données traitées sur <strong>MySQL</strong> sont stockées dans des tableaux pouvant être <span style="border-bottom:0.05em solid">reliés les uns aux autres</span> via des clés. En voici un exemple :</p><p id="f9eef384-e0cf-4f51-861d-fdcc56af5520" class="">
-</p><figure id="d08c1a89-24a3-4bc1-8e0b-2e8a159a8f37" class="image"><a href="img/mysqlexemple.png"><img style="width:933px" src="img/mysqlexemple.png"/></a></figure><p id="a17c86bd-a594-4d42-ace0-46204ea4a148" class="">
-</p><p id="ddd1fb39-a75d-44af-85cc-c9d855415c5e" class=""><a href="https://www.malekal.com/installer-mysql-mariadb-sur-debian-10/">Ce tutoriel</a> indique parfaitement comment créer une base de données avec <strong>MariaDB</strong> sur <span style="border-bottom:0.05em solid">Debian</span>.</p><p id="004d79a5-8974-45c0-9c14-519866755c6a" class="">
-</p><h2 id="67aafb90-fdc0-4a37-82cf-33be5d150790" class="">Tutoriel pour utiliser MySQL/MariaDB:</h2><p id="483d3b4b-3f36-4d40-8836-b197bef85b7b" class="">
-</p><p id="95f4de20-846b-45bd-a397-b5305d4a3c52" class="">Pour commencer et pouvoir faire vos tests aussi de votre côté, nous allons créer un <strong><mark class="highlight-blue">Dockerfile</mark></strong> minimum pour <strong>MariaDB. </strong>Si vous vous souvenez de ce qu’on a fait pour le début de <strong>NGINX</strong>, on a simplement besoin de commencer par d’écrire </p><p id="62af0be2-afdf-48af-bda3-05eadd1ee82a" class=""><code>FROM debian:buster</code></p><p id="fb0ca6f0-dee6-4bcb-b6fa-f32272525dda" class="">À partir de là, on peut <strong>build</strong> et lancer le container en rentrant dans son terminal <mark class="highlight-gray">(remontez plus haut pour retrouver comment si besoin)</mark></p><p id="16da35c5-14ed-4141-9ce9-74cfc75f1638" class="">Maintenant, on se retrouve dans notre container et nous pouvons y effectuer nos commandes tests.</p><p id="8afa076c-ab95-40d2-b204-e36a2f358824" class="">
-</p><p id="bb99f40d-c4b0-4ab6-99d9-f006042dc43f" class="">Commençons par le fameux, essentiel, <code>apt update -y</code></p><p id="7ba549ea-bfca-41ac-be5d-7b5c71ccdd33" class="">Rajoutons aussi le <code>apt upgrade -y</code></p><p id="a3be07ea-8c4a-4254-9893-5cce664a5352" class="">Maintenant que <strong>APT</strong> contient des dépendances à jour, nous pouvons installer <strong>MariaDB.</strong></p><p id="cbecafec-bce5-4889-96d0-ea429bf6d0c8" class="">
-</p><p id="74987426-aa5a-421f-92fd-84249652788d" class="">La version 10.3 de <strong>MariaDB</strong> étant la plus commune, nous pouvons l’installer en utiliser <strong>APT</strong>.</p><p id="45425a30-a56c-447e-a9f6-ba4662036c40" class="">
-</p><p id="da868933-0d6a-4771-8d57-35b8c3ca14b8" class=""><code>apt-get install mariadb-server -y</code></p><p id="4cb9716e-7b89-4a61-be2a-d7266adc9d75" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="efa858ee-3c7c-4a72-ada8-7441ddd997ec"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pensez au -y, sinon docker aura du mal à <mark class="highlight-blue"><strong>build</strong></mark> votre container car il attendra la confirmation du <strong>y</strong><strong><em>/n</em></strong> …</div></figure><p id="7364909f-5d48-47e7-b7ab-9eec6c407e59" class="">
-</p><p id="8b439f97-c351-4219-9c67-684ddffa4ab1" class="">Maintenant, rendons visite au fichier de configuration de MySQL, appelé <code>50-server.cnf</code> et se trouvant dans <code>etc/mysql/mariadb.conf.d/50-server.cnf</code> </p><p id="9e3de1dd-cf5f-4921-9221-b796d86aa1bf" class="">Voici à quoi ressemble le fichier de base :</p><pre id="5a0820a4-7817-4ab0-9ba1-c2ca97b083d2" class="code"><code># The MariaDB configuration file
-#
-# The MariaDB/MySQL tools read configuration files in the following order:
-# 1. &quot;/etc/mysql/mariadb.cnf&quot; (this file) to set global defaults,
-# 2. &quot;/etc/mysql/conf.d/*.cnf&quot; to set global options.
-# 3. &quot;/etc/mysql/mariadb.conf.d/*.cnf&quot; to set MariaDB-only options.
-# 4. &quot;~/.my.cnf&quot; to set user-specific options.
-#
-# If the same option is defined multiple times, the last one will apply.
-#
-# One can use all long options that the program supports.
-# Run program with --help to get a list of available options and with
-# --print-defaults to see which it would actually understand and use.
+					fastcgi_pass wordpress:9000;				# Comment renvoyer les requetes php sur le port 9000
+				}
+			</code>
+		</pre>
+		<br>
 
-#
-# This group is read both both by the client and the server
-# use it for options that affect everything
-#
-[client-server]
+		<p>Je vais à présent simplement ajouter dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> une commande &nbsp<code>chmod</code>&nbsp afin de s’assurer que nous aurons les droits sur ce dont nous avons besoin.</p>
+		<p>&nbsp &nbsp<code>RUN chmod 755 /var/www/html</code> <mark class="highlight-gray">(notre root principal)</mark></p>
+		<p>&nbsp &nbsp<code>RUN chown -R www-data:www-data /var/www/html</code> <mark class="highlight-gray">(l’utilisateur principal)</mark></p>
+		<br>
 
-# Import all .cnf files from configuration directory
-!includedir /etc/mysql/conf.d/
-!includedir /etc/mysql/mariadb.conf.d/</code></pre><p id="ddff62fc-6708-4340-802a-d052201a2d5a" class="">
-</p><p id="b8ee168a-ecde-445d-a1a6-3a45dd6ad29d" class="">Ok et maintenant si on <em>enlève</em> les commentaires ?</p><pre id="bd2df2a8-9460-4770-8990-303f8aac2048" class="code"><code>[client-server]
-!includedir /etc/mysql/conf.d/
-!includedir /etc/mysql/mariadb.conf.d/</code></pre><p id="e9d451e0-696d-4f89-81d0-e672dce71ef2" class=""> </p><h3 id="460af361-2d31-4ff9-a354-d8bce89daf4e" class="">Le fichier de <span style="border-bottom:0.05em solid">configuration</span> de MariaDB:</h3><p id="a8de2d0f-7d53-4231-a46c-775aa0187f02" class="">
-</p><p id="3f4ee9b7-48a5-4dad-a340-44ffa72c8406" class="">Ok c’est donc l’essentiel du fichier de <span style="border-bottom:0.05em solid">config</span> de base, sauf que nous, nous n’avons pas besoin de cette partie qui concerne le côté client.</p><p id="66c938bd-e7da-4a35-aec9-b8da3bc90578" class="">
-</p><p id="30ce4b45-c13b-4370-96c3-586908e35e0e" class="">On commence par les crochets <code>[mysqld]</code> dans le fichier pour indiquer à quelle catégorie va suivre la configuration suivante (c’est comme cela que fonctionne le fichier de configuration de <strong>MySQL</strong>)</p><p id="4baefd6f-e05c-4f09-a493-3bfe64ced844" class="">C’est ici que nous pouvons préciser à <strong>MySQL</strong> sur quel port communiquer, indiqué par le sujet, c’est le <strong>3306 📡 </strong>avec<strong> </strong><code>port = 3306</code></p><p id="323f9edc-073a-4873-baf9-82718a2cea4e" class="">Après, on précise également que toutes les IP du réseau peuvent se connecter, pour cela c’est la ligne <code>bind_address=*</code> , qui en gros veut dire, <code>bind_address=XXX.XXX.XX.XX</code></p><p id="6417b27c-1969-443a-a71b-193eb14bc696" class="">On peut également lui préciser notre dossier qui stockera notre base de données avec <code>datadir=/var/lib/mysql</code></p><p id="86061093-55f4-4a38-9096-13624194f4b5" class="">Je rajoute l’utilisateur avec <code>user=mysql</code></p><p id="fc604116-970b-421d-aaf0-67a5f0dd414d" class="">Je ne suis pas sûr que ce soit obligatoire car c’est le chemin de base, mais je précise également où MySQL peut trouver la <strong>socket</strong> pour communiquer avec : <code>socket = /run/mysqld/mysqld.sock</code> </p><p id="40587167-4b8b-4a85-8dde-c878c3a44138" class="">
+		<p>
+			Maintenant il ne reste plus qu’à lancer NGINX, nous utiliserons le mot clef &nbsp<code><strong>CMD</strong></code>  : &nbsp &nbsp<code>CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code>
+		</p>
+		<p>Cela lancera <strong>NGINX</strong> en premier plan pour que le container ne se stop pas.</p>
+		<br>
+
+		<p>
+			Vous pourriez voir la page d’accueil de NGINX en allant sur <a href="http://localhost">localhost</a>, en utilisant <strong>https</strong> <mark class="highlight-gray">(car vous n’avez pas ouvert le </mark><mark class="highlight-gray"><strong>http</strong></mark><mark class="highlight-gray">).</mark> 
+			Il faudrait aussi changer le <strong>root</strong> du fichier de configuration et enlever le &nbsp<code>wordpress:9000</code>&nbsp pour le php, car vous n’avez pas encore le container du PHP <mark class="highlight-gray">(WordPress)</mark>
+		</p>
+		<br>
+		<br>
+
+		<p><span style="border-bottom:0.05em solid"><strong>Un container de terminé ! </strong></span></p>
+		<br>
+
+		<p>Par quel container poursuivre ? </p>
+		<p>Nous aurons besoin de <strong>MariaDB</strong> pour installer <strong>WordPress</strong>.</p>
+		<p id="mariadb">Lors de l’installation de <strong>WordPress</strong>, celui ci requiert un serveur web <mark class="highlight-gray">(NGINX)</mark>, et une base de données, ici <strong>MariaDB</strong>.</p>
+		<p>Il serait donc plus judicieux de tout comprendre sur les bases de données et commencer par créer ce container. </p>
+		<br>
+		<br>
+		<br>
+
+	<!----------------------------------------------------------------- 4. CONTAINER MARIADB ------------------------------------------------------------------>
+
+	<h1>4. Container MARIADB :</h1>
+	<br>
+	<br>
+
+		<p>
+			<strong>MariaDB</strong> est un système de gestion de base de données édité sous licence GPL. Il s&#x27;agit d&#x27;un embranchement communautaire de <strong>MySQL</strong> : la gouvernance du projet est assurée par la fondation <strong>MariaDB.</strong>
+		</p>
+		<br>
+
+		<p>En gros, <strong>MariaDB</strong> est quasiment une copie de <strong>MySQL</strong>, mais pourquoi ?</p>
+		<p><strong>MySQL</strong> était au début totalement <span style="border-bottom:0.05em solid">open-source</span>, puis il a été racheté par <strong>Oracle</strong>.</p>
+		<p>Depuis, plusieurs organismes s’inquiètent de la possibilité qu’a <strong>Oracle</strong> de rendre <strong><mark class="highlight-red">payant</mark></strong> son logiciel.</p>
+		<p>Pour empêcher cela, la fondation <strong>MariaDB</strong> crée une version quasi-identique à MySQL, mais totalement <mark class="highlight-teal"><strong>open-source</strong></mark>. </p>
+		<br>
+		
+		<p><mark class="highlight-yellow_background">Le fonctionnement d’une base de données comme MySQL : </mark></p>
+		<p>
+			La gestion des données est basée sur un modèle de <span style="border-bottom:0.05em solid">tableaux;</span> toutes les données traitées sur <strong>MySQL</strong> sont stockées dans des tableaux pouvant être <span style="border-bottom:0.05em solid">reliés les uns aux autres</span> via des clés. En voici un exemple :
+		</p>
+		<div class="tableau-mysql">
+			<figure>
+				<a href="img/mysqlexemple.png"><img style="width:933px" src="img/mysqlexemple.png"/></a>
+			</figure>
+		</div>
+		<br>
+
+		<p>
+			<a href="https://www.malekal.com/installer-mysql-mariadb-sur-debian-10/"><em>Ce tutoriel</em></a> indique parfaitement comment créer une base de données avec <strong>MariaDB</strong> sur <span style="border-bottom:0.05em solid">Debian</span>.
+		</p>
+		<br>
+
+		<hr/>
+		<br>
+
+		<h2>Tutoriel pour utiliser MySQL/MariaDB:</h2>
+		<br>
+
+		<p>
+			Pour commencer et pouvoir faire vos tests aussi de votre côté, nous allons créer un <strong><mark class="highlight-blue">Dockerfile</mark></strong> minimum pour <strong>MariaDB. </strong>Si vous vous souvenez de ce qu’on a fait pour le début de <strong>NGINX</strong>, on a simplement besoin de commencer par d’écrire 
+			&nbsp <code>FROM debian:buster</code>.
+		</p>
+		<p>
+			À partir de là, on peut <strong>build</strong> et lancer le container en rentrant dans son terminal <mark class="highlight-gray">(remontez plus haut pour retrouver comment si besoin)</mark>
+		</p>
+		<p>Maintenant, on se retrouve dans notre container et nous pouvons y effectuer nos commandes tests.</p>
+		<br>
+
+		<p>Commençons par le fameux, essentiel, &nbsp <code>apt update -y</code>.</p>
+		<p>Ajoutons aussi le &nbsp<code>apt upgrade -y</code>.</p>
+		<p><strong>APT</strong> contient à présent des dépendances à jour, nous pouvons installer <strong>MariaDB.</strong></p>
+		<br>
+
+		<p>La version 10.3 de <strong>MariaDB</strong> étant la plus commune, nous pouvons l’installer en utiliser <strong>APT</strong>.</p>
+		<p>&nbsp &nbsp<code>apt-get install mariadb-server -y</code></p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">Pensez au -y, sinon docker aura du mal à <mark class="highlight-blue"><strong>build</strong></mark> votre container car il attendra la confirmation du <strong>y</strong><strong><em>/n</em></strong> …</div>
+		</figure>
+		<br>
+
+		<p>Rendons ensuite visite au fichier de configuration de MySQL, appelé &nbsp<code>50-server.cnf</code>&nbsp et se trouvant dans &nbsp<code>etc/mysql/mariadb.conf.d/50-server.cnf</code> </p>
+		<p>Voici à quoi ressemble le fichier de base :</p>
+		<pre class="code">
+			<code>
+				# The MariaDB configuration file
+				#
+				# The MariaDB/MySQL tools read configuration files in the following order:
+				# 1. &quot;/etc/mysql/mariadb.cnf&quot; (this file) to set global defaults,
+				# 2. &quot;/etc/mysql/conf.d/*.cnf&quot; to set global options.
+				# 3. &quot;/etc/mysql/mariadb.conf.d/*.cnf&quot; to set MariaDB-only options.
+				# 4. &quot;~/.my.cnf&quot; to set user-specific options.
+				#
+				# If the same option is defined multiple times, the last one will apply.
+				#
+				# One can use all long options that the program supports.
+				# Run program with --help to get a list of available options and with
+				# --print-defaults to see which it would actually understand and use.
+
+				#
+				# This group is read both both by the client and the server
+				# use it for options that affect everything
+				#
+				[client-server]
+
+				# Import all .cnf files from configuration directory
+				!includedir /etc/mysql/conf.d/
+				!includedir /etc/mysql/mariadb.conf.d/
+			</code>
+		</pre>
+		<br>
+
+		<p>Ok et si on <em>enlève</em> les commentaires ?</p>
+		<pre class="code">
+			<code>
+				[client-server]
+				!includedir /etc/mysql/conf.d/
+				!includedir /etc/mysql/mariadb.conf.d/
+			</code>
+		</pre>
+		<br>
+
+		<h3>Le fichier de <span style="border-bottom:0.05em solid">configuration</span> de MariaDB:</h3>
+		<br>
+
+		<p>
+			C’est donc l’essentiel du fichier de <span style="border-bottom:0.05em solid">config</span> de base, sauf que nous, nous n’avons pas besoin de cette partie qui concerne le côté client.
+		</p>
+		<br>
+		
+		<p>
+			On commence par les crochets &nbsp<code>[mysqld]</code>&nbsp dans le fichier pour indiquer à quelle catégorie va suivre la configuration suivante (c’est comme cela que fonctionne le fichier de configuration de <strong>MySQL</strong>)
+		</p>
+		<p>C’est ici que nous pouvons préciser à <strong>MySQL</strong> sur quel port communiquer, indiqué par le sujet, c’est le <strong>3306 📡 </strong>avec<strong> </strong><code>port = 3306</code></p><p id="323f9edc-073a-4873-baf9-82718a2cea4e" class="">Après, on précise également que toutes les IP du réseau peuvent se connecter, pour cela c’est la ligne <code>bind_address=*</code> , qui en gros veut dire, <code>bind_address=XXX.XXX.XX.XX</code></p><p id="6417b27c-1969-443a-a71b-193eb14bc696" class="">On peut également lui préciser notre dossier qui stockera notre base de données avec <code>datadir=/var/lib/mysql</code></p><p id="86061093-55f4-4a38-9096-13624194f4b5" class="">Je rajoute l’utilisateur avec <code>user=mysql</code></p><p id="fc604116-970b-421d-aaf0-67a5f0dd414d" class="">Je ne suis pas sûr que ce soit obligatoire car c’est le chemin de base, mais je précise également où MySQL peut trouver la <strong>socket</strong> pour communiquer avec : <code>socket = /run/mysqld/mysqld.sock</code> </p><p id="40587167-4b8b-4a85-8dde-c878c3a44138" class="">
 </p><p id="9c81042d-b2f0-472c-a60e-ea4b9386c3c3" class=""><strong><span style="border-bottom:0.05em solid">Ok good ! </span></strong></p><p id="2c95b79d-776b-421e-bbc0-c5573ff90656" class="">
 </p><p id="cb5713cf-9fe4-4d9a-9d79-aa1dcc6078fe" class="">Notre fichier de <span style="border-bottom:0.05em solid">configuration</span> devrait donc être :</p><pre id="1f279d11-396b-41a7-8e61-85540a85c1dc" class="code"><code>[mysqld]
 datadir = /var/lib/mysql
@@ -1360,15 +1542,20 @@ user = mysql</code></pre><p id="c5c51e51-43b7-4931-9624-12ad52a7f328" class="">
 </p><p id="296c3a4c-d376-4669-9222-cc28cfd75c3f" class="">Pour prévoir la suite <mark class="highlight-gray">(nous aurons besoin d’installer WordPress avec son lien de téléchargement) </mark>nous devons installer <span style="border-bottom:0.05em solid"><strong>wget</strong></span></p><p id="b2d5bae2-9c10-4dce-a78a-75c27d75f6e9" class="">
 </p><pre id="d3d01289-34e1-4a62-9bb9-d089fede92c3" class="code"><code>RUN apt-get -y install wget</code></pre><p id="96a3f817-6ecc-43a1-b85d-128dccf2f88b" class="">
 </p><p id="63515327-d686-4b5b-a62c-8e7dc3e9158a" class="">Le sujet nous l’indique, nous devons également installer <span style="border-bottom:0.05em solid"><strong>PHP</strong></span> avec <strong>WordPress</strong>.</p><p id="73a0a15b-f9a6-4b7c-a595-bf8d088f9bee" class="">Rappelez vous, il communiquera sur le port <strong>9000</strong> avec <strong>NGINX</strong>.</p><p id="730875de-cd37-42d2-89df-84a63c7eddbf" class="">Pour cela, j’utilise également <strong>APT</strong> pour installer <em><strong>php7.3</strong></em> et ses dépendances comme <em>php-fpm et php-mysql.</em></p><p id="cddcc03e-a888-4738-8cc6-fda8ea10dfcf" class="">
-</p><pre id="0ddf51f2-7180-4590-9fc3-6a7b4dc0a6ed" class="code"><code>RUN apt-get install -y php7.3\
-	php-fpm\
-	php-mysql\</code></pre><p id="52159f3a-dbc3-4160-9fc3-87601c10e1f2" class="">
+</p>
+<pre class="code">
+	<code>
+		RUN apt-get install -y php7.3\
+		php-fpm\
+		php-mysql\
+		mariadb-client
+	</code></pre><p id="52159f3a-dbc3-4160-9fc3-87601c10e1f2" class="">
 </p><p id="697ccdce-c383-4f37-b974-186b4f7c94bb" class="">Maintenant il est temps d’installer le fameux <strong>WordPress</strong> dans notre container !</p><p id="a6d383cf-ced6-4614-bee0-03121c97e7ff" class="">Nous utilisons donc <span style="border-bottom:0.05em solid"><em>wget</em></span> en indiquant le lien d’installation. J’ai pris la version <strong>FR 6.0.</strong> </p><p id="11f07188-b764-41ae-8467-e0f342c1e4f8" class="">À vous de choisir, vous trouverez les différentes versions <a href="https://fr.wordpress.org/download/releases/">ici</a>.</p><p id="31a3996b-5782-4dee-b394-75b329462cb0" class="">
 </p><p id="5587a293-4c7d-4810-9cda-b0d9d5ab2c20" class=""><em>wget</em> possède plusieurs options, dont une qui va nous permettre d’indiquer dans quel dossier on veut télécharger le fichier en utilisant -P.</p><p id="ca8fb035-d018-43de-aa31-fadd663a619b" class="">Dans quel dossier ? le <strong>/var/www</strong> évidemment ! C&#x27;est ici que nous avons indiqué notre dossier principal à afficher dans le container <strong>NGINX</strong>.</p><p id="e0fb9548-bbbc-4578-85e9-65b957d1d63a" class="">
 </p><pre id="059cb4d1-a02a-4a32-abcf-a7232a0807a0" class="code"><code>RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www</code></pre><p id="5a5c567c-d5d4-4eef-959c-5298224d57ce" class=""><strong>❯ Très bien, top, mais maintenant il faudrait le dé-tar, enfin le décompresser quoi. !</strong></p><p id="e9bb0132-82c6-407f-9286-be8c6f531a66" class="">
 </p><p id="65f45e7b-1a28-464a-99e0-2394a2d94553" class="">Allez je vous aide, allons dans le dossier <strong>/var/www </strong>et utilisons <code><em><strong>tar -xvf</strong></em></code> suivi du fichier pour le décompresser et en obtenir le fameux dossier <code>wordpress</code>!</p><p id="80485089-e2f9-48c7-826c-159ceb13c38a" class="">Ensuite on peut supprimer le <em>.tar</em> qui ne sert plus à rien.</p><pre id="002b4c18-6d94-4462-908c-e190ffd4b766" class="code"><code>RUN cd /var/www &amp;&amp; tar -xzf wordpress-6.0-fr_FR.tar.gz &amp;&amp; rm wordpress-6.0-fr_FR.tar.gz</code></pre><p id="d1784ad4-6b36-4851-a484-4631091c5250" class=""><strong>❯ Nous voila avec </strong><code><strong>wordpress</strong></code><strong> sous forme de dossier.</strong></p><p id="f02a9f3b-9b20-4e11-9a5b-429e61c11171" class="">
 </p><p id="c6d5c455-5aa0-404c-97a6-5034f47dcb3f" class="">Maintenant veillons à bien donner les droits à root d’écrire dans ce dossier.</p><pre id="1c5053b3-774a-4edd-a523-f44a6883ff0b" class="code"><code>RUN		chown -R root:root /var/www/wordpress</code></pre><p id="01263021-d31b-4fba-9d9c-9a612082cd75" class="">
-</p><p id="d0b6616e-04bc-47f6-a660-4d13a6d4304f" class="">Maintenant que <strong>WordPress</strong> est installé, mais pas configuré, occupons nous de <strong>PHP</strong>.</p><p id="403f2fd3-dbb6-4043-b743-62e9bd300fbc" class=""><strong>PHP</strong> sert à <strong>Wordpress</strong>, la plupart des fichiers de WordPress sont des .php.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6f200455-569e-4634-a81c-3fe946e5a965"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">PHP est un langage de programmation libre, principalement utilisé pour produire des pages Web dynamiques via un serveur HTTP, mais pouvant également fonctionner comme n&#x27;importe quel langage interprété de façon locale.</div></figure><p id="2e7df36f-4bc6-45b6-8e4f-aaa5265443e6" class="">
+</p><p id="d0b6616e-04bc-47f6-a660-4d13a6d4304f" class="">Maintenant que <strong>WordPress</strong> est installé, mais pas configuré, occupons nous de <strong>PHP</strong>.</p><p id="403f2fd3-dbb6-4043-b743-62e9bd300fbc" class=""><strong>PHP</strong> sert à <strong>Wordpress</strong>, la plupart des fichiers de WordPress sont des .php.</p><figure class="block-color-gray_background callout" style="display:flex" id="6f200455-569e-4634-a81c-3fe946e5a965"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">PHP est un langage de programmation libre, principalement utilisé pour produire des pages Web dynamiques via un serveur HTTP, mais pouvant également fonctionner comme n&#x27;importe quel langage interprété de façon locale.</div></figure><p id="2e7df36f-4bc6-45b6-8e4f-aaa5265443e6" class="">
 </p><p id="578e3b73-63c5-4f85-8bbf-58e5dc123190" class="">Une fois qu’il est installé avec <strong>APT</strong>, nous pouvons modifier son fichier de configuration.</p><p id="770cb135-677b-4bc0-b480-fa9a9445723d" class="">
 </p><p id="2a4fe93b-c0b6-47ce-a6d0-d0607f9abf56" class="">Ici, j’ai pris le fichier de configuration de base et j’ai modifié seulement 2 petites choses.</p><p id="d52ea80c-db82-4f09-b5a2-21305c575ffb" class="">
 </p><p id="413ecddd-f855-45a6-94b4-3d097383282e" class="">J’ai rajouté une ligne <code>clear_env = no</code> , je pense que cette ligne est assez claire pour ne pas avoir à l’expliquer, c’est pour l’environnement.</p><p id="0d14f227-e214-4c37-ba4b-1ab531926876" class="">Mais j’ai également modifier la ligne <code>listen</code>, ici j’ai indiqué qu’il devait écouter au port de WordPress, le <strong>9000</strong>. </p><p id="3b7f6bac-3b39-4ee1-9cde-4c4c262533a3" class="">Grosso modo ca donne : <code>listen=wordpress:9000</code> </p><p id="c2496054-d05b-4c93-8ae3-8827d82c01c7" class="">
@@ -1377,9 +1564,9 @@ user = mysql</code></pre><p id="c5c51e51-43b7-4931-9624-12ad52a7f328" class="">
 </p><p id="fbcec37a-de94-496a-967d-358906ae1448" class=""><strong>WordPress</strong> a besoin d’une base de données pour fonctionner, du moins connaitre son <span style="border-bottom:0.05em solid"><strong>mot de passe</strong></span>, son <span style="border-bottom:0.05em solid"><strong>nom</strong></span> et son <span style="border-bottom:0.05em solid"><strong>host</strong></span>. </p><p id="b7c7deb6-87a0-4f90-81b3-26805c0fdf01" class="">Tout cela se configure dans le fichier <strong>wp-config.php</strong> <mark class="highlight-gray"><em>(un truc comme ça)</em></mark></p><p id="27b8a428-95b9-4b1f-9ff9-293c89abed53" class="">
 </p><p id="05d835db-d63c-410d-bfaf-8241ca6aa266" class="">Si vous ne le faites pas, vous arriverez directement sur la page de configuration du site, c’est pas plus mal, mais le sujet requiert une configuration automatique.</p><p id="6101e850-a961-4ea5-b7d6-da609d24cf86" class="">
 </p><p id="fd9ccede-2811-4bdd-9e1b-53bd9dbbbf76" class="">Mais j’ai une bonne nouvelle pour vous ! Un développeur a simplement créé une <strong>CLI</strong> qui permet de configurer presque automatiquement ce genre d’informations pour vous.</p><p id="fa82d31f-fbea-40a7-b527-22a8bdcf599f" class="">Jetez un oeil à<a href="https://www.linode.com/docs/guides/how-to-install-wordpress-using-wp-cli-on-debian-10/"> ce super tuto</a>.</p><p id="796c1579-cf88-4543-8dc0-8f8c4ab80bde" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="538660a7-c611-428a-82bd-5e2569e4abba"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une CLI c&#x27;est une interface textuelle qui traite les commandes vers un programme <strong>informatique</strong>. Il existe différentes interfaces de ligne de commande, telles que<strong> </strong>DOL et Shell Bash.</div></figure><p id="e1354b41-e2b0-4062-bbbc-bd4eaacebf7c" class="">
+</p><figure class="block-color-gray_background callout" style="display:flex" id="538660a7-c611-428a-82bd-5e2569e4abba"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Une CLI c&#x27;est une interface textuelle qui traite les commandes vers un programme <strong>informatique</strong>. Il existe différentes interfaces de ligne de commande, telles que<strong> </strong>DOL et Shell Bash.</div></figure><p id="e1354b41-e2b0-4062-bbbc-bd4eaacebf7c" class="">
 </p><p id="34852c21-c542-4a0e-9d3f-3c5e628acfd5" class="">Je fonce sur cette idée qui m’a l’air bien sympa, il faut déjà réutiliser <strong>wget</strong> pour installer le CLI.</p><pre id="3ff53d5a-23b3-4622-8c7f-a461243ca651" class="code"><code>RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar</code></pre><p id="82502bec-8c5d-4ca7-9314-cf2d511f0713" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="506c9ad4-17ea-486c-a002-7e3b49dc946b"><div style="font-size:1.5em"><span class="icon">🤔</span></div><div style="width:100%">Une autre possibilité aurait été de modifier directement le fichier <code>wp-config.php</code> à coup de <code>sed</code> pour rentrer les infos directement dans le fichier.</div></figure><p id="f16bac6f-b1b9-4eeb-87d7-c0d657261150" class="">
+</p><figure class="block-color-gray_background callout" style="display:flex" id="506c9ad4-17ea-486c-a002-7e3b49dc946b"><div style="font-size:1.5em"><span class="icon">🤔</span></div><div style="width:100%">Une autre possibilité aurait été de modifier directement le fichier <code>wp-config.php</code> à coup de <code>sed</code> pour rentrer les infos directement dans le fichier.</div></figure><p id="f16bac6f-b1b9-4eeb-87d7-c0d657261150" class="">
 </p><p id="d30c79d7-c65d-4ded-b0dc-02f64acf49bc" class="">Il faut ensuite lui donner les bons droits ainsi que le placer dans les binaires.</p><pre id="1235b6b7-4d69-4313-8f2c-6fc435df06ee" class="code"><code>RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-904cdf3d2b75" class="">
 </p><p id="c9bec406-7b96-496f-b0b1-45418fdf9e64" class="">Ok top ! On a installé le <strong>CLI</strong> de <strong>WordPress</strong> 📄</p><p id="f799cc87-dfca-44d1-8700-834a6ffd10ee" class="">Maintenant il faudrait l’utiliser, pour cela on va faire comme avec <strong>MariaDB</strong>, créer un petit script bash qu’on copiera et qui effectuera les commandes à notre place au lancement du container. </p><p id="f1349181-d382-4162-b90f-71e4420363b5" class="">
@@ -1404,7 +1591,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
 </p><h1 id="3d58a5fe-1036-4ce0-aabb-77a86e84bed7" class="">6. Relier les containers avec Compose:</h1><h2 id="51a0e7a0-e19e-4ff7-b40a-41f4cadf0fc3" class="">Place au fameux <span style="border-bottom:0.05em solid">docker-compose.yml</span> !</h2><p id="426d092d-b7d8-4819-a215-5e70026b2513" class="">
 </p><p id="ea0d5339-3bf3-4e83-9216-1cea7e548975" class="">Bon, d’abord renseignez vous sur comment s’écrit un fichier <strong>docker-compose</strong>.</p><p id="109eff6c-05d2-48d8-8ea1-2309552de849" class="">Celui-ci commence toujours par la version de <mark class="highlight-blue"><strong>docker-compose</strong></mark>, la dernière, la 3.</p><p id="7db682ec-774e-4c80-8127-f8220015e10b" class="">
 </p><p id="6d6cef25-be20-449e-ac7b-58f9b63286e2" class="">La première ligne sera donc : <code>version: ‘3’</code></p><p id="cd74e6f2-5c19-4e3e-9917-7dc1f5ca1e26" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="dfb5361f-61ea-44a5-9e5d-561dc05387d3"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%">Attention à l’indentation du <strong>docker-compose.yml</strong> ! Comme pour Python, c’est l’indentation qui compte.</div></figure><p id="a2c61d3e-b52d-4d1f-9ad1-e72bbc47177d" class="">
+</p><figure class="block-color-gray_background callout" style="display:flex" id="dfb5361f-61ea-44a5-9e5d-561dc05387d3"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%">Attention à l’indentation du <strong>docker-compose.yml</strong> ! Comme pour Python, c’est l’indentation qui compte.</div></figure><p id="a2c61d3e-b52d-4d1f-9ad1-e72bbc47177d" class="">
 </p><p id="2ced7fbc-0e07-40a5-990a-d5a2fa652510" class="">Ensuite on indique la ligne <code>services:</code></p><p id="70e52c21-e058-47a8-9872-39a7603df9d2" class="">Et là, avec une indentation de 1 <strong>tab</strong>, on peut énumérer nos différents services.</p><p id="5367f9d4-d179-4dad-9a6b-fb6320b215c7" class="">Je commence par <strong>MariaDB :</strong></p><p id="e1247c46-9896-473e-a13a-a7609f621145" class="">
 </p><pre id="50e2eeeb-c165-421b-9ed3-3e76dc82db02" class="code"><code>mariadb:
     container_name: mariadb   # Le nom du container, oui vraiment.
@@ -1468,11 +1655,11 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
       type: &#x27;none&#x27; 
       o: &#x27;bind&#x27;                             # Les Bind Mounts sont des volumes qui se montent sur un chemin d&#x27;accès à l&#x27;hôte, et ils peuvent être modifiés par d&#x27;autres processus en dehors de docker.
       device: &#x27;/Users/jcluzet/data/mariadb&#x27; #Ou stocker le dossier sur votre ordinateur en local</code></pre><p id="159fbb1a-0e70-4c36-a4df-27c9ad14f3d4" class=""><strong>❯ </strong><a href="https://docs.docker.com/compose/compose-file/compose-file-v3/"><strong>Cette doc</strong></a><strong> de docker explique bien comment gérer les volumes dans un docker-compose.</strong></p><p id="db1f0cad-51d1-43ca-8a48-179711d4dafb" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="222850bf-983e-44a4-95f4-9ba95d26fe91"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Vos volumes seront disponibles dans le dossier /home/login/data de la machine hôte utilisant Docker.</div></figure><p id="9940b5dc-0ce3-4995-b474-78e3a64a7040" class=""><strong>❯ Pensez donc à modifier le path de la ligne device: en conséquence.</strong></p><p id="93486a86-0aec-4ad1-adf5-82a01c77b49f" class="">
+</p><figure class="block-color-blue_background callout" style="display:flex" id="222850bf-983e-44a4-95f4-9ba95d26fe91"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Vos volumes seront disponibles dans le dossier /home/login/data de la machine hôte utilisant Docker.</div></figure><p id="9940b5dc-0ce3-4995-b474-78e3a64a7040" class=""><strong>❯ Pensez donc à modifier le path de la ligne device: en conséquence.</strong></p><p id="93486a86-0aec-4ad1-adf5-82a01c77b49f" class="">
 </p><p id="308f42dd-c10e-4558-a924-9125f71a3eda" class="">Reste plus qu’à créer la partie network, attention, c’est très simple.</p><pre id="7aea0220-53f2-4563-8872-e21d017b52b9" class="code"><code>networks:
     inception:
       driver: bridge</code></pre><p id="6f4a0766-d0c2-4e34-b78c-e47730a0dc41" class=""><strong>❯ Oui c’est tout.</strong></p><p id="27cc4f93-588e-4946-84a8-b365be37c754" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="29a2ba2e-b28d-409f-bbe1-c5d9671d4465"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ici <code>bridge</code> indique a Docker d’installer automatiquement des règles qui permettront aux 3 containers de communiquer en bridge.</div></figure><p id="389d58b5-0191-465f-84e9-a323b3201585" class="">
+</p><figure class="block-color-gray_background callout" style="display:flex" id="29a2ba2e-b28d-409f-bbe1-c5d9671d4465"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Ici <code>bridge</code> indique a Docker d’installer automatiquement des règles qui permettront aux 3 containers de communiquer en bridge.</div></figure><p id="389d58b5-0191-465f-84e9-a323b3201585" class="">
 </p><p id="7f5daf03-75c8-4a4f-88d2-f29beef8412f" class="">Votre fichier <strong>docker-compose.yml</strong> est prêt ! J’espère que vous n’avez pas été jusqu’à recopier les <strong>paths</strong> sans les modifier, ce serait dommage 🤪</p><p id="466dd91d-d37c-46c6-a9e3-13b59796f16f" class="">
 </p><p id="2ec29656-d4b2-4ba8-a375-0cbeeded9d49" class="">Ah j’ai failli oublier ! Vous pouvez <strong>build</strong> votre fichier <mark class="highlight-yellow"><strong>.yaml</strong></mark> avec la commande </p><p id="1bb0ca05-eb11-4d3d-ba77-963d4defd4cf" class=""><code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> -d —build</code></p><p id="b261a003-c466-4adc-abf6-c43d5d4e1153" class="">
 </p><p id="24dfbb6b-1eb5-4dfc-8804-2bbc8953189f" class="">Pour l’<strong>arrêter</strong> : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> stop</code></p><p id="cb32153d-0413-4748-a5b2-f243ab7b6414" class="">Pour <strong>supprimer</strong> le build : <code>docker-compose -f </code><em><code>&lt;path_docker_compose&gt;</code></em><code> down -v</code></p><p id="8b9ca413-98b6-4a1a-8052-78df52dd55a6" class="">
@@ -1487,10 +1674,10 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
 </p><p id="077bb3e8-d681-4a70-8b13-c632b9f1b625" class="">Si vous tentez de vous connecter à <a href="http://localhost">localhost</a> ou 127.0.0.1 depuis votre navigateur <em><mark class="highlight-gray">(après avoir lancé votre container évidemment) </mark></em>vous ne verrez sûrement rien apparaitre. Normal nous n’avons ouvert que le port <strong>443</strong> comme port d’écoute. </p><p id="6047e212-485c-4b12-bc57-9068a296a45f" class="">
 </p><p id="085c4afa-5e3c-427d-80a5-4746580934e2" class="">Le port <strong>443</strong> correspondant au port <strong>SSL</strong> nous devons donc nous y connecter en utilisant <code>https://</code>et non <code>http://</code>, car ce dernier nous emmènerait sur le port standard <strong>80</strong>, que nous aurions sûrement configuré sur un site classique (celui-ci aurait redirigé vers le 443). Mais ici le sujet <mark class="highlight-red"><strong>interdit</strong></mark> l’ouverture d’un autre port que le <strong>443</strong>.</p><p id="0265a99a-c56f-4e4b-80f8-ecad305037dc" class="">
 </p><p id="c9fde834-3524-4f34-8f52-b6d783591f27" class="">Maintenant, nouveau souci, selon votre navigateur, celui-ci devrait afficher un message <strong>d’alerte </strong>indiquant que ce site <mark class="highlight-yellow_background">tente surement de vous </mark><span style="border-bottom:0.05em solid"><mark class="highlight-yellow_background">voler des informations sensibles</mark></span>.</p><p id="febadbac-8adf-4f13-a06b-27ebe43c14e6" class="">Dans le language d’un <strong>dev</strong>, cela veut dire que le certificat <strong>SSL</strong> n’a pas été signé par <mark class="highlight-yellow"><strong>Trusted Authority</strong></mark>. Nous ne pouvons rien y faire quand il s’agit d’un projet en local et encore moins avec un certificat généré par <strong>OpenSSL</strong>.</p><p id="566dd054-6465-4dc6-8974-51c7e8f28413" class="">Cependant, nous pouvons tout de même entrer sur le site. Pour Safari, il existe un bouton qui demande tout de même l’accès au site. Sur Chrome, il existe un petit secret, il suffit de taper le mot <code>thisisunsafe</code> quand vous êtes sur la page d’alerte.</p><p id="40c662d0-8594-4774-a482-d28a8bf43133" class="">Et voilà, vous devriez arriver sur votre site.</p><p id="44c9c917-cddc-4fcc-b9e1-13f50250d3a4" class="">
-</p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="316f2244-e89a-43c6-8f9f-d23d5e69cde6"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer votre nom de domaine afin qu’il pointe vers votre adresse IP locale.
+</p><figure class="block-color-blue_background callout" style="display:flex" id="316f2244-e89a-43c6-8f9f-d23d5e69cde6"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer votre nom de domaine afin qu’il pointe vers votre adresse IP locale.
 Ce nom de domaine sera <a href="http://login.42.fr/">login.42.fr</a>. À nouveau, vous utiliserez votre login</div></figure><p id="e362fdfc-6746-465f-9ee7-6b6bfc7fc33e" class=""><strong>❯ Ici il s’agit uniquement d’une configuration à effectuer sur votre machine en local. </strong></p><p id="f5c1b57e-7525-414a-9e29-e202aeb0c666" class="">
 </p><p id="4ba41374-294d-45b3-86be-9098a6a6a448" class="">En gros vous pouvez déjà accéder au site depuis <strong>localhost</strong>, qui <mark class="highlight-gray"><em>(ce mot)</em></mark> redirige en fait sur l’IP <strong>127.0.0.1</strong>, sans vous le dire, mais tout cela est en fait écrit dans un fichier de votre ordinateur. </p><blockquote id="d98556a2-3ebb-43f3-984c-10cf4f830796" class="">Ce fichier est très sensible et il vous faudra l’éditer avec un <code>sudo.</code> En effet, c’est un fichier très visé par les hackers, il permettrait de vous rediriger facilement sur un faux google quand vous tapez <a href="http://google.fr">google.fr</a>, par exemple.</blockquote><p id="e41f70a8-3ed1-438f-ad16-f37e6595c002" class="">
-</p><p id="c4913049-0822-40b9-b08c-81fab5db61c6" class="">En éditant ce fichier qui se trouve généralement ici : <code>/etc/hosts</code> vous pourrez facilement demander la redirection de <strong>127.0.0.1</strong> sur l’IP que vous voudrez, comme <strong>login.42.fr</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7b6bfa8-36d8-43e4-a374-07fbcc16d19a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">N’oubliez pas de modifier cet IP dans le fichier de conf de NGINX dans la case <code>server_name</code> , le mieux serait de le faire aussi dans la génération du certificat <strong>SSL</strong>, mais bon, celui-ci n’est pas authentifié…</div></figure><p id="c160eb00-7470-4ad1-b328-82cf78e17d50" class="">
+</p><p id="c4913049-0822-40b9-b08c-81fab5db61c6" class="">En éditant ce fichier qui se trouve généralement ici : <code>/etc/hosts</code> vous pourrez facilement demander la redirection de <strong>127.0.0.1</strong> sur l’IP que vous voudrez, comme <strong>login.42.fr</strong></p><figure class="block-color-gray_background callout" style="display:flex" id="c7b6bfa8-36d8-43e4-a374-07fbcc16d19a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">N’oubliez pas de modifier cet IP dans le fichier de conf de NGINX dans la case <code>server_name</code> , le mieux serait de le faire aussi dans la génération du certificat <strong>SSL</strong>, mais bon, celui-ci n’est pas authentifié…</div></figure><p id="c160eb00-7470-4ad1-b328-82cf78e17d50" class="">
 </p><p id="c9e7f6ec-2878-4598-9a18-809a849606ac" class="">À priori vous respectez maintenant toutes les règles du sujet. </p><p id="4e2e27eb-57c9-4fc0-9d85-9fdfc6d76840" class="">Bon courage pour la correction ! 🔎</p>
 </div></article></body>
 <footer>

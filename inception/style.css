@@ -435,7 +435,7 @@ code {
 }
 
 .code-wrap {
-	white-space: pre-wrap;
+	/* white-space: pre-wrap; */
 	word-break: break-all;
 }
 
@@ -716,6 +716,11 @@ footer{
 }
 
 .schema-sujet{
+	display: flex;
+	justify-content: center;
+}
+
+.tableau-mysql{
 	display: flex;
 	justify-content: center;
 }
