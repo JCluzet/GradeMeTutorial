@@ -19,7 +19,7 @@
 		<nav>
 				<li><a href="#docker">Docker</a></li>
 				<li><a href="#sujet">Sujet</a></li>
-				<li><a href="#nginx">Nginx</a></li>
+				<li><a href="#nginx">NGINX</a></li>
 				<li><a href="#mariadb">MariaDB</a></li>
 				<li><a href="#wordpress">WordPress</a></li>
 				<li><a href="#compose">Compose</a></li>
@@ -47,7 +47,7 @@
 
 	<!-- OBJECTIFS D'APPRENTISSAGE -->
 
-	<h1 id="objectifs" class="">Objectifs d’apprentissage</h1>
+	<h1 id="objectifs">Objectifs d’apprentissage</h1>
 	<br>
 	<br>
 		<ol class="block-color-gray">
@@ -57,7 +57,7 @@
 			<li><mark class="highlight-gray">2. Découvrir les différents points du </mark><strong><mark class="highlight-gray">sujet</mark></strong><mark class="highlight-gray"> d’Inception.</mark></li>
 		</ol>
 		<ol>
-			<li><mark class="highlight-gray">3. Mettre en place le container </mark><strong><mark class="highlight-gray">Nginx</mark></strong></li>
+			<li><mark class="highlight-gray">3. Mettre en place le container </mark><strong><mark class="highlight-gray">NGINX</mark></strong></li>
 		</ol>
 		<ol>
 			<li><mark class="highlight-gray">4. Mettre en place le container </mark><strong><mark class="highlight-gray">MariaDB</mark></strong></li>
@@ -200,7 +200,7 @@
 		<br>
 
 		<p class="block-color-gray">
-			Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.
+			Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>NGINX</strong></span>.
 		</p>
 		<p class="block-color-gray">
 			L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?
@@ -208,15 +208,15 @@
 		<br>
 
 		<p>
-			🤔 <mark class="highlight-gray_background">Nous aurions besoin du container Docker qui installe de lui même nginx.</mark>
+			🤔 <mark class="highlight-gray_background">Nous aurions besoin du container Docker qui installe de lui même NGINX.</mark>
 		</p>
 		<p>
-			😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par<a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a> 🥳</mark>
+			😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image NGINX à été publié par<a href="https://hub.docker.com/_/nginx"><strong> NGINX sur le Docker Hub!</strong></a> 🥳</mark>
 		</p>
 		<br>
 
 		<p>
-			Regardons un exemple de ce à quoi pourrais ressembler une image nginx:
+			Regardons un exemple de ce à quoi pourrais ressembler une image NGINX:
 		</p>
 		<pre class="code">
 			<code>
@@ -393,7 +393,7 @@
 		<br>
 
 		<p>Imaginez, vous lancez votre startup, <mark class="highlight-yellow"><strong>Bana</strong></mark><mark class="highlight-red"><strong>neo</strong></mark>.</p>
-		<p>Vous auriez besoin de mettre en place un site internet, vous créez votre image nginx <em><mark class="highlight-gray">(ou vous récupérez celle de nginx sur le </mark></em><mark class="highlight-blue"><em><strong>DockerHub</strong></em></mark><em><mark class="highlight-gray">).</mark></em></p>
+		<p>Vous auriez besoin de mettre en place un site internet, vous créez votre image NGINX <em><mark class="highlight-gray">(ou vous récupérez celle de NGINX sur le </mark></em><mark class="highlight-blue"><em><strong>DockerHub</strong></em></mark><em><mark class="highlight-gray">).</mark></em></p>
 		<p>Vous avez désormais un site internet fonctionnel pour votre entreprise.</p>
 		
 		<blockquote class="block-color-gray_background">
@@ -452,7 +452,7 @@
 		</figure>
 		<br id="sujet" class="sujet">
 		
-		<p>Ce fichier<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">.yml </mark></strong>permet de donner les instructions à <strong><mark class="highlight-blue">Compose</mark></strong> pour gérer 3 images mariadb, nginx et un autre nginx.</p>
+		<p>Ce fichier<mark class="highlight-orange"> </mark><strong><mark class="highlight-orange">.yml </mark></strong>permet de donner les instructions à <strong><mark class="highlight-blue">Compose</mark></strong> pour gérer 3 images mariadb, NGINX et WordPress.</p>
 		<p>
 			Tel un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> qui doit obligatoirement commencer par <mark class="highlight-blue"><strong>FROM</strong></mark> suivi de la version, votre fichier <strong><mark class="highlight-orange">YAML</mark></strong> doit commencer par la version de <mark class="highlight-blue"><strong>Compose</strong></mark>, référerez vous aux 
 			<a href="https://docs.docker.com/compose/compose-file/compose-file-v3/">versions actuelles</a>.
@@ -503,7 +503,7 @@
 		<ul class="to-do-list">
 			<li>
 				<div class="checkbox checkbox-off"></div>
-				<span class="to-do-children-unchecked">MARIADB <mark class="highlight-gray"><em>(sans nginx)</em></mark></span>
+				<span class="to-do-children-unchecked">MARIADB <mark class="highlight-gray"><em>(sans NGINX)</em></mark></span>
 			</li>
 		</ul>
 		<br>
@@ -655,7 +655,7 @@
 		</div>
 
 		<p>
-			Ici, on retrouve les ports qui permettront à <strong>WordPress</strong> de communiquer en interne avec la base de données <mark class="highlight-gray">(pour pouvoir stocker des nouvelles pages ou autres)</mark> et <strong>Nginx</strong> qui communique avec <strong>WordPress</strong> <mark class="highlight-gray">(qui lui dira quoi afficher sur le serveur web).</mark>
+			Ici, on retrouve les ports qui permettront à <strong>WordPress</strong> de communiquer en interne avec la base de données <mark class="highlight-gray">(pour pouvoir stocker des nouvelles pages ou autres)</mark> et <strong>NGINX</strong> qui communique avec <strong>WordPress</strong> <mark class="highlight-gray">(qui lui dira quoi afficher sur le serveur web).</mark>
 		</p>
 		<p>
 			Le container <strong>MariaDB</strong> stocke ses informations <mark class="highlight-gray"><em>(base de donnée)</em></mark> dans le volume correspondant et <strong>WordPress</strong> <em><mark class="highlight-gray">(site wordpress)</mark></em> dans le sien.
@@ -827,7 +827,7 @@
 		<ul class="to-do-list">
 			<li>
 				<div class="checkbox checkbox-off"></div>
-				<span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans nginx)</em></mark></span>
+				<span class="to-do-children-unchecked"><strong>MARIADB</strong> <mark class="highlight-gray"><em>(sans NGINX)</em></mark></span>
 			</li>
 		</ul>
 		<br>
@@ -844,7 +844,7 @@
 		<p>Le schéma fournit avec le sujet nous indique directement quels fichiers il serait intéressant de fournir avec nos containers, les voici:</p>
 		<ul class="bulleted-list">
 			<li style="list-style-type:disc">
-				Un fichier <em><strong>conf</strong></em> qui pourrait contenir le fichier de configuration du container <mark class="highlight-gray"><em>(la config de nginx pour son container associé par exemple)</em></mark>
+				Un fichier <em><strong>conf</strong></em> qui pourrait contenir le fichier de configuration du container <mark class="highlight-gray"><em>(la config de NGINX pour son container associé par exemple)</em></mark>
 			</li>
 		</ul>
 		<ul class="bulleted-list">
@@ -895,7 +895,7 @@
 		<figure class="block-color-blue_background callout" style="display:flex">
 			<div style="font-size:1.5em"><span class="icon">💡</span></div>
 			<div style="width:100%">
-				Rappelez-vous qu’il existe une image nginx toute prête, mise à disposition par <strong>nginx</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>. 
+				Rappelez-vous qu’il existe une image NGINX toute prête, mise à disposition par <strong>NGINX</strong> sur le <mark class="highlight-blue"><strong>Docker Hub</strong></mark>. 
 				<br>La plupart des développeurs serait directement passée par la, mais ici <em><strong>42</strong></em> nous l’interdit, afin de savoir la recréer nous même.
 			</div>
 		</figure>
@@ -987,7 +987,7 @@
 		<p>😵 J&#x27;espère que vous n’oseriez pas tenter cette commande sans l’avoir parfaitement comprise !</p>
 		<p>🤪 De toute manière, la commande n’est pas fonctionnelle, docker demande obligatoirement un chemin ou se trouve le Dockerfile de l’image à build. </p>
 		<p>Dans notre cas, ce serait <code>docker build srcs/requirements/nginx/</code></p>
-		<p>Ou encore plus simple, <code>docker build .</code> en vous trouvant directement dans le dossier nginx.</p>
+		<p>Ou encore plus simple, <code>docker build .</code> en vous trouvant directement dans le dossier NGINX.</p>
 		<p>Vous pouvez également préciser un nom à votre build, avec le flag <code>-t</code></p>
 		<p><em>Exemple : </em><code>docker build -t nginx .</code></p>
 		<br>
@@ -1006,7 +1006,7 @@
 
 		<p>🥳 Vous devriez visualiser votre première image !</p>
 		<p>
-			😕 Cependant celle ci n’a pas de nom en dessous de <strong>REPOSITORY, </strong>il est indiqué <mark class="highlight-gray"><em>&lt;none&gt;</em></mark>, meme si on peut relier cette image à son ID présent dans la quatrième colonne, le sujet nous demande que le nom de l’image porte le nom du container associé, ici <strong>nginx</strong>.
+			😕 Cependant celle ci n’a pas de nom en dessous de <strong>REPOSITORY, </strong>il est indiqué <mark class="highlight-gray"><em>&lt;none&gt;</em></mark>, meme si on peut relier cette image à son ID présent dans la quatrième colonne, le sujet nous demande que le nom de l’image porte le nom du container associé, ici <strong>NGINX</strong>.
 		</p>
 		<p>Et on peut faire cela ! Il suffit simplement de préciser quand on build l’image, son nom, grace au flag <code>-t</code></p>
 		<br>
@@ -1096,15 +1096,15 @@
 		<br>
 
 		<p>
-			Maintenant que <strong>APT</strong> connait les dernières versions des paquets, nous allons lui demander de directement installer celui qui nous intéresse, <strong>Nginx</strong>. 
+			Maintenant que <strong>APT</strong> connait les dernières versions des paquets, nous allons lui demander de directement installer celui qui nous intéresse, <strong>NGINX</strong>. 
 		</p>
 		<p>Il suffit de taper : &nbsp &nbsp<code>apt install nginx</code></p>
 		<br>
 		
-		<p><span style="border-bottom:0.05em solid">Top !</span> Nous voici désormais avec un container qui possède <strong>Nginx</strong>. </p>
+		<p><span style="border-bottom:0.05em solid">Top !</span> Nous voici désormais avec un container qui possède <strong>NGINX</strong>. </p>
 		<br>
 
-		<p>Mais petit problème: si nous fermons notre container, et que nous l'ouvrons à nouveau, <strong>Nginx</strong> a disparu ! 😩</p>
+		<p>Mais petit problème: si nous fermons notre container, et que nous l'ouvrons à nouveau, <strong>NGINX</strong> a disparu ! 😩</p>
 		<p>Cela voudrait dire qu’il va falloir entrer à chaque ouverture du container dans le terminal pour l’installer à nouveau ? 😮‍💨</p>
 		<p>Heureusement non, et c’est la qu’intervient notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> 🤩</p>
 		<p>Rappelez vous, il existe un mot clef <mark class="highlight-blue"><strong>RUN</strong></mark> qui permet d’indiquer à Docker une commande à réaliser à la création du container.</p>
@@ -1112,7 +1112,7 @@
 
 		<p>
 			Nous pourrions donc tout simplement rajouter dans notre <mark class="highlight-blue"><strong>Dockerfile</strong></mark> : 
-			&nbsp &nbsp<code>RUN apt install nginx</code><strong>&nbsp &nbsp ❯ installer nginx</strong>
+			&nbsp &nbsp<code>RUN apt install nginx</code><strong>&nbsp &nbsp ❯ installer NGINX</strong>
 		</p>
 
 		<ul class="toggle">
@@ -1140,7 +1140,7 @@
 			<strong>APT</strong> propose une option &nbsp<code>-y</code> &nbsp qui permet de répondre automatiquement <mark class="highlight-teal"><strong>YES</strong></mark> à ce genre de question lors de l’installation d’un package. 
 		</p>
 		<p>Il serait donc une bonne idée de prendre l’habitude de le rajouter lors de l’ajout de ligne utilisant <strong>APT</strong>, sinon votre container ne pourra pas se créer.</p>
-		<p>Il suffit donc de rajouter un <strong>-y</strong> à la fin de la ligne qui concerne l’installation de <strong>nginx</strong> par <strong>APT</strong>.</p>
+		<p>Il suffit donc de rajouter un <strong>-y</strong> à la fin de la ligne qui concerne l’installation de <strong>NGINX</strong> par <strong>APT</strong>.</p>
 		<p>Cela donne : &nbsp &nbsp<code>RUN apt install nginx -y</code></p>
 		<br>
 		<br>
@@ -1155,38 +1155,92 @@
 		<p>&nbsp &nbsp<code>RUN apt install vim -y </code>&nbsp &nbsp</p>
 		<p>&nbsp &nbsp<code>RUN apt install curl -y</code>&nbsp &nbsp</p>
 		<br>
+		<br>
 		
-		<p id="6f32cc7c-9695-4c6e-8066-c91e37993070" class="">Ok maintenant place au <strong>TSL</strong> !</p><p id="54e7c97f-1094-4c0d-9a26-906f08226442" class="">Nous allons créer un dossier, qui permettra de stocker le certificat et la clef pour une <mark class="highlight-teal"><strong>connexion sécurisée</strong></mark>.</p><p id="b2d6d6f4-93b2-4fbc-bee7-709bafdbde03" class="">Rajoutons : <code>RUN mkdir -p /etc/nginx/ssl</code> </p><p id="bb783bab-21a9-43f8-98db-aba2ca45580d" class="">
-</p><p id="05e16eb4-5319-45a5-97fe-de9085003c7b" class="">Il serait également important de télécharger l’outil principal pour la gestion/création de certificat SSL, <span style="border-bottom:0.05em solid"><strong>OpenSSL</strong></span></p><p id="98f47a34-c72d-44fd-a084-31a30eac7d03" class="">Pour cela, comme les autres packages, nous l’installons avec <strong>apt</strong>.</p><p id="8429cd1b-84c0-4fc7-b922-69da9151e6f3" class=""><code>RUN apt install OpenSSL -y</code></p><p id="459b805b-0269-4d52-8ce1-13e05d1434b8" class="">
-</p><p id="b7af140d-2291-4068-a99c-c8ee148f3870" class="">Ensuite, il va falloir générer un certificat <strong>SSL</strong> et oui nous utilisons les outils <strong>SSL</strong> afin de créer un certificat <em><strong>TSL/SSL</strong></em>.  </p><p id="bcd569e3-7052-49a8-9607-91f775b22677" class="">
-</p><p id="74c02371-5dcb-4a7c-bb59-0729e75886cc" class="">La commande est un peu longue, commençons par le mot clef <strong>openssl</strong> puis <strong>req</strong>.</p><p id="185f4062-2637-43db-a69f-8b8565f8192f" class="">
-</p><p id="f8330716-2cca-4f25-8615-bc58b3b10291" class=""><code>openssl req </code></p><p id="34946364-cef6-40d7-bcc9-32919f8dc653" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b43d393a-118d-4bfb-8c21-535420265e97"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">La commande <strong>req</strong> crée et traite principalement des demandes de certificats au format PKCS#10. Elle peut en outre créer des certificats auto-signés.</div></figure><p id="f955f9d2-2801-460c-865f-071ac7a8acfc" class=""> </p><p id="73590ca7-3e85-431f-86c0-ba05ec4578a2" class="">Nous rajouterons ensuite le mot clef <em><strong>-x509</strong></em> pour préciser le type du certificat.</p><p id="c53310ec-a694-4694-8610-7eb3c05a9fd0" class="">
-</p><p id="c1bb83ba-2ad5-409c-aa48-d0ae888ddbb7" class=""><code>openssl req -x509</code></p><p id="ca1e90c7-0685-4804-9d8b-4d2abbcd27a1" class="">
-</p><p id="bbaa976e-2b75-4ce6-a921-74b74ff445dc" class="">Maintenant si nous créons notre certificat, OpenSSL nous demandera un mot de passe, et souvenez vous, si on demande quelque chose à saisir dans le démarrage du container, celui-ci ne va pas pouvoir se <strong>build</strong>. Il faut donc éviter cela à tout prix ! </p><p id="ea47f42a-cba9-433e-9047-d0b4f4b6a51e" class="">Heureusement, <strong>OpenSSL</strong> a prévu le coup, avec l’option <strong>-nodes</strong>, notre clef privée se retrouvera simplement sans mot de passe.</p><p id="413a4f77-00f3-4d86-b66b-c7240be16680" class="">
-</p><p id="26d2ec7b-f8ef-409b-acaf-9e076291f8b4" class=""><code>openssl req -x509 -nodes</code></p><p id="07daa8a1-cebc-4c99-947f-020af3b2a9b9" class="">
-</p><p id="ab0797c2-b2f2-4473-a01d-422e4304ccd8" class="">Maintenant il faut indiquer à OpenSSL où l’on souhaite stocker le certificat et la clef de notre SSL en rajoutant les options <strong>-out</strong> et <strong>-keyout</strong></p><p id="ff880e52-6c5a-424d-9991-f1ca1bc652cd" class="">
-</p><p id="21e3a161-389f-4688-9a27-75b8405f62be" class=""><code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key</code></p><p id="7d6f8b05-6589-47f6-8926-f344566eaa41" class="">
-</p><p id="b8a67a4e-e288-4e71-9efd-ae1c3524480d" class="">Maintenant si nous lançons cette commande nous risquons d’avoir un <mark class="highlight-red"><strong><em>prompt</em></strong></mark> qui requiert certaines informations pour le certificat. </p><p id="c4cc067f-0457-461c-9bc3-3c57f1e46b3e" class="">Heureusement, OpenSSL a encore prévu le coup et nous permet de les préremplir en rajoutant une option appelé <code>-subj</code> </p><p id="caaec85b-3ad0-49d8-bc02-aa3f5c380661" class="">
-</p><p id="e957f572-d6f5-4656-9dbc-2c3dc848f162" class=""><code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj &quot;/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jcluzet.42.fr/UID=jcluzet&quot;</code></p><p id="67465ea9-ea13-49ad-a338-34d36bb4fd6f" class="">
-</p><p id="dee06628-4d1e-4f02-836d-16649c4b7a77" class="">Plus qu’à rentrer cela précédé d’un <code>RUN</code> dans notre <mark class="highlight-blue"><strong>Dockerfile.</strong></mark></p><p id="08960cd3-3054-4168-a901-a7162b5631af" class="">
-</p><p id="24a7d2de-a5bf-4fa0-bd7c-667cf8777be2" class=""><mark class="highlight-teal"><strong>Bravo !</strong></mark> Votre clef et votre certificat TSL sont désormais automatiquement créés au démarrage de votre <span style="border-bottom:0.05em solid"><strong>container</strong></span> !</p><p id="db6246b4-39b1-48ea-bc4a-8e037e396777" class="">
-</p><hr id="48ed5abf-720a-4499-8d68-4d9054af1ac9"/><p id="26003dc7-3c1a-4f65-981a-cb24f6dc91f4" class="">
-</p><p id="30012741-d5c6-4ab7-9dd7-343c04b10c2a" class="">Maintenant je vais créer un dossier qui nous permettra de stocker les fichiers de config de nginx. </p><p id="49136450-4041-4d11-843e-199a5ebadf24" class="">
-</p><p id="936b8295-dfcd-4238-8b99-b7429d7dc671" class=""><code>RUN mkdir -p /var/run/nginx</code></p><p id="231c7c53-91cc-4fd3-90bd-f09de1a0a537" class="">
-</p><p id="42336da2-d02a-47f7-b791-10a6a3527a31" class="">Désormais il faudrait modifier le fichier de <em>configuration</em> de <strong>nginx</strong> comme on le souhaite. Pour cela, nous pourrions faire des <strong>redirections</strong> de certaines phrases dans le fichier de <em><strong>config</strong></em>, mais nous allons plutôt utiliser le mot clef <mark class="highlight-blue"><strong>COPY</strong></mark> du <mark class="highlight-blue"><strong>Dockerfile</strong></mark>, qui a l’air fait pour ça.</p><p id="63b34a84-1b66-43b2-ae7f-2f1c9a292832" class="">
-</p><p id="4c7a7c55-b637-49a8-b4e8-e24826048e4a" class="">Nous allons donc prendre le fichier de <em><strong>config</strong></em> de <strong>nginx</strong> de base et nous le modifierons après. Il se trouve dans <code>/etc/nginx/nginx.conf</code> </p><figure id="a2751508-fce8-4c50-8a94-d2fab042bcc0"><div class="source"><a href="Inception/nginx.conf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97aeef6-ffc4-4d2e-835d-36986aacdff5/nginx.conf</a></div></figure><p id="a708826f-3b69-499f-a209-e423bc946b57" class="">
+		<p>Ok maintenant place au <strong>TSL</strong> !</p>
+		<p>Nous allons créer un dossier, qui permettra de stocker le certificat et la clef pour une <mark class="highlight-teal"><strong>connexion sécurisée</strong></mark>.</p>
+		<p>Rajoutons : &nbsp &nbsp<code>RUN mkdir -p /etc/nginx/ssl</code> </p>
+		<br>
+		
+		<p>
+			Il serait également important de télécharger l’outil principal pour la gestion/création de certificat SSL, <span style="border-bottom:0.05em solid"><strong>OpenSSL</strong></span>
+		</p>
+		<p>Pour cela, comme les autres packages, nous l’installons avec <strong>apt</strong>.</p>
+		<p>&nbsp &nbsp<code>RUN apt install OpenSSL -y</code></p>
+		<br>
+
+		<p>
+			Ensuite, il va falloir générer un certificat <strong>SSL</strong> et oui nous utilisons les outils <strong>SSL</strong> afin de créer un certificat <em><strong>TSL/SSL</strong></em>. 
+		</p>
+		<p>La commande est un peu longue, commençons par le mot clef <strong>openssl</strong> puis <strong>req</strong>.</p>
+		<p>&nbsp &nbsp<code>openssl req </code></p>
+		<br>
+
+		<figure class="block-color-gray_background callout" style="display:flex">
+			<div style="font-size:1.5em"><span class="icon">💡</span></div>
+			<div style="width:100%">La commande <strong>req</strong> crée et traite principalement des demandes de certificats au format PKCS#10. Elle peut en outre créer des certificats auto-signés.</div>
+		</figure>
+		<br>
+
+		<p>Nous rajouterons ensuite le mot clef <em><strong>-x509</strong></em> pour préciser le type du certificat.</p>
+		<p> &nbsp &nbsp<code>openssl req -x509</code></p>
+		<br>
+
+		<p>
+			Maintenant si nous créons notre certificat, OpenSSL nous demandera un mot de passe, et souvenez vous, si on demande quelque chose à saisir dans le démarrage du container, celui-ci ne va pas pouvoir se <strong>build</strong>. Il faut donc éviter cela à tout prix ! 
+		</p>
+		<br>
+
+		<p>Heureusement, <strong>OpenSSL</strong> a prévu le coup, avec l’option <strong>-nodes</strong>, notre clef privée se retrouvera simplement sans mot de passe.</p>
+		<p>&nbsp &nbsp<code>openssl req -x509 -nodes</code></p>
+		<br>
+
+		<p>
+			Il faut ensuite indiquer à OpenSSL où l’on souhaite stocker le certificat et la clef de notre SSL en rajoutant les options <strong>-out</strong> et <strong>-keyout</strong>
+		</p>
+		<p>&nbsp &nbsp<code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key</code></p>
+		<br>
+		
+		<p>
+			Si nous lançons cette commande nous risquons d’avoir un <mark class="highlight-red"><strong><em>prompt</em></strong></mark> qui requiert certaines informations pour le certificat. 
+		</p>
+		<p>Heureusement, OpenSSL a encore prévu le coup et nous permet de les préremplir en rajoutant une option appelé &nbsp &nbsp<code>-subj</code> </p>
+		<p>
+			&nbsp &nbsp<code>openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj &quot;/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jcluzet.42.fr/UID=jcluzet&quot;</code>
+		</p>
+		<br>
+		
+		<p>Plus qu’à rentrer cela précédé d’un &nbsp<code>RUN</code>&nbsp dans notre <mark class="highlight-blue"><strong>Dockerfile.</strong></mark></p>
+		<br>
+
+		<p>
+			<mark class="highlight-teal"><strong>Bravo !</strong></mark> Votre clef et votre certificat TSL sont désormais automatiquement créés au démarrage de votre <span style="border-bottom:0.05em solid"><strong>container</strong></span> !
+		</p>
+		<br>
+
+		<hr/>
+		<br>
+
+		<p> Nous allons ensuite créer un dossier qui nous permettra de stocker les fichiers de config de NGINX. </p>
+		<p>&nbsp &nbsp<code>RUN mkdir -p /var/run/nginx</code></p>
+		<br>
+
+		<p>
+			Désormais il faudrait modifier le fichier de <em>configuration</em> de <strong>NGINX</strong> comme on le souhaite. Pour cela, nous pourrions faire des <strong>redirections</strong> de certaines phrases dans le fichier de <em><strong>config</strong></em>, mais nous allons plutôt utiliser le mot clef <mark class="highlight-blue"><strong>COPY</strong></mark> du <mark class="highlight-blue"><strong>Dockerfile</strong></mark>, qui a l’air fait pour ça.
+		</p>
+		<p id="63b34a84-1b66-43b2-ae7f-2f1c9a292832" class="">
+</p><p id="4c7a7c55-b637-49a8-b4e8-e24826048e4a" class="">Nous allons donc prendre le fichier de <em><strong>config</strong></em> de <strong>NGINX</strong> de base et nous le modifierons après. Il se trouve dans <code>/etc/nginx/nginx.conf</code> </p><figure id="a2751508-fce8-4c50-8a94-d2fab042bcc0"><div class="source"><a href="Inception/nginx.conf">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a97aeef6-ffc4-4d2e-835d-36986aacdff5/nginx.conf</a></div></figure><p id="a708826f-3b69-499f-a209-e423bc946b57" class="">
 </p><p id="b597bcfa-9617-4ab8-a627-ca65ac487b42" class="">Nous allons le mettre dans un dossier <code>conf</code> , lui même dans le dossier <code>nginx</code> <mark class="highlight-gray"><em>(pour respecter la structure indiqué dans le sujet)</em></mark>.</p><p id="fed77f91-4a74-4bae-9265-ca588d917c65" class="">
-</p><p id="7d1ff4e0-ec97-4da1-9397-0052765977d8" class="">et en rajoutant la ligne :</p><p id="08f06109-2002-4643-8322-1e6a679365d4" class=""><strong><code>COPY</code></strong><code> conf/nginx.conf /etc/nginx/nginx.conf</code></p><p id="752710c9-2694-4021-a9f5-3e4ddf77ced3" class="">Le fichier de configuration de <strong>nginx</strong> devrait être remplacé par le notre au démarrage du container, faisons un test en rajoutant la phrase <mark class="highlight-gray"><em>“yes we can”</em></mark> en commentaire au début de notre fichier <em>nginx.conf</em> dans le dossier <code>conf</code></p><p id="0da4ae60-0583-4f8f-87b8-6487c7bab716" class="">
-</p><p id="0dbd54c7-af5a-4883-9941-648f4ecbdd01" class="">Si tout va bien, en <em><strong>buildant</strong></em> le container, et en le <strong>lancant</strong>, vous devriez voir votre fichier <em>conf</em> de <strong>nginx</strong> <span style="border-bottom:0.05em solid">modifié </span>en y accédant avec vim par exemple.</p><p id="7c05853f-683c-4101-bb70-7a46e92e1ce8" class="">
+</p><p id="7d1ff4e0-ec97-4da1-9397-0052765977d8" class="">et en rajoutant la ligne :</p><p id="08f06109-2002-4643-8322-1e6a679365d4" class=""><strong><code>COPY</code></strong><code> conf/nginx.conf /etc/nginx/nginx.conf</code></p><p id="752710c9-2694-4021-a9f5-3e4ddf77ced3" class="">Le fichier de configuration de <strong>NGINX</strong> devrait être remplacé par le notre au démarrage du container, faisons un test en rajoutant la phrase <mark class="highlight-gray"><em>“yes we can”</em></mark> en commentaire au début de notre fichier <em>nginx.conf</em> dans le dossier <code>conf</code></p><p id="0da4ae60-0583-4f8f-87b8-6487c7bab716" class="">
+</p><p id="0dbd54c7-af5a-4883-9941-648f4ecbdd01" class="">Si tout va bien, en <em><strong>buildant</strong></em> le container, et en le <strong>lancant</strong>, vous devriez voir votre fichier <em>conf</em> de <strong>NGINX</strong> <span style="border-bottom:0.05em solid">modifié </span>en y accédant avec vim par exemple.</p><p id="7c05853f-683c-4101-bb70-7a46e92e1ce8" class="">
 </p><p id="62004b0c-657f-4054-b2b0-981c9d224eac" class="">Ensuite nous pouvons rajouter le mot clef <strong><mark class="highlight-blue">EXPOSE</mark></strong>, qui, comme précisé au début du tutoriel, permet d’exposer un <strong>port</strong>, nous exposerons le <span style="border-bottom:0.05em solid"><strong>443</strong></span>, tout simplement parce que c’est le seul autorisé par le <strong>sujet/schéma </strong>fourni. </p><p id="a462752e-d5fa-4c22-8c27-44732a989f81" class="">
 </p><p id="4929208d-df57-4f5b-b1f6-d54e02db6de4" class="">Nous rajoutons tout simplement :<strong><code>EXPOSE</code></strong><code> 443</code> dans notre <strong><mark class="highlight-blue">Dockerfile</mark></strong></p><p id="451c4064-8e1f-4eda-821a-81ff3241d1e1" class="">
 </p><p id="cc970c13-4ffc-47ba-ba16-88b5218d8570" class="">
-</p><p id="03743db7-b5e9-4ae4-b731-db990f032d80" class="">Avant de lancer <strong>nginx</strong>, il faudrait indiquer à <strong>nginx</strong> la configuration qu’on souhaite utiliser dans le cadre <span style="border-bottom:0.05em solid">d’Inception</span>.</p><p id="93e7aa36-0c25-4f25-8cf5-0449c8776658" class="">
-</p><h2 id="9b68dd34-b257-4034-aeab-6f3bf968391c" class="">Le fichier de configuration de nginx:</h2><p id="25eb6c81-f391-4a6b-ac27-9b590113fe5c" class="">
-</p><p id="9dc16699-5362-4bac-a35d-76592ed88eca" class=""><a href="https://ubiq.co/tech-blog/nginx-ssl-configuration-step-step-details/">Cette page</a> nous aide à paramétrer <strong>nginx</strong> pour le <strong>ssl</strong></p><p id="b69d5626-9fe1-4510-8978-98f6b881b267" class="">Voici la configuration de base que l’on peut trouver :</p><p id="4594f880-46ca-4ab8-b031-6b12b24f950f" class="">
+</p><p id="03743db7-b5e9-4ae4-b731-db990f032d80" class="">Avant de lancer <strong>NGINX</strong>, il faudrait indiquer à <strong>NGINX</strong> la configuration qu’on souhaite utiliser dans le cadre <span style="border-bottom:0.05em solid">d’Inception</span>.</p><p id="93e7aa36-0c25-4f25-8cf5-0449c8776658" class="">
+</p><h2 id="9b68dd34-b257-4034-aeab-6f3bf968391c" class="">Le fichier de configuration de NGINX:</h2><p id="25eb6c81-f391-4a6b-ac27-9b590113fe5c" class="">
+</p><p id="9dc16699-5362-4bac-a35d-76592ed88eca" class=""><a href="https://ubiq.co/tech-blog/nginx-ssl-configuration-step-step-details/">Cette page</a> nous aide à paramétrer <strong>NGINX</strong> pour le <strong>ssl</strong></p><p id="b69d5626-9fe1-4510-8978-98f6b881b267" class="">Voici la configuration de base que l’on peut trouver :</p><p id="4594f880-46ca-4ab8-b031-6b12b24f950f" class="">
 </p><pre id="91bb8989-5f15-4127-a6e8-061b4c23a5bd" class="code code-wrap"><code>server {
-    listen 443;       ❯ Depuis la version 1.12 de nginx, il faut préciser ssl.
+    listen 443;       ❯ Depuis la version 1.12 de NGINX, il faut préciser ssl.
     ssl on;           ❯ Inutile depuis la version 1.12
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;  ❯ Gardons TLSv1.2 &amp; TLSv1.3
     ssl_certificate /etc/nginx/ssl/bundle.crt;  ❯ Indiquons notre certificat
@@ -1201,7 +1255,7 @@
     ssl_certificate_key /etc/nginx/ssl/inception.key;
     ...
 }</code></pre><p id="b18582a6-beb2-4162-a5b8-2b7868c5fddd" class="">
-</p><p id="1443c2f7-3fdd-4fba-af67-51300c45eb42" class="">Nous avons maintenant la partie <span style="border-bottom:0.05em solid"><strong>SSL/TSL</strong></span> qui fonctionne avec <strong>nginx</strong>.</p><p id="cbad8b92-a4e0-435d-b02b-d6a0d97b8092" class="">Je vais préciser le dossier d’accueil en ajoutant <code>root /var/www/html;</code> </p><p id="bb4db8d0-158e-434d-9905-89922b8b2146" class="">C’est le dossier où se trouvera WordPress et donc sa première page à afficher. </p><p id="3ab3dba4-dc73-44d2-93aa-ebc917a1ec54" class="">Je vais également préciser <span style="border-bottom:0.05em solid">quelle </span>page afficher en premier, dans le cadre de <strong>WordPress</strong> il faut indiquer <strong>index.php</strong>, mais je vais également en ajouter d’autres qui me semblent importantes.</p><p id="3db7e49e-3418-4dc1-a59a-a581c2b69f73" class=""><code>index index.php index.html index.htm;</code></p><p id="7bbd919d-5832-43cf-bf98-496eb042e759" class="">
+</p><p id="1443c2f7-3fdd-4fba-af67-51300c45eb42" class="">Nous avons maintenant la partie <span style="border-bottom:0.05em solid"><strong>SSL/TSL</strong></span> qui fonctionne avec <strong>NGINX</strong>.</p><p id="cbad8b92-a4e0-435d-b02b-d6a0d97b8092" class="">Je vais préciser le dossier d’accueil en ajoutant <code>root /var/www/html;</code> </p><p id="bb4db8d0-158e-434d-9905-89922b8b2146" class="">C’est le dossier où se trouvera WordPress et donc sa première page à afficher. </p><p id="3ab3dba4-dc73-44d2-93aa-ebc917a1ec54" class="">Je vais également préciser <span style="border-bottom:0.05em solid">quelle </span>page afficher en premier, dans le cadre de <strong>WordPress</strong> il faut indiquer <strong>index.php</strong>, mais je vais également en ajouter d’autres qui me semblent importantes.</p><p id="3db7e49e-3418-4dc1-a59a-a581c2b69f73" class=""><code>index index.php index.html index.htm;</code></p><p id="7bbd919d-5832-43cf-bf98-496eb042e759" class="">
 </p><p id="dcf872c7-9633-4adf-b581-c2e1bf540d50" class="">
 </p><p id="29ac8ddd-21b0-4f87-8ced-e336cd82f704" class="">Vu que la connexion se fera depuis localhost, je l’indique en <strong>server_name :</strong></p><p id="d4d9a6cf-ff1c-420e-8f62-3a1b1f9c556a" class=""><code>server_name localhost;</code> </p><p id="4b320348-5366-4a80-ab6c-a6ded59a61f2" class="">
 </p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="4f71328c-185d-4b87-9cfd-8712c731fb86"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">Il faudra changer <code><a href="http://localhost">localhost</a></code> par l’IP <code>login.42.fr</code></div></figure><p id="07b00f86-cce4-4849-86a0-bc4f5422de48" class="">
@@ -1218,24 +1272,24 @@
 		server_name localhost;
 		index index.php index.html index.htm;
 }</code></pre><p id="26330da0-99fb-4609-adca-49833aa787db" class="">
-</p><p id="43a84177-2da0-4bdd-be72-0df4b49e58b0" class="">Maintenant il faut rajouter des règles sur les locations pour <strong>WordPress</strong>.</p><p id="bf0dfa5c-8d4a-44f4-a48d-fcb0be0d9320" class="">Déjà il faut demander à nginx de renvoyer n’importe quelle requête que nous ne connaissons pas sur un <strong>404</strong> <strong>error</strong>.</p><p id="76e05d90-ea00-4051-9e89-98c84a62eb57" class="">Un <a href="https://stackoverflow.com/questions/57561236/how-nginx-process-404-fallback-in-try-files">topic sur stackoverflow</a> explique bien cela, nous ajoutons la règle:</p><p id="74dd3f00-c747-4c9e-b3d1-b7543d423772" class="">
+</p><p id="43a84177-2da0-4bdd-be72-0df4b49e58b0" class="">Maintenant il faut rajouter des règles sur les locations pour <strong>WordPress</strong>.</p><p id="bf0dfa5c-8d4a-44f4-a48d-fcb0be0d9320" class="">Déjà il faut demander à NGINX de renvoyer n’importe quelle requête que nous ne connaissons pas sur un <strong>404</strong> <strong>error</strong>.</p><p id="76e05d90-ea00-4051-9e89-98c84a62eb57" class="">Un <a href="https://stackoverflow.com/questions/57561236/how-nginx-process-404-fallback-in-try-files">topic sur stackoverflow</a> explique bien cela, nous ajoutons la règle:</p><p id="74dd3f00-c747-4c9e-b3d1-b7543d423772" class="">
 </p><pre id="56b06301-5bfd-4ed6-ad55-05af3a1e3490" class="code"><code>location / {
 				try_files $uri $uri/ =404;
 }</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f15ec597-27d9-40fd-bb83-2daf56d055af"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Pour tous les fichiers, nous essayons d’ouvrir le fichier renseigné, si c’est un échec nous renverrons <strong>404</strong>.</div></figure><p id="2f60a1fc-71a1-4e95-a06c-7a60307604cd" class="">
 </p><p id="59221414-7738-4c09-9552-44172467afa9" class="">Il nous reste à installer <strong>PHP</strong> pour pouvoir gérer les requêtes <strong>PHP</strong> de <strong>WordPress</strong>.</p><p id="7769be07-0da4-4b38-8dfa-b8df3647e138" class="">
-</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ce5cc9cb-666b-496e-8cab-4e5b95e00311"><div style="font-size:1.5em"><span class="icon">🚫</span></div><div style="width:100%">Le sujet indique que le PHP doit être installé sur le container de <strong>WordPress</strong> et non de nginx. </div></figure><p id="fa78f80d-acba-4ec5-8e89-f9e084db548c" class="">
-</p><p id="c82a0ea0-dd50-4e80-9f14-c37d69bc3f98" class=""><span style="border-bottom:0.05em solid">Pas de soucis !</span> Nous allons donc simplement préciser comment gérer le <strong>PHP</strong> à <strong>Nginx</strong> et lui indiquer où il faut qu’il renvoie notre code <strong>php</strong>.</p><p id="3bd3cda2-1938-42d1-8dd4-751764f0ae32" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ce5cc9cb-666b-496e-8cab-4e5b95e00311"><div style="font-size:1.5em"><span class="icon">🚫</span></div><div style="width:100%">Le sujet indique que le PHP doit être installé sur le container de <strong>WordPress</strong> et non de NGINX. </div></figure><p id="fa78f80d-acba-4ec5-8e89-f9e084db548c" class="">
+</p><p id="c82a0ea0-dd50-4e80-9f14-c37d69bc3f98" class=""><span style="border-bottom:0.05em solid">Pas de soucis !</span> Nous allons donc simplement préciser comment gérer le <strong>PHP</strong> à <strong>NGINX</strong> et lui indiquer où il faut qu’il renvoie notre code <strong>php</strong>.</p><p id="3bd3cda2-1938-42d1-8dd4-751764f0ae32" class="">
 </p><pre id="b4fcad91-0de0-40ac-b14a-86711bc7871a" class="code"><code>location ~ \.php$ {                             # Pour toutes les requetes php
 					include snippets/fastcgi-php.conf;
 					fastcgi_pass wordpress:9000;          #Comment renvoyer les requetes php sur le port 9000
 }</code></pre><p id="d6528404-cf97-4aff-a3a4-9a7a1a241b89" class="">
 </p><p id="b3668714-9ccc-472b-89d7-a0ee9be023b7" class="">Maintenant je vais simplement rajouter dans le <mark class="highlight-blue"><strong>Dockerfile</strong></mark> une commande <code>chmod</code> afin de s’assurer que nous aurons les droits sur ce dont nous avons besoin.</p><p id="322b52a6-aa5b-49d3-ae2e-b7554d6bb670" class="">
 </p><p id="e5b8d754-da0a-4193-b624-a9c6677b88b9" class=""><code>RUN chmod 755 /var/www/html</code> <mark class="highlight-gray">(notre root principal)</mark></p><p id="faf491d9-bd22-4c7c-bef8-1625e9941a7f" class=""><code>RUN chown -R www-data:www-data /var/www/html</code> <mark class="highlight-gray">(l’utilisateur principal)</mark></p><p id="e9694aa8-2dd1-4984-a5e2-6516b90b3686" class="">
-</p><p id="467a91b4-e482-432f-a8f8-5dbdd606999c" class="">Maintenant il ne reste plus qu’à lancer nginx, nous utiliserons le mot clef <code><strong>CMD</strong></code>  : <code>CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code> </p><p id="7272e57f-4f88-4d00-bb5e-8e4828405480" class="">Cela lancera <strong>Nginx</strong> en premier plan pour que le container ne se stop pas.</p><p id="86274cd7-571a-4d65-888b-01398f8770cd" class="">
-</p><p id="7217696c-55a4-4eeb-8a1c-3783527bf191" class="">Vous pourriez voir en allant sur <a href="http://localhost">localhost</a>, en utilisant <strong>https</strong> <mark class="highlight-gray">(car vous n’avez pas ouvert le </mark><mark class="highlight-gray"><strong>http</strong></mark><mark class="highlight-gray">),</mark> voir la page d’accueil de Nginx, mais il faudrait aussi changer le <strong>root</strong> du fichier de configuration et enlever le <code>wordpress:9000</code> pour le php, car vous n’avez pas encore le container du PHP <mark class="highlight-gray">(WordPress)</mark></p><p id="fcda5ca5-cd27-4d04-9957-36a9f91b4f21" class="">
+</p><p id="467a91b4-e482-432f-a8f8-5dbdd606999c" class="">Maintenant il ne reste plus qu’à lancer NGINX, nous utiliserons le mot clef <code><strong>CMD</strong></code>  : <code>CMD [ &quot;nginx&quot;, &quot;-g&quot;, &quot;daemon off;&quot; ]</code> </p><p id="7272e57f-4f88-4d00-bb5e-8e4828405480" class="">Cela lancera <strong>NGINX</strong> en premier plan pour que le container ne se stop pas.</p><p id="86274cd7-571a-4d65-888b-01398f8770cd" class="">
+</p><p id="7217696c-55a4-4eeb-8a1c-3783527bf191" class="">Vous pourriez voir en allant sur <a href="http://localhost">localhost</a>, en utilisant <strong>https</strong> <mark class="highlight-gray">(car vous n’avez pas ouvert le </mark><mark class="highlight-gray"><strong>http</strong></mark><mark class="highlight-gray">),</mark> voir la page d’accueil de NGINX, mais il faudrait aussi changer le <strong>root</strong> du fichier de configuration et enlever le <code>wordpress:9000</code> pour le php, car vous n’avez pas encore le container du PHP <mark class="highlight-gray">(WordPress)</mark></p><p id="fcda5ca5-cd27-4d04-9957-36a9f91b4f21" class="">
 </p><p id="66fd718a-363b-4873-b1a8-958050551a58" class="">
 </p><p id="9b80c49a-fcc7-4d2c-8cc3-690d53da7516" class=""><span style="border-bottom:0.05em solid"><strong>Un container de terminé ! </strong></span></p><p id="56a21988-8907-445d-b593-2a8908baf81a" class="">
-</p><p id="e80a850b-a2f5-4bc6-9cf8-22e3593056fe" class="">Par quel container poursuivre ? </p><p id="16a677cf-fa1a-400b-bc0d-4c805a91784f" class="">Nous aurons besoin de <strong>MariaDB</strong> pour installer <strong>WordPress</strong>.</p><p id="mariadb" class="">Lors de l’installation de <strong>WordPress</strong>, celui ci requiert un serveur web <mark class="highlight-gray">(Nginx)</mark>, et une base de données, ici <strong>MariaDB</strong>.</p><p id="2b806562-198a-46b1-8f36-2d4b868e62de" class="">Il serait donc plus judicieux de tout comprendre sur les bases de données et commencer par créer ce container. </p><p id="008f7856-0131-46ec-bd75-7d0dcf56f40e" class=""><br>
+</p><p id="e80a850b-a2f5-4bc6-9cf8-22e3593056fe" class="">Par quel container poursuivre ? </p><p id="16a677cf-fa1a-400b-bc0d-4c805a91784f" class="">Nous aurons besoin de <strong>MariaDB</strong> pour installer <strong>WordPress</strong>.</p><p id="mariadb" class="">Lors de l’installation de <strong>WordPress</strong>, celui ci requiert un serveur web <mark class="highlight-gray">(NGINX)</mark>, et une base de données, ici <strong>MariaDB</strong>.</p><p id="2b806562-198a-46b1-8f36-2d4b868e62de" class="">Il serait donc plus judicieux de tout comprendre sur les bases de données et commencer par créer ce container. </p><p id="008f7856-0131-46ec-bd75-7d0dcf56f40e" class=""><br>
 </p><h2 id="0bc41f4e-5d46-43f1-87fe-1e17d591c19d" class="">4. Container MARIADB :</h2><p id="56846519-549c-4142-9303-38f6c4e75c05" class="">
 </p><p id="456a1d4c-6a94-4278-9763-fe900e2ca920" class=""><strong>MariaDB</strong> est un système de gestion de base de données édité sous licence GPL. Il s&#x27;agit d&#x27;un embranchement communautaire de <strong>MySQL</strong> : la gouvernance du projet est assurée par la fondation <strong>MariaDB.</strong></p><p id="3c7b37ce-76c9-4bb3-a5c7-c28190d6a321" class="">
 </p><p id="1f029ab6-e9cf-4d38-b84d-daf8acccc5f5" class="">En gros, <strong>MariaDB</strong> est quasiment une copie de <strong>MySQL</strong>, mais pourquoi ?</p><p id="88378188-9624-4478-9eaa-c6b37258d318" class=""><strong>MySQL</strong> était au début totalement <span style="border-bottom:0.05em solid">open-source</span>, puis il a été racheté par <strong>Oracle</strong>.</p><p id="7de9a52f-1c8e-49fe-a2ce-c65ff1abf0e7" class="">Depuis, plusieurs organismes s’inquiètent de la possibilité qu’a <strong>Oracle</strong> de rendre <strong><mark class="highlight-red">payant</mark></strong> son logiciel.</p><p id="e8e83320-0f37-49d7-8842-c15026916754" class="">Pour empêcher cela, la fondation <strong>MariaDB</strong> crée une version quasi-identique à MySQL, mais totalement <mark class="highlight-teal"><strong>open-source</strong></mark>. </p><p id="18e17a8c-4c01-4c22-a8d5-e233dcdce336" class="">
@@ -1243,7 +1297,7 @@
 </p><figure id="d08c1a89-24a3-4bc1-8e0b-2e8a159a8f37" class="image"><a href="img/mysqlexemple.png"><img style="width:933px" src="img/mysqlexemple.png"/></a></figure><p id="a17c86bd-a594-4d42-ace0-46204ea4a148" class="">
 </p><p id="ddd1fb39-a75d-44af-85cc-c9d855415c5e" class=""><a href="https://www.malekal.com/installer-mysql-mariadb-sur-debian-10/">Ce tutoriel</a> indique parfaitement comment créer une base de données avec <strong>MariaDB</strong> sur <span style="border-bottom:0.05em solid">Debian</span>.</p><p id="004d79a5-8974-45c0-9c14-519866755c6a" class="">
 </p><h2 id="67aafb90-fdc0-4a37-82cf-33be5d150790" class="">Tutoriel pour utiliser MySQL/MariaDB:</h2><p id="483d3b4b-3f36-4d40-8836-b197bef85b7b" class="">
-</p><p id="95f4de20-846b-45bd-a397-b5305d4a3c52" class="">Pour commencer et pouvoir faire vos tests aussi de votre côté, nous allons créer un <strong><mark class="highlight-blue">Dockerfile</mark></strong> minimum pour <strong>MariaDB. </strong>Si vous vous souvenez de ce qu’on a fait pour le début de <strong>Nginx</strong>, on a simplement besoin de commencer par d’écrire </p><p id="62af0be2-afdf-48af-bda3-05eadd1ee82a" class=""><code>FROM debian:buster</code></p><p id="fb0ca6f0-dee6-4bcb-b6fa-f32272525dda" class="">À partir de là, on peut <strong>build</strong> et lancer le container en rentrant dans son terminal <mark class="highlight-gray">(remontez plus haut pour retrouver comment si besoin)</mark></p><p id="16da35c5-14ed-4141-9ce9-74cfc75f1638" class="">Maintenant, on se retrouve dans notre container et nous pouvons y effectuer nos commandes tests.</p><p id="8afa076c-ab95-40d2-b204-e36a2f358824" class="">
+</p><p id="95f4de20-846b-45bd-a397-b5305d4a3c52" class="">Pour commencer et pouvoir faire vos tests aussi de votre côté, nous allons créer un <strong><mark class="highlight-blue">Dockerfile</mark></strong> minimum pour <strong>MariaDB. </strong>Si vous vous souvenez de ce qu’on a fait pour le début de <strong>NGINX</strong>, on a simplement besoin de commencer par d’écrire </p><p id="62af0be2-afdf-48af-bda3-05eadd1ee82a" class=""><code>FROM debian:buster</code></p><p id="fb0ca6f0-dee6-4bcb-b6fa-f32272525dda" class="">À partir de là, on peut <strong>build</strong> et lancer le container en rentrant dans son terminal <mark class="highlight-gray">(remontez plus haut pour retrouver comment si besoin)</mark></p><p id="16da35c5-14ed-4141-9ce9-74cfc75f1638" class="">Maintenant, on se retrouve dans notre container et nous pouvons y effectuer nos commandes tests.</p><p id="8afa076c-ab95-40d2-b204-e36a2f358824" class="">
 </p><p id="bb99f40d-c4b0-4ab6-99d9-f006042dc43f" class="">Commençons par le fameux, essentiel, <code>apt update -y</code></p><p id="7ba549ea-bfca-41ac-be5d-7b5c71ccdd33" class="">Rajoutons aussi le <code>apt upgrade -y</code></p><p id="a3be07ea-8c4a-4254-9893-5cce664a5352" class="">Maintenant que <strong>APT</strong> contient des dépendances à jour, nous pouvons installer <strong>MariaDB.</strong></p><p id="cbecafec-bce5-4889-96d0-ea429bf6d0c8" class="">
 </p><p id="74987426-aa5a-421f-92fd-84249652788d" class="">La version 10.3 de <strong>MariaDB</strong> étant la plus commune, nous pouvons l’installer en utiliser <strong>APT</strong>.</p><p id="45425a30-a56c-447e-a9f6-ba4662036c40" class="">
 </p><p id="da868933-0d6a-4771-8d57-35b8c3ca14b8" class=""><code>apt-get install mariadb-server -y</code></p><p id="4cb9716e-7b89-4a61-be2a-d7266adc9d75" class="">
@@ -1305,12 +1359,12 @@ user = mysql</code></pre><p id="c5c51e51-43b7-4931-9624-12ad52a7f328" class="">
 </p><p id="f8f1a4ab-4e7c-44e0-b0a7-2920561f75c6" class="">Commençons comme d’habitude par un <mark class="highlight-blue"><strong>Dockerfile</strong></mark> sous <em><strong>debian:buster</strong></em>.</p><p id="20b371e2-ea89-4e5f-97ef-6796c1377df6" class="">Ensuite viens le traditionnel <code>apt-get update</code> et <code>apt-get upgrade</code></p><p id="2552510e-6a49-4a16-942d-7afe8cc53679" class="">
 </p><p id="296c3a4c-d376-4669-9222-cc28cfd75c3f" class="">Pour prévoir la suite <mark class="highlight-gray">(nous aurons besoin d’installer WordPress avec son lien de téléchargement) </mark>nous devons installer <span style="border-bottom:0.05em solid"><strong>wget</strong></span></p><p id="b2d5bae2-9c10-4dce-a78a-75c27d75f6e9" class="">
 </p><pre id="d3d01289-34e1-4a62-9bb9-d089fede92c3" class="code"><code>RUN apt-get -y install wget</code></pre><p id="96a3f817-6ecc-43a1-b85d-128dccf2f88b" class="">
-</p><p id="63515327-d686-4b5b-a62c-8e7dc3e9158a" class="">Le sujet nous l’indique, nous devons également installer <span style="border-bottom:0.05em solid"><strong>PHP</strong></span> avec <strong>WordPress</strong>.</p><p id="73a0a15b-f9a6-4b7c-a595-bf8d088f9bee" class="">Rappelez vous, il communiquera sur le port <strong>9000</strong> avec <strong>Nginx</strong>.</p><p id="730875de-cd37-42d2-89df-84a63c7eddbf" class="">Pour cela, j’utilise également <strong>APT</strong> pour installer <em><strong>php7.3</strong></em> et ses dépendances comme <em>php-fpm et php-mysql.</em></p><p id="cddcc03e-a888-4738-8cc6-fda8ea10dfcf" class="">
+</p><p id="63515327-d686-4b5b-a62c-8e7dc3e9158a" class="">Le sujet nous l’indique, nous devons également installer <span style="border-bottom:0.05em solid"><strong>PHP</strong></span> avec <strong>WordPress</strong>.</p><p id="73a0a15b-f9a6-4b7c-a595-bf8d088f9bee" class="">Rappelez vous, il communiquera sur le port <strong>9000</strong> avec <strong>NGINX</strong>.</p><p id="730875de-cd37-42d2-89df-84a63c7eddbf" class="">Pour cela, j’utilise également <strong>APT</strong> pour installer <em><strong>php7.3</strong></em> et ses dépendances comme <em>php-fpm et php-mysql.</em></p><p id="cddcc03e-a888-4738-8cc6-fda8ea10dfcf" class="">
 </p><pre id="0ddf51f2-7180-4590-9fc3-6a7b4dc0a6ed" class="code"><code>RUN apt-get install -y php7.3\
 	php-fpm\
 	php-mysql\</code></pre><p id="52159f3a-dbc3-4160-9fc3-87601c10e1f2" class="">
 </p><p id="697ccdce-c383-4f37-b974-186b4f7c94bb" class="">Maintenant il est temps d’installer le fameux <strong>WordPress</strong> dans notre container !</p><p id="a6d383cf-ced6-4614-bee0-03121c97e7ff" class="">Nous utilisons donc <span style="border-bottom:0.05em solid"><em>wget</em></span> en indiquant le lien d’installation. J’ai pris la version <strong>FR 6.0.</strong> </p><p id="11f07188-b764-41ae-8467-e0f342c1e4f8" class="">À vous de choisir, vous trouverez les différentes versions <a href="https://fr.wordpress.org/download/releases/">ici</a>.</p><p id="31a3996b-5782-4dee-b394-75b329462cb0" class="">
-</p><p id="5587a293-4c7d-4810-9cda-b0d9d5ab2c20" class=""><em>wget</em> possède plusieurs options, dont une qui va nous permettre d’indiquer dans quel dossier on veut télécharger le fichier en utilisant -P.</p><p id="ca8fb035-d018-43de-aa31-fadd663a619b" class="">Dans quel dossier ? le <strong>/var/www</strong> évidemment ! C&#x27;est ici que nous avons indiqué notre dossier principal à afficher dans le container <strong>Nginx</strong>.</p><p id="e0fb9548-bbbc-4578-85e9-65b957d1d63a" class="">
+</p><p id="5587a293-4c7d-4810-9cda-b0d9d5ab2c20" class=""><em>wget</em> possède plusieurs options, dont une qui va nous permettre d’indiquer dans quel dossier on veut télécharger le fichier en utilisant -P.</p><p id="ca8fb035-d018-43de-aa31-fadd663a619b" class="">Dans quel dossier ? le <strong>/var/www</strong> évidemment ! C&#x27;est ici que nous avons indiqué notre dossier principal à afficher dans le container <strong>NGINX</strong>.</p><p id="e0fb9548-bbbc-4578-85e9-65b957d1d63a" class="">
 </p><pre id="059cb4d1-a02a-4a32-abcf-a7232a0807a0" class="code"><code>RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www</code></pre><p id="5a5c567c-d5d4-4eef-959c-5298224d57ce" class=""><strong>❯ Très bien, top, mais maintenant il faudrait le dé-tar, enfin le décompresser quoi. !</strong></p><p id="e9bb0132-82c6-407f-9286-be8c6f531a66" class="">
 </p><p id="65f45e7b-1a28-464a-99e0-2394a2d94553" class="">Allez je vous aide, allons dans le dossier <strong>/var/www </strong>et utilisons <code><em><strong>tar -xvf</strong></em></code> suivi du fichier pour le décompresser et en obtenir le fameux dossier <code>wordpress</code>!</p><p id="80485089-e2f9-48c7-826c-159ceb13c38a" class="">Ensuite on peut supprimer le <em>.tar</em> qui ne sert plus à rien.</p><pre id="002b4c18-6d94-4462-908c-e190ffd4b766" class="code"><code>RUN cd /var/www &amp;&amp; tar -xzf wordpress-6.0-fr_FR.tar.gz &amp;&amp; rm wordpress-6.0-fr_FR.tar.gz</code></pre><p id="d1784ad4-6b36-4851-a484-4631091c5250" class=""><strong>❯ Nous voila avec </strong><code><strong>wordpress</strong></code><strong> sous forme de dossier.</strong></p><p id="f02a9f3b-9b20-4e11-9a5b-429e61c11171" class="">
 </p><p id="c6d5c455-5aa0-404c-97a6-5034f47dcb3f" class="">Maintenant veillons à bien donner les droits à root d’écrire dans ce dossier.</p><pre id="1c5053b3-774a-4edd-a523-f44a6883ff0b" class="code"><code>RUN		chown -R root:root /var/www/wordpress</code></pre><p id="01263021-d31b-4fba-9d9c-9a612082cd75" class="">
@@ -1365,14 +1419,14 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
     restart: unless-stopped          # redémarre tant qu&#x27;il n&#x27;est pas stoppé 
     expose:                          # le port à exposer
       - &quot;3306&quot;</code></pre>
-	  <p id="01817814-674a-442a-8d4d-f44ccc79b5cd" class="">Place au service <strong>Nginx</strong>, ici c’est le même principe, sauf deux choses qui changent et les <strong><em>noms/paths</em></strong> évidemment.</p><p id="79c69731-a94e-491f-b563-d7efc6b32789" class="">
+	  <p id="01817814-674a-442a-8d4d-f44ccc79b5cd" class="">Place au service <strong>NGINX</strong>, ici c’est le même principe, sauf deux choses qui changent et les <strong><em>noms/paths</em></strong> évidemment.</p><p id="79c69731-a94e-491f-b563-d7efc6b32789" class="">
 	</p><pre id="f2876a0c-3fc3-4fff-bcf2-f4050f54be60" class="code"><code>nginx:
 		container_name: nginx
 		volumes:
 		  - wordpress:/var/www/wordpress
 		networks:
 		  - inception
-		depends_on:         # Nouvelle ligne, indiquant de ne pas démarrer Nginx tant que WordPress n&#x27;a pas démarré.
+		depends_on:         # Nouvelle ligne, indiquant de ne pas démarrer NGINX tant que WordPress n&#x27;a pas démarré.
 		  - wordpress
 		build: 
 		  context: requirements/nginx
@@ -1425,8 +1479,8 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
 </p><p id="4faf8b92-28eb-46b4-82fc-9137974c2493" class="">Si vous rencontrez des problèmes avec docker vous pouvez utiliser la commande :</p><p id="5b8a5f35-c882-4c6c-a622-6a3b13b0cf83" class=""><code>docker system prune -af </code> <mark class="highlight-yellow_background">Attention, ça supprime tous les container, images, etc.</mark></p><p id="db2527db-5e9a-46ba-9652-a723392997a4" class="">
 </p><hr id="5139a8bc-0047-414e-bc69-b55a3b30339f"/><p id="95e24c9c-561b-47bf-8d05-c2da7dea4c0a" class="">
 </p><h1 id="4dc58c8c-9186-4add-876f-9106e909e568" class="">8. Finaliser le projet :</h1><h3 id="6e711da4-6b93-4e49-96bd-de36246737dd" class="">Petites rectifications:</h3><p id="17596f33-9491-4b67-b81f-06e7f47da2b6" class="">
-</p><p id="03d868e9-3eb5-4602-bd8e-b5d05d858de7" class="">Depuis que j’ai testé tout cela, j’ai remarqué quelques petits bugs, j’ai donc rajouté quelques petites précisions au fichier de configuration de <strong>Nginx</strong>.</p><p id="e24b1942-d8af-4047-b617-0aebf651479c" class="">
-</p><p id="5e3c97ca-6398-404f-a0da-013128f01cce" class="">J’ai ajouté en première ligne le mot clef <code>events {}</code> car <strong>Nginx</strong> le demandait avec une erreur du type <code>missing events{}</code>.</p><p id="89cd7042-4228-4b23-bd1b-3f1ef15bc283" class="">
+</p><p id="03d868e9-3eb5-4602-bd8e-b5d05d858de7" class="">Depuis que j’ai testé tout cela, j’ai remarqué quelques petits bugs, j’ai donc rajouté quelques petites précisions au fichier de configuration de <strong>NGINX</strong>.</p><p id="e24b1942-d8af-4047-b617-0aebf651479c" class="">
+</p><p id="5e3c97ca-6398-404f-a0da-013128f01cce" class="">J’ai ajouté en première ligne le mot clef <code>events {}</code> car <strong>NGINX</strong> le demandait avec une erreur du type <code>missing events{}</code>.</p><p id="89cd7042-4228-4b23-bd1b-3f1ef15bc283" class="">
 </p><p id="98562136-656c-4228-af68-9b94e739abf5" class="">J’ai également ajouté la ligne <code>include /etc/nginx/mime.types;</code> juste en dessous du mot clef <strong>http</strong>.</p><p id="6a18c182-6931-4c80-9405-c589e229d0f9" class="">Pourquoi ? Le CSS ne chargeait pas, et après une longue enquête j’ai remarqué que ceux-ci était indiqué avec un Content-Type <strong>html </strong>?! </p><p id="86086555-8b5f-4572-b95f-0935ae967b0e" class="">Après de longues visites sur le site de <span style="border-bottom:0.05em solid">StackOverFlow</span> j’ai finalement ajouté cette ligne qui précise les <strong>content-types</strong>, et tout est rentré dans l’ordre!</p><p id="1eed249e-c8db-4666-a2d7-b75d41018070" class="">
 </p><p id="7a1ea36c-407e-4311-9de1-5e5ea1a5b2a4" class="">À priori, il ne vous reste plus qu’à faire un Makefile et <span style="border-bottom:0.05em solid"><strong>vous êtes bon</strong></span><strong> 🤩</strong></p><p id="341740d8-6933-4877-ae75-aa6ff8245bc3" class="">Ah oui, moi j’ai aussi ajouté un mini script bash qui configure automatiquement les bon path dans docker-compose.yml, toujours sympa quand un ami veut tester le projet sur son ordinateur, il n’a pas à chercher chaque path dans tous les fichiers pour les changer.</p><p id="af566dbd-9c47-4e9f-b884-b3935eb23dcb" class="">
 </p><hr id="56ad1840-931b-4f11-ad2d-2639392025a6"/><p id="3c81fa32-87a4-4f5f-8bb7-5be92b3ff50c" class="">
@@ -1436,7 +1490,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp</code></pre><p id="91475091-9f19-4470-882f-
 </p><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="316f2244-e89a-43c6-8f9f-d23d5e69cde6"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%">Pour des questions de lisibilité, il faudra configurer votre nom de domaine afin qu’il pointe vers votre adresse IP locale.
 Ce nom de domaine sera <a href="http://login.42.fr/">login.42.fr</a>. À nouveau, vous utiliserez votre login</div></figure><p id="e362fdfc-6746-465f-9ee7-6b6bfc7fc33e" class=""><strong>❯ Ici il s’agit uniquement d’une configuration à effectuer sur votre machine en local. </strong></p><p id="f5c1b57e-7525-414a-9e29-e202aeb0c666" class="">
 </p><p id="4ba41374-294d-45b3-86be-9098a6a6a448" class="">En gros vous pouvez déjà accéder au site depuis <strong>localhost</strong>, qui <mark class="highlight-gray"><em>(ce mot)</em></mark> redirige en fait sur l’IP <strong>127.0.0.1</strong>, sans vous le dire, mais tout cela est en fait écrit dans un fichier de votre ordinateur. </p><blockquote id="d98556a2-3ebb-43f3-984c-10cf4f830796" class="">Ce fichier est très sensible et il vous faudra l’éditer avec un <code>sudo.</code> En effet, c’est un fichier très visé par les hackers, il permettrait de vous rediriger facilement sur un faux google quand vous tapez <a href="http://google.fr">google.fr</a>, par exemple.</blockquote><p id="e41f70a8-3ed1-438f-ad16-f37e6595c002" class="">
-</p><p id="c4913049-0822-40b9-b08c-81fab5db61c6" class="">En éditant ce fichier qui se trouve généralement ici : <code>/etc/hosts</code> vous pourrez facilement demander la redirection de <strong>127.0.0.1</strong> sur l’IP que vous voudrez, comme <strong>login.42.fr</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7b6bfa8-36d8-43e4-a374-07fbcc16d19a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">N’oubliez pas de modifier cet IP dans le fichier de conf de Nginx dans la case <code>server_name</code> , le mieux serait de le faire aussi dans la génération du certificat <strong>SSL</strong>, mais bon, celui-ci n’est pas authentifié…</div></figure><p id="c160eb00-7470-4ad1-b328-82cf78e17d50" class="">
+</p><p id="c4913049-0822-40b9-b08c-81fab5db61c6" class="">En éditant ce fichier qui se trouve généralement ici : <code>/etc/hosts</code> vous pourrez facilement demander la redirection de <strong>127.0.0.1</strong> sur l’IP que vous voudrez, comme <strong>login.42.fr</strong></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7b6bfa8-36d8-43e4-a374-07fbcc16d19a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">N’oubliez pas de modifier cet IP dans le fichier de conf de NGINX dans la case <code>server_name</code> , le mieux serait de le faire aussi dans la génération du certificat <strong>SSL</strong>, mais bon, celui-ci n’est pas authentifié…</div></figure><p id="c160eb00-7470-4ad1-b328-82cf78e17d50" class="">
 </p><p id="c9e7f6ec-2878-4598-9a18-809a849606ac" class="">À priori vous respectez maintenant toutes les règles du sujet. </p><p id="4e2e27eb-57c9-4fc0-9d85-9fdfc6d76840" class="">Bon courage pour la correction ! 🔎</p>
 </div></article></body>
 <footer>
