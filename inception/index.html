@@ -30,31 +30,141 @@
 
 <article id="accueil" class="page sans">
 
+	<br><br><br><br><br>
 	<figure id="img-accueil" class="img-accueil">
 		<a href="img/docker-compose.png"><img style="width:1280px" src="img/docker-compose.png"/></a>
-	</figure>
+	</figure><br><br><br><br>
 
-	<hr id="ligne-accueil"/>
+	<hr id="ligne-accueil"/><br>
 	<h1 id="objectifs" class="">Objectifs d’apprentissage</h1>
-		<ol id="obj-1" class="block-color-gray numbered-list"><li>1. Comprendre <strong>Docker</strong> et <strong>Compose</strong>.</li></ol><ol id="obj-2" ><li><mark class="highlight-gray">2. Découvrir les différents points du </mark><strong><mark class="highlight-gray">sujet</mark></strong><mark class="highlight-gray"> d’Inception.</mark></li></ol><ol id="obj-3" ><li><mark class="highlight-gray">3. Mettre en place le container </mark><strong><mark class="highlight-gray">Nginx</mark></strong></li></ol><ol id="obj-4" class="numbered-list"><li><mark class="highlight-gray">4. Mettre en place le container </mark><strong><mark class="highlight-gray">MariaDB</mark></strong></li></ol><ol id="obj-5" class="numbered-list"><li><mark class="highlight-gray">5. Mettre en place le container </mark><strong><mark class="highlight-gray">WordPress</mark></strong></li></ol><ol id="obj-6" class="numbered-list"><li><mark class="highlight-gray">6. Relier les containers avec </mark><strong><mark class="highlight-gray">Compose</mark></strong></li></ol><ol id="obj-7" class="numbered-list"><li><mark class="highlight-gray">7. Comprendre les volumes de </mark><strong><mark id="docker" class="highlight-gray">Compose</mark></strong></li></ol><ol id="obj-8" class="numbered-list"><li><mark class="highlight-gray">8. </mark><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Finaliser</mark></span><mark class="highlight-gray"> le projet</mark></li></ol>
-		<h1 id="ad5c7267-154a-4336-a667-8530a9c68784" class="">1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1><p id="af7e2227-74a7-49df-89a7-ba4a82b4c7a5" class="">
-</p><p id="4ef0a106-88e0-4e02-a5a7-f050c4c1e2d6" class="">📌 L’avantage de Docker est clair, il <mark class="highlight-teal"><strong>résout </strong></mark>l’un des plus <strong>gros problèmes des développeurs</strong>:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f57d4249-3f4d-495d-a1b0-b23b6a585733"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%"><mark class="highlight-gray_background">Se retrouver à créer un super programme sur son ordinateur, et se rendre compte qu’il ne fonctionne que sur son propre ordinateur. Pour l’utiliser ailleurs il va falloir installer les dépendances requises 🤯</mark></div></figure><p id="357a81e8-c931-4e98-9ac7-13900c54dac4" class="">
-</p><p id="e4e26c7c-8fd8-4e6d-adc0-e68c17bc3f5a" class="block-color-gray">Souvenez vous ce <strong><mark class="highlight-teal">super programme</mark></strong> que vous aviez trouvé sur <strong>Github</strong>, vous l’installez comme prévu par le tutoriel du ReadMe 📄, mais l’installation <strong><mark class="highlight-red">crash</mark></strong> indiquant “<strong><em>You have missing dependencies</em></strong>”, ou encore “<em><strong>This version of this file is not compatible with your OS</strong></em>” 😣</p><p id="802791ff-9675-49cf-8249-2c7e767ca201" class="">
-</p><figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex" id="c09cf828-3a6e-4f0e-b14f-0253ce48d955"><div style="font-size:1.5em"><span class="icon">👉</span></div><div style="width:100%">Alors oui, vous pouvez rester un <mark class="highlight-teal"><strong>bon développeur</strong></mark> et proposer un super <strong>script qui installera ces dépendances</strong>, mais vous ne pouvez pas prévoir que l’utilisateur soit sur Mac, Linux ou encore qu’il ait une version d’OS si vieille que celle ci ne connait même pas vos dépendances !</div></figure><p id="26317d09-ec95-400d-8bfd-6b845eaca666" class="">
-</p><ul id="e7d86032-c876-4615-a648-ffbaf4995068" class="toggle"><li><details open=""><summary>⚙️ Les types de problèmes que corrige Docker</summary><ul id="4ce4a290-f093-4b9f-9559-9994e7ad73b1" class="bulleted-list"><li style="list-style-type:disc">Une dépendance n’est pas compatible avec votre version de logiciel 😅</li></ul><ul id="e7e470be-bea0-476c-8ab2-237221d62dab" class="bulleted-list"><li style="list-style-type:disc">Vous possédez déjà la dépendance mais dans une version différente 😑</li></ul><ul id="14ba5b5f-e261-484f-955c-f1e557a54fd2" class="bulleted-list"><li style="list-style-type:disc">Votre dépendance n’existe pas sur votre OS 😓</li></ul><ul id="9c1fa34f-b164-4983-bd81-ee04313a6b68" class="bulleted-list"><li style="list-style-type:disc">Votre dépendance crash au lancement 😮‍💨</li></ul><ul id="f69e62e6-c56a-4698-8de5-a287a9403616" class="bulleted-list"><li style="list-style-type:disc">etc…</li></ul></details></li></ul><p id="26120a4e-0878-42b8-9b79-e6cb27a82cfa" class="">
-</p><blockquote id="98e372e6-248d-4c4c-9edb-2870c2a889c3" class="">Passer 4 heures sur du <strong><mark class="highlight-red"><a href="https://www.larousse.fr/dictionnaires/francais/d%C3%A9boguer/21835#:~:text=un%20programme%20informatique.-,d%C3%A9boguer%20v.t.,erreurs%20d&#x27;un%20programme%20informatique.">débug</a></mark></strong> d’un logiciel qui n’est pas le notre et se rendre compte que nous n’y arriverons pas, a tendance à rendre <span style="border-bottom:0.05em solid">fou</span> 🤯</blockquote><p id="99e88a0e-59e7-4e07-9cdc-b23e55d2966b" class="">
-</p><p id="2a04e7c0-82b5-4024-beb0-200d3843a5d6" class="">C’est ce qu’il a du arriver à <a href="https://fr.wikipedia.org/wiki/Solomon_Hykes"><strong>Solomon Hykes</strong></a>,<strong> </strong>un <span style="border-bottom:0.05em solid">franco-américain</span> qui a finit par se demander s’il était possible de trouver une <mark class="highlight-teal"><strong>solution</strong></mark> à ce genre de problème.</p><p id="4c295a3f-1f9a-40a6-8a4c-40d174bc9425" class="">En réponse à cela, il sort <mark class="highlight-blue"><strong>Docker</strong></mark><strong> </strong>le <span style="border-bottom:0.05em solid"><strong>20 mars 2013</strong></span>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6be3c846-582e-4025-9077-73a5b81baa43"><div style="font-size:1.5em"><span class="icon">🎯</span></div><div style="width:100%">Rappel du Wiki de Docker<strong>: Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé.  </strong></div></figure><p id="51d5d26d-5b83-407b-af4f-da8ff2932bae" class="">
-</p><ul id="0b296b77-17ef-4d0e-bac0-998f79a7eb4b" class="toggle"><li><details open=""><summary>⚙️ L’Histoire de Docker</summary><ul id="10699edb-2c00-49ea-8306-506d2d96ca5c" class="bulleted-list"><li style="list-style-type:disc">Docker a été développé pour un projet interne de <em><strong>dotCloud</strong></em>, une entreprise <span style="border-bottom:0.05em solid">française</span> 😏 proposant une <a href="https://fr.wikipedia.org/wiki/Plate-forme_en_tant_que_service">plate-forme en tant que service</a>.</li></ul><ul id="199a6769-4a29-42d9-8f1b-02ad2df957c9" class="bulleted-list"><li style="list-style-type:disc">Docker est une évolution basée sur les technologies propriétaires de dotCloud, elles-mêmes construites sur des projets open source 🔓</li></ul><ul id="a0021b76-4a83-4235-97fb-af9d172fa5e1" class="bulleted-list"><li style="list-style-type:disc">Docker est distribué en tant que projet <span style="border-bottom:0.05em solid"><em>open source </em></span><em>❤️</em> à partir de mars 2013.</li></ul><ul id="dd614f29-4ee0-4fc3-a31f-e74d916571e4" class="bulleted-list"><li style="list-style-type:disc">Il s&#x27;agit actuellement du moteur de conteneurisation le plus utilisé 👨‍💻</li></ul><ul id="4e7dcf4f-e3be-4f9a-846a-81a37e8bb487" class="bulleted-list"><li style="list-style-type:disc">En novembre 2019, la société Docker revend son produit <em>Docker Enterprise</em> à <a href="https://www.mirantis.com/?utm_source=google&amp;utm_source=google&amp;utm_medium=paidsearch&amp;utm_medium=paidsearch&amp;utm_campaign=amer-en-brand&amp;utm_campaign=16574635611&amp;utm_content=website&amp;utm_content=604023926849&amp;utm_term=mirantis&amp;utm_term=mirantis&amp;utm_adgroup=131852988902&amp;utm_region=emea&amp;utm_focus=brand&amp;gclid=CjwKCAjw2rmWBhB4EiwAiJ0mtdDxiuDhEe4WvIQN4mH83uZFZPD1xJiaRT9V8UUd4Oe2VxbvA0LvzRoC5zIQAvD_BwE">Mirantis</a>, et effectue une levée de fonds de près de <span style="border-bottom:0.05em solid"><em><strong>35 millions</strong></em></span><em><strong> de dollars </strong></em>🥵</li></ul></details></li></ul><p id="3b667a02-a174-4323-b0ec-957895f597eb" class="">
-</p><hr id="ce2f4186-279b-4b35-ac97-8dd57deb3adb"/><p id="9e64d7c2-102a-47c9-bcf2-c9b75087e7f2" class="">
-</p><p id="48163f26-26e4-404c-8e0d-17000c527527" class="">Tout ça semble tout beau mais en fait, si ça existe déjà avec les <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">VM</a>,</p><h3 id="905da8f0-11f0-4aad-833d-c404c3a23972" class="">Pourquoi les développeurs utilisent Docker ? 🤔</h3><p id="77b6a2b1-6c8d-4f14-b60f-9fba034dfedb" class="">
-</p><p id="57b37b9d-8433-4540-aede-b624824ea6bb" class="">Le grand avantage de <strong><mark class="highlight-blue">Docker</mark></strong> est la possibilité de modéliser chaque conteneur sous la forme d&#x27;une image que l&#x27;on peut stocker localement.</p><p id="29d77c3a-7a28-4680-8bca-6fdbff7dd0ce" class="">
-</p><p id="867d0a0a-fba8-44b6-9b06-9fcf300c00b0" class="">🔎 Un <span style="border-bottom:0.05em solid"><strong>conteneur</strong></span> est une machine virtuelle sans noyau.</p><p id="a9abf2ad-9726-4fa4-a948-8ae327264520" class="block-color-purple_background">📌 Ce que j’appelle <span style="border-bottom:0.05em solid"><strong>noyau</strong></span> est tout l’ensemble du système permettant à la machine virtuelle de fonctionner, l’OS, le coté graphique, réseau, etc…</p><p id="4850f7a1-ac42-4c2a-94a0-75d378372046" class="">🔎 En d’autres termes, un conteneur ne contient <span style="border-bottom:0.05em solid"><strong>que l’application</strong></span> <em>et</em> <strong><span style="border-bottom:0.05em solid">les dépendances de l’application</span></strong>.</p><p id="426db8ae-4451-4ef7-ab33-612c3387252d" class="">
-</p><h3 id="68ad5697-f533-4877-ad6e-155e0f6c2b77" class=""><span style="border-bottom:0.05em solid">Docker Hub:</span></h3><p id="31d39bf5-40cb-41be-8af7-be85a2c11af7" class="">
-</p><p id="568aedab-4ddc-45a4-8c61-abe7a3f7ac07" class="block-color-yellow_background"><strong><mark class="highlight-blue">Docker</mark></strong> met a disposition une sorte d’App Store, contenant des images (conteneur) de milliers de personnes, simplifiant encore plus son usage 👍</p><p id="3a127352-54c6-4504-8bc5-54c893f09dca" class="">
-</p><p id="c01334ab-d605-4dea-bee2-4e1e5ed88d1d" class="block-color-gray">Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.</p><p id="9f28d804-116e-41dc-9333-a4ad0eefa694" class="block-color-gray">L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?</p><p id="ddac9814-c21f-4947-9d4a-a0a31f3a7ff7" class="">
-</p><p id="a31a3d5f-da63-412c-9426-d3a3b98bd9fa" class="block-color-gray_background">🤔 Nous aurions besoin du container Docker qui installe de lui même nginx. </p><p id="dda88a43-a815-429d-bab8-fe36e16f8877" class="">😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par</mark><mark class="highlight-gray_background"><a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a></mark><mark class="highlight-gray_background"><strong> 🥳</strong></mark><mark class="highlight-gray_background"> </mark></p><p id="abb0363f-9d5c-45d4-a6e9-29ec87aec13a" class="">
-</p><p id="548a7e5f-9ca6-4349-ab7e-d4ceff8c293f" class="">Regardons un exemple de ce à quoi pourrais ressembler une image nginx:</p><p id="0e2a0bb2-fdf4-49a0-a497-b872f8ea183f" class="">
-</p><pre id="cf11659b-71a9-4988-8366-7f0512b97ef2" class="code"><code>FROM		alpine:3.12
+	<br><br>
+		<ol class="block-color-gray">
+			<li>1. Comprendre <strong>Docker</strong> et <strong>Compose</strong>.</li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">2. Découvrir les différents points du </mark><strong><mark class="highlight-gray">sujet</mark></strong><mark class="highlight-gray"> d’Inception.</mark></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">3. Mettre en place le container </mark><strong><mark class="highlight-gray">Nginx</mark></strong></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">4. Mettre en place le container </mark><strong><mark class="highlight-gray">MariaDB</mark></strong></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">5. Mettre en place le container </mark><strong><mark class="highlight-gray">WordPress</mark></strong></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">6. Relier les containers avec </mark><strong><mark class="highlight-gray">Compose</mark></strong></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">7. Comprendre les volumes de </mark><strong><mark id="docker" class="highlight-gray">Compose</mark></strong></li>
+		</ol>
+		<ol>
+			<li><mark class="highlight-gray">8. </mark><span style="border-bottom:0.05em solid"><mark class="highlight-gray">Finaliser</mark></span><mark class="highlight-gray"> le projet</mark></li>
+		</ol><br><br>
+
+	<h1>1. Comprendre <span style="border-bottom:0.05em solid">Docker</span><em><strong> </strong></em><strong>:</strong></h1><br><br><br>
+		
+		<p>
+			📌 L’avantage de Docker est clair, il <mark class="highlight-teal"><strong>résout </strong></mark>l’un des plus <strong>gros problèmes des développeurs</strong>:
+		</p>
+
+		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex">
+			<div style="font-size:1.5em"><span class="icon">👉</span></div>
+			<div style="width:100%"><mark class="highlight-gray_background">Se retrouver à créer un super programme sur son ordinateur, et se rendre compte qu’il ne fonctionne que sur son propre ordinateur. Pour l’utiliser ailleurs il va falloir installer les dépendances requises 🤯</mark></div>
+		</figure><br>
+
+		<p class="block-color-gray">
+			Souvenez vous ce <strong><mark class="highlight-teal">super programme</mark></strong> que vous aviez trouvé sur <strong>Github</strong>, vous l’installez comme prévu par le tutoriel du ReadMe 📄, mais l’installation <strong><mark class="highlight-red">crash</mark></strong> indiquant “<strong><em>You have missing dependencies</em></strong>”, ou encore “<em><strong>This version of this file is not compatible with your OS</strong></em>” 😣
+		</p>
+
+		<figure class="block-color-gray callout" style="white-space:pre-wrap;display:flex">
+			<div style="font-size:1.5em"><span class="icon">👉</span></div>
+			<div style="width:100%">Alors oui, vous pouvez rester un <mark class="highlight-teal"><strong>bon développeur</strong></mark> et proposer un super <strong>script qui installera ces dépendances</strong>, mais vous ne pouvez pas prévoir que l’utilisateur soit sur Mac, Linux ou encore qu’il ait une version d’OS si vieille que celle ci ne connait même pas vos dépendances !
+			</div>
+		</figure>
+
+		<ul class="toggle">
+			<li>
+				<details open="">
+					<summary>⚙️ Les types de problèmes que corrige Docker</summary>
+					<ul>
+						<li style="list-style-type:disc">Une dépendance n’est pas compatible avec votre version de logiciel 😅</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Vous possédez déjà la dépendance mais dans une version différente 😑</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Votre dépendance n’existe pas sur votre OS 😓</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Votre dépendance crash au lancement 😮‍💨</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">etc…</li>
+					</ul>
+				</details>
+			</li>
+		</ul><br>
+
+		<blockquote>Passer 4 heures sur du <strong><mark class="highlight-red">
+			<a href="https://www.larousse.fr/dictionnaires/francais/d%C3%A9boguer/21835#:~:text=un%20programme%20informatique.-,d%C3%A9boguer%20v.t.,erreurs%20d&#x27;un%20programme%20informatique.">débug</a>
+			</mark></strong> d’un logiciel qui n’est pas le notre et se rendre compte que nous n’y arriverons pas, a tendance à rendre <span style="border-bottom:0.05em solid">fou</span> 🤯
+		</blockquote><br><br>
+
+		<p> C’est ce qu’il a du arriver à <a href="https://fr.wikipedia.org/wiki/Solomon_Hykes"><strong>Solomon Hykes</strong></a>,<strong> </strong>un <span style="border-bottom:0.05em solid">franco-américain</span> qui a finit par se demander s’il était possible de trouver une <mark class="highlight-teal"><strong>solution</strong></mark> à ce genre de problème.
+			<br>En réponse à cela, il sort <mark class="highlight-blue"><strong>Docker</strong></mark><strong> </strong>le <span style="border-bottom:0.05em solid"><strong>20 mars 2013</strong></span>.
+		</p>
+
+		<figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex">
+			<div style="font-size:1.5em"><span class="icon">🎯</span></div><div style="width:100%">Rappel du Wiki de Docker<strong>: Docker est un outil qui peut empaqueter une application et ses dépendances dans un conteneur isolé.  </strong></div>
+		</figure> <br><br>
+
+		<ul class="toggle">
+			<li>
+				<details open="">
+					<summary>⚙️ L’Histoire de Docker</summary>
+					<ul>
+						<li style="list-style-type:disc">Docker a été développé pour un projet interne de <em><strong>dotCloud</strong></em>, une entreprise <span style="border-bottom:0.05em solid">française</span> 😏 proposant une 
+							<a href="https://fr.wikipedia.org/wiki/Plate-forme_en_tant_que_service">plate-forme en tant que service</a>.
+						</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Docker est une évolution basée sur les technologies propriétaires de dotCloud, elles-mêmes construites sur des projets open source 🔓</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Docker est distribué en tant que projet <span style="border-bottom:0.05em solid"><em>open source </em></span><em>❤️</em> à partir de mars 2013.</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">Il s&#x27;agit actuellement du moteur de conteneurisation le plus utilisé 👨‍💻</li>
+					</ul>
+					<ul>
+						<li style="list-style-type:disc">En novembre 2019, la société Docker revend son produit <em>Docker Enterprise</em> à 
+							<a href="https://www.mirantis.com/?utm_source=google&amp;utm_source=google&amp;utm_medium=paidsearch&amp;utm_medium=paidsearch&amp;utm_campaign=amer-en-brand&amp;utm_campaign=16574635611&amp;utm_content=website&amp;utm_content=604023926849&amp;utm_term=mirantis&amp;utm_term=mirantis&amp;utm_adgroup=131852988902&amp;utm_region=emea&amp;utm_focus=brand&amp;gclid=CjwKCAjw2rmWBhB4EiwAiJ0mtdDxiuDhEe4WvIQN4mH83uZFZPD1xJiaRT9V8UUd4Oe2VxbvA0LvzRoC5zIQAvD_BwE">Mirantis</a>
+							, et effectue une levée de fonds de près de <span style="border-bottom:0.05em solid"><em><strong>35 millions</strong></em></span><em><strong> de dollars </strong></em>🥵
+						</li>
+					</ul>
+				</details>
+			</li>
+		</ul>
+
+		<br><br><hr/><br>
+
+		<p>Tout ça semble tout beau mais en fait, si ça existe déjà avec les <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle">VM</a>,</p>
+		<h3>Pourquoi les développeurs utilisent Docker ? 🤔</h3><br><br>
+
+		<p>Le grand avantage de <strong><mark class="highlight-blue">Docker</mark></strong> est la possibilité de modéliser chaque conteneur sous la forme d&#x27;une image que l&#x27;on peut stocker localement.</p><br>
+		<p>🔎 Un <span style="border-bottom:0.05em solid"><strong>conteneur</strong></span> est une machine virtuelle sans noyau.</p>
+		<p class="block-color-purple_background">📌 Ce que j’appelle <span style="border-bottom:0.05em solid"><strong>noyau</strong></span> est tout l’ensemble du système permettant à la machine virtuelle de fonctionner, l’OS, le coté graphique, réseau, etc…</p>
+		<p>🔎 En d’autres termes, un conteneur ne contient <span style="border-bottom:0.05em solid"><strong>que l’application</strong></span> <em>et</em> <strong><span style="border-bottom:0.05em solid">les dépendances de l’application</span></strong>.</p><br>
+		
+		<h3><span style="border-bottom:0.05em solid">Docker Hub:</span></h3>
+
+	<p class="block-color-yellow_background"><strong><mark class="highlight-blue">Docker</mark></strong> met a disposition une sorte d’App Store, contenant des images (conteneur) de milliers de personnes, simplifiant encore plus son usage 👍</p><p id="3a127352-54c6-4504-8bc5-54c893f09dca" class="">
+	<p>Imaginez que vous souhaitiez héberger un site internet, il vous faudrait par exemple installer <span style="border-bottom:0.05em solid"><strong>nginx</strong></span>.</p><p id="9f28d804-116e-41dc-9333-a4ad0eefa694" class="block-color-gray">L’installer sur son ordinateur ? Vous n’auriez pas retenu la leçon ? Et si vous n’aviez pas le bon OS, ou les mauvaises dépendances ?</p><p id="ddac9814-c21f-4947-9d4a-a0a31f3a7ff7" class="">
+	<p>🤔 Nous aurions besoin du container Docker qui installe de lui même nginx. </p><p id="dda88a43-a815-429d-bab8-fe36e16f8877" class="">😏 <mark class="highlight-gray_background">Ca tombe bien, étant connu, l’image nginx à été publié par</mark><mark class="highlight-gray_background"><a href="https://hub.docker.com/_/nginx"><strong> nginx sur le Docker Hub!</strong></a></mark><mark class="highlight-gray_background"><strong> 🥳</strong></mark><mark class="highlight-gray_background"> </mark></p><p id="abb0363f-9d5c-45d4-a6e9-29ec87aec13a" class="">
+	<p id="548a7e5f-9ca6-4349-ab7e-d4ceff8c293f" class="">Regardons un exemple de ce à quoi pourrais ressembler une image nginx:</p><p id="0e2a0bb2-fdf4-49a0-a497-b872f8ea183f" class="">
+	<pre id="cf11659b-71a9-4988-8366-7f0512b97ef2" class="code"><code>FROM		alpine:3.12
 
 RUN			apk update &amp;&amp; apk upgrade &amp;&amp; apk add	\
 											openssl			\
