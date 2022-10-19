@@ -642,6 +642,10 @@ header{
 	box-shadow: 2px 0px 10px black;
 }
 
+.header.dark {
+    background-color: #2d2d2d;
+}
+
 .logo{
 	height: 70px;
 	margin-top: 5px;
@@ -713,3 +717,77 @@ footer{
 	display: flex;
 	justify-content: center;
 }
+
+
+
+
+
+
+button {
+    /* border: none; */
+    background-color: inherit;
+    cursor: pointer;
+    border-radius: 9px;
+    padding: 7px;
+  }
+  
+  .app {
+    --transition-duration: 400ms;
+    --bg: white;
+    --text: #333;
+  }
+  
+  .app.dark {
+    --bg: #333;
+    --text: white;
+  }
+
+  .dark-mode {
+    background-color:  #252525;
+    color: white;
+    font-color: white;
+    
+  }
+  
+  .app {
+    /* background-color: var(--bg); */
+    /* min-height: 1000px; */
+    /* max-width: 1vw; */
+    right : 10px;
+    margin: -26 auto;
+    /* top: 1000000px; */
+    /* padding: 0 1rem; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    color: var(--text);
+    transition: color, background-color var(--transition-duration);
+  }
+  
+  .app svg {
+    transition: stroke var(--transition-duration);
+    stroke: var(--text);
+  }
+  
+  .app .moon-icon {
+    stroke-dasharray: 0px 1px;
+    opacity: 0;
+    transition: stroke-dasharray 0.5s ease-in, opacity 300ms ease-in;
+  }
+  
+  .app .sun-icon {
+    stroke-dasharray: 1px 1px;
+    opacity: 1;
+    transition: stroke-dasharray 0.5s ease-in, opacity 300ms ease-in;
+  }
+  
+  .app.dark .moon-icon {
+    stroke-dasharray: 1px 1px;
+    opacity: 1;
+  }
+  
+  .app.dark .sun-icon {
+    stroke-dasharray: 0px 1px;
+    opacity: 0;
+  }
+  

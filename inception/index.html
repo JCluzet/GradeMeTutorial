@@ -1,6 +1,25 @@
+<!-- <script>
+    // DOM Selectors
+const body = document.querySelector("body");
+const switchBtn = document.getElementById("switch");
+const root = document.querySelector(":root");
+
+// Change theme
+switchBtn.addEventListener("change", () => {
+  toggleRootClass();
+});
+
+function toggleRootClass() {
+  document.querySelector(":root").classList.toggle("dark");
+} -->
+
+</script>
+
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
+        <!-- // add js files named index.js -->
+        <script src="index.js"></script>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>42 Inception TIPS</title>
 
@@ -12,16 +31,21 @@
 		gtag('js', new Date());
 
 		gtag('config', 'G-TLXTG40YLK');
+
+        function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
 		</script>
 	</head>
-
+    
 	<body>
-		
-		<!-- Menu -->
+        
+        <!-- Menu -->
 		<header>
-			<a href="#accueil"><img src="img/GRADEME.png" class="logo" alt="logo du site"></a>
+            <a href="#accueil"><img src="img/GRADEME.png" class="logo" alt="logo du site"></a>
 			<nav>
-				<li><a href="#docker">Docker</a></li>
+                <li><a href="#docker">Docker</a></li>
 				<li><a href="#sujet">Sujet</a></li>
 				<li><a href="#nginx">NGINX</a></li>
 				<li><a href="#mariadb">MariaDB</a></li>
@@ -29,8 +53,42 @@
 				<li><a href="#compose">Compose</a></li>
 				<li><a href="#volumes">Volumes</a></li>
 				<li><a href="#finaliser">Finaliser le projet</a></li>
-			</nav>
-		</header>
+
+                <!-- Dark Mode button -->
+                <!-- Button that on click call myFunction -->
+                <!-- <button onclick="myFunction()">Dark Mode</button> -->
+                <div x-data="{isDark: true}" :class="isDark? 'dark': ''" class="app">
+                    <button onclick="myFunction()" title="Toggle Theme" @click="isDark = !isDark">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Moon -->
+                        <path pathLength="1" class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        <!-- Sun -->
+                        <circle pathLength="1" class="sun-icon" cx="12" cy="12" r="5"></circle>
+                        <line pathLength="1" class="sun-icon" x1="12" y1="1" x2="12" y2="3"></line>
+                        <line pathLength="1" class="sun-icon" x1="12" y1="21" x2="12" y2="23"></line>
+                        <line pathLength="1" class="sun-icon" x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line pathLength="1" class="sun-icon" x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line pathLength="1" class="sun-icon" x1="1" y1="12" x2="3" y2="12"></line>
+                        <line pathLength="1" class="sun-icon" x1="21" y1="12" x2="23" y2="12"></line>
+                        <line pathLength="1" class="sun-icon" x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line pathLength="1" class="sun-icon" x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                      </svg>
+                    </button>
+                  </div>
+                </nav>
+                <!-- Dark Mode button -->
+
+                <!-- Google Translate element -->
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">// <![CDATA[
+            function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+            }
+            // ]]></script>
+            <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+            <!-- Google Translate element -->
+
+        </header>
 		
 		<article id="accueil" class="page sans">
 			<br>
